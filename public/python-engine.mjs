@@ -81,7 +81,7 @@ def _trail_handle(operation, request_json):
 `;
 function hex(buffer) {return [...new Uint8Array(buffer)].map(x=>x.toString(16).padStart(2,'0')).join('');}
 export function createPythonEngine({loadPyodide,indexURL,readAsset,sha256,onStatus=()=>{}}) {
-  let initPromise=null,pyodide=null,runtimeInfo=null,detailsPromise=null,abilityPromise=null,predictionPromise=null,hybridPromise=null,repairPromise=null,surfacePromise=null,timedHistoryPromise=null,manualPacePromise=null,hikingPromise=null,hikingSourceSha256=null,qualityPromise=null,predictionManifest=null,hybridManifest=null,coreManifest=null,admissionManifest=null;
+  let initPromise=null,pyodide=null,runtimeInfo=null,detailsPromise=null,abilityPromise=null,predictionPromise=null,hybridPromise=null,repairPromise=null,surfacePromise=null,timedHistoryPromise=null,manualPacePromise=null,hikingPromise=null,hikingSourceSha256=null,qualityPromise=null,liveEtaPromise=null,predictionManifest=null,hybridManifest=null,coreManifest=null,admissionManifest=null;
   async function initialize() {
     onStatus('runtime_loading');
     const runtime=await loadPyodide({indexURL,stdout:()=>{},stderr:()=>{}});
@@ -402,8 +402,17 @@ def _trail_timed_history_handle(request_json):
     pyodide.FS.writeFile('/trail_runtime/manual_pace_adapter.py',bytes);
     await pyodide.runPythonAsync("import importlib.util\n_goal_manual_spec=importlib.util.spec_from_file_location('_ridgeq_goal_manual_adapter','/trail_runtime/manual_pace_adapter.py')\n_goal_manual_module=importlib.util.module_from_spec(_goal_manual_spec)\nsys.modules['_ridgeq_goal_manual_adapter']=_goal_manual_module\n_goal_manual_spec.loader.exec_module(_goal_manual_module)\n_trail_manual_pace_handle=_goal_manual_module.handle_request");
   }
+  async function initializeLiveEta(){
+    const manifest=JSON.parse(new TextDecoder().decode(await readAsset('python/live-eta-manifest.json',65536)));
+    if(manifest.schema_version!=='live-route-eta/1'||manifest.file!=='live_eta.py'||typeof manifest.sha256!=='string')throw new Error('Live ETA manifest mismatch.');
+    const bytes=await readAsset('python/live_eta.py',65536);
+    if(await sha256(bytes)!==manifest.sha256)throw new Error('Live ETA integrity mismatch.');
+    pyodide.FS.writeFile('/trail_runtime/live_eta.py',bytes);
+    await pyodide.runPythonAsync('from live_eta import handle_request as _trail_live_eta_handle');
+  }
   function validPayload(operation,payload){
     if(!payload||typeof payload!=='object'||Array.isArray(payload))return false;
+    if(operation==='live_eta')return Object.keys(payload).sort().join(',')==='gpx_b64,owner_revision,settings'&&typeof payload.gpx_b64==='string'&&payload.gpx_b64.length<=6990508&&typeof payload.owner_revision==='string'&&payload.owner_revision.length>0&&payload.owner_revision.length<=256&&payload.settings&&typeof payload.settings==='object'&&!Array.isArray(payload.settings)&&JSON.stringify(payload.settings).length<=4096;
     if(operation==='quality_inspect')return ['gpx_b64','gpx_b64,page'].includes(Object.keys(payload).sort().join(','))&&typeof payload.gpx_b64==='string'&&payload.gpx_b64.length<=6990508&&(payload.page===undefined||Number.isSafeInteger(payload.page)&&payload.page>=0&&payload.page<400);
     if(operation==='timed_history_inspect')return Object.keys(payload).sort().join(',')==='forecast_as_of,gpx_b64'&&typeof payload.gpx_b64==='string'&&payload.gpx_b64.length<=6990508&&typeof payload.forecast_as_of==='string'&&payload.forecast_as_of.length<=128;
     if(operation==='reference')return Object.keys(payload).join(',')==='reference'&&payload.reference&&typeof payload.reference==='object'&&!Array.isArray(payload.reference)&&JSON.stringify(payload).length<=16384;
@@ -417,7 +426,7 @@ def _trail_timed_history_handle(request_json):
     return typeof payload.gpx_b64==='string'&&payload.gpx_b64.length<=6990508;
   }
   async function request(operation,payload) {
-    if(!['inspect','plan','details','reference','predict','hybrid','repair_propose','repair_apply','surface_propose','surface_apply','timed_history_inspect','manual_pace_prepare','manual_pace_recalculate','quality_inspect'].includes(operation))return {ok:false,error:{code:'invalid_operation',message:'不支援的計算操作。'}};
+    if(!['inspect','plan','details','reference','predict','hybrid','repair_propose','repair_apply','surface_propose','surface_apply','timed_history_inspect','manual_pace_prepare','manual_pace_recalculate','quality_inspect','live_eta'].includes(operation))return {ok:false,error:{code:'invalid_operation',message:'不支援的計算操作。'}};
     if(!validPayload(operation,payload))
       return {ok:false,error:{code:'invalid_request',message:['manual_pace_prepare','manual_pace_recalculate'].includes(operation)?'人工配速請求資料過多或格式有誤。':'請求須含不超過 5 MiB 的原始 GPX。'}};
     if(!initPromise)initPromise=initialize();
@@ -428,6 +437,7 @@ def _trail_timed_history_handle(request_json):
       finally{admission?.destroy();}
     }
     if(operation==='plan'&&payload.settings?.allocation_model==='campbell2022-hiking-reference-v1'){if(!hikingPromise)hikingPromise=initializeHiking();await hikingPromise;}
+    if(operation==='live_eta'){if(!liveEtaPromise)liveEtaPromise=initializeLiveEta().catch(error=>{liveEtaPromise=null;throw error;});await liveEtaPromise;}
     if(operation==='quality_inspect'){if(!qualityPromise)qualityPromise=initializeQuality();await qualityPromise;}
     if(operation==='details'){if(!detailsPromise)detailsPromise=initializeDetails();await detailsPromise;}
     if(operation==='reference'){if(!abilityPromise)abilityPromise=initializeAbility();await abilityPromise;}
@@ -438,7 +448,7 @@ def _trail_timed_history_handle(request_json):
     if(operation==='timed_history_inspect'){if(!timedHistoryPromise)timedHistoryPromise=initializeTimedHistory();await timedHistoryPromise;}
     if(['manual_pace_prepare','manual_pace_recalculate'].includes(operation)){if(!manualPacePromise)manualPacePromise=initializeManualPace();await manualPacePromise;}
     let handler;
-    try {handler=pyodide.globals.get(['manual_pace_prepare','manual_pace_recalculate'].includes(operation)?'_trail_manual_pace_handle':operation==='quality_inspect'?'_trail_quality_handle':operation==='timed_history_inspect'?'_trail_timed_history_handle':operation==='details'?'_trail_detail_handle':operation==='reference'?'_trail_reference_handle':operation==='predict'?'_trail_prediction_handle':operation==='hybrid'?'_trail_hybrid_handle':['surface_propose','surface_apply'].includes(operation)?'_trail_surface_handle':['repair_propose','repair_apply'].includes(operation)?'_trail_repair_handle':'_trail_handle');const value=['details','reference','predict','hybrid','timed_history_inspect','quality_inspect'].includes(operation)?handler(JSON.stringify(payload)):handler(operation,JSON.stringify(payload));if(typeof value!=='string')throw new Error('Python response was not JSON text.');return JSON.parse(value);}
+    try {handler=pyodide.globals.get(operation==='live_eta'?'_trail_live_eta_handle':['manual_pace_prepare','manual_pace_recalculate'].includes(operation)?'_trail_manual_pace_handle':operation==='quality_inspect'?'_trail_quality_handle':operation==='timed_history_inspect'?'_trail_timed_history_handle':operation==='details'?'_trail_detail_handle':operation==='reference'?'_trail_reference_handle':operation==='predict'?'_trail_prediction_handle':operation==='hybrid'?'_trail_hybrid_handle':['surface_propose','surface_apply'].includes(operation)?'_trail_surface_handle':['repair_propose','repair_apply'].includes(operation)?'_trail_repair_handle':'_trail_handle');const value=['details','reference','predict','hybrid','timed_history_inspect','quality_inspect','live_eta'].includes(operation)?handler(JSON.stringify(payload)):handler(operation,JSON.stringify(payload));if(typeof value!=='string')throw new Error('Python response was not JSON text.');return JSON.parse(value);}
     finally {handler?.destroy();}
   }
   return {request,getRuntimeInfo:()=>runtimeInfo,getVerifiedRuntime:async()=>{if(!initPromise)initPromise=initialize();await initPromise;return pyodide;}};

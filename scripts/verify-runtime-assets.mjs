@@ -7,7 +7,7 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
-const CONTRACT_SHA = 'e73a34550be7d38d82e902bbf2648750d3756fb7b12b12d9d0075dddc2e8a8ee';
+const CONTRACT_SHA = '1ebe9c06e4b1cda263003f59192b7d66a01133943c91ffb0c3c14634053e07cb';
 const CONTRACT = 'checks/public-release/integrity.json';
 const BUILD = 'ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2';
 const BASE = 'runtime/pyodide/' + BUILD + '/';
@@ -138,9 +138,9 @@ export async function verifyRuntimeAssets(root,{distRoot=null}={}) {
   for(const row of expected.protected_entrypoints){const rel=row.path.slice(1);checkFile(root,'server/entrypoints/'+rel,{bytes:row.bytes,sha256:row.sha256});assert(!Object.hasOwn(source.files,rel),'Protected public shadow');}
   const apiFiles=expected.api_manifest_paths; assert(Array.isArray(apiFiles)&&apiFiles.length===4);
   for(const file of apiFiles) assert.equal(json(read(path.join(root,'public',safe(file)))).runtime_version,'314.0.7','Module API identity');
-  assert.equal(expected.python_graph_members,65); assert.equal(expected.python_source_files,49);
+  assert.equal(expected.python_graph_members,67); assert.equal(expected.python_source_files,50);
   const python=Object.keys(source.files).filter(name=>name.startsWith('python/'));
-  assert.equal(python.length,65);assert.equal(python.filter(name=>name.endsWith('.py')).length,49);
+  assert.equal(python.length,67);assert.equal(python.filter(name=>name.endsWith('.py')).length,50);
   assert.equal(source.files['app.js'].sha256,expected.selected_app_sha256,'Public application source identity');
   const runtime=json(read(path.join(root,'public/notices/runtime-assets-manifest.json')));
   assert.equal(runtime.schema,'ridgeq-runtime-assets/2');assert.equal(runtime.build_id,BUILD);assert.equal(runtime.base_url,'/'+BASE);

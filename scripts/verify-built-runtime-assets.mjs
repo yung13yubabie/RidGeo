@@ -10,7 +10,7 @@ import path from 'node:path';
 import {createRequire} from 'node:module';
 import {fileURLToPath} from 'node:url';
 
-const EXPECTED_PUBLIC_CONTRACT_SHA256 = 'e73a34550be7d38d82e902bbf2648750d3756fb7b12b12d9d0075dddc2e8a8ee';
+const EXPECTED_PUBLIC_CONTRACT_SHA256 = '1ebe9c06e4b1cda263003f59192b7d66a01133943c91ffb0c3c14634053e07cb';
 const CONTRACT_PATH = 'checks/public-release/integrity.json';
 const BUILD_ID = 'ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2';
 const NEW_BASE = `runtime/pyodide/${BUILD_ID}/`;

@@ -1,0 +1,46 @@
+import {createLiveUI} from '/live-ui.mjs';
+import {LocationProvider} from '/live-location.mjs';
+import {PythonWorkerTransport} from '/transport.js';
+const assertions=[];
+const assert=(value,label)=>{if(!value)throw new Error(label);assertions.push(label);};
+const waitFor=async(fn)=>{for(let n=0;n<3000;n++){if(fn())return;await new Promise(r=>setTimeout(r,20));}throw new Error('Timed out waiting for UI');};
+const $=id=>document.getElementById(id);
+const change=(id,value)=>{$(id).value=value;$(id).dispatchEvent(new Event('input',{bubbles:true}));};
+const click=id=>$(id).click();
+let ui,transport;
+try{
+ transport=new PythonWorkerTransport();
+ const points=Array.from({length:21},(_,i)=>`<trkpt lat="${25+i*.001}" lon="121"><ele>${100+i*10}</ele><time>2001-01-01T00:00:00Z</time></trkpt>`).join('');
+ const gpx_b64=btoa(`<gpx version="1.1" creator="synthetic-test" xmlns="http://www.topografix.com/GPX/1/1"><trk><trkseg>${points}</trkseg></trk></gpx>`);
+ const route=await transport.request('inspect',{gpx_b64});
+ const details=await transport.request('details',{gpx_b64});
+ assert(!route.blocked&&route.elevation_complete&&details.source.route_sha256===route.route_sha256,'real browser Pyodide admits synthetic route and details');
+ let context={route,gpx_b64,ready:true,checkpoints:[]},now=0,wall=Date.parse('2026-10-23T04:00:00Z'),watch=null,watchCount=0,clearCount=0;
+ const listeners=new Set();const doc={hidden:false,createElement:document.createElement.bind(document),addEventListener(type,fn){if(type==='visibilitychange')listeners.add(fn);},removeEventListener(type,fn){listeners.delete(fn);}};
+ const geo={watchPosition(success,error){watchCount++;watch={success,error};return watchCount;},clearWatch(){clearCount++;}};
+ let requestCount=0,hold=false,release=null;
+ ui=createLiveUI({root:$('test-ui'),getContext:()=>context,clock:()=>now,wallNow:()=>wall+now,document:doc,providerFactory:opts=>new LocationProvider({...opts,geolocation:geo}),request:async(payload,signal)=>{requestCount++;const value=await transport.request('live_eta',payload,{signal});if(hold)await new Promise(resolve=>{release=resolve;});return value;}});
+ assert(watchCount===0,'opening panel never requests geolocation');
+ change('live-trailhead','人工登山口');click('live-now');change('live-target','custom');change('live-target-name','人工山頂');change('live-target-km','1.5');click('live-start');
+ assert(!$('live-location').disabled&&watchCount===0,'starting session does not request geolocation');
+ now=1000;ui.refresh();assert($('live-timer').textContent.includes('未知 00:00:01'),'no GPS is unknown not stopped');
+ change('live-progress','0.5');change('live-moving','10');change('live-elapsed','15');$('live-aligned').checked=true;
+ click('live-estimate');await waitFor(()=>$('live-result').textContent.includes('分鐘移動')||$('live-result').textContent.includes('資料格式'));
+ assert($('live-result').textContent.includes('分鐘移動'),'manual progress and moving time return actual Python ETA');
+ assert($('live-result').textContent.includes('未來停留未知')&&!$('live-result').textContent.includes('抵達（'),'unknown future stops suppress arrival clock');
+ change('live-stops','0');click('live-estimate');await waitFor(()=>$('live-result').textContent.includes('抵達（'));
+ assert($('live-result').textContent.includes('本機時區'),'explicit zero future stops permits qualified arrival');
+ click('live-location');assert(watchCount===1,'explicit location button requests one watch');
+ for(let i=0;i<14;i++){now+=5000;watch.success({timestamp:wall+now,coords:{latitude:25,longitude:121+i*.00002,accuracy:.3,speed:null}});}
+ assert($('live-timer').textContent.startsWith('移動'),'successive foreground fixes accumulate automatic movement evidence');
+ const staleWatch=watch;doc.hidden=true;for(const fn of listeners)fn();now+=30000;ui.refresh();
+ assert(clearCount>0&&$('live-timer').textContent.startsWith('頁面隱藏'),'hidden stops location and suspends timer');
+ staleWatch.success({timestamp:wall+now,coords:{latitude:25,longitude:130,accuracy:.3}});
+ doc.hidden=false;for(const fn of listeners)fn();assert(watchCount===1,'visible does not resume geolocation');
+ click('live-location');assert(watchCount===2,'explicit resume creates new watch');watch.error({code:1});assert($('live-location-state').textContent.includes('未允許'),'denial stays usable with manual fallback');
+ change('live-time-source','timer');click('live-estimate');await new Promise(r=>setTimeout(r,30));assert($('live-result').textContent.includes('帳本含未知'),'unknown ledger cannot masquerade as full movement baseline');
+ change('live-time-source','manual');hold=true;click('live-estimate');await waitFor(()=>release!==null);context={...context,ready:false};ui.refresh();release();await new Promise(r=>setTimeout(r,60));
+ assert($('live-result').textContent.includes('原 ETA 已失效')&&$('live-location').disabled,'route invalidation stops session and rejects late estimate');
+ ui.destroy();ui=null;transport.dispose();transport=null;
+ window.__liveTestResult={status:'PASS',assertions};$('out').textContent=JSON.stringify(window.__liveTestResult,null,2);
+}catch(error){ui?.destroy();transport?.dispose();window.__liveTestResult={status:'FAIL',error:String(error.stack||error),assertions};$('out').textContent=JSON.stringify(window.__liveTestResult,null,2);}

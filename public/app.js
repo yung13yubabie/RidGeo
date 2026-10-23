@@ -1,3 +1,4 @@
+import {createLiveUI} from './live-ui.mjs';
 import {routeChoicePresentation,routeNoticeText,appendRouteChoiceNotes,selectedRouteVersionLabel} from './route-library-copy.mjs';
 import {hikingReferenceProvenance} from './hiking-reference.mjs';
 import {terrainErrorMessage,repairProposalStatus} from './terrain-guidance.mjs';
@@ -1582,3 +1583,6 @@ async function inspectDrawingBytes(bytes,signal){
   finally{signal.removeEventListener('abort',abort);if(token===state.token&&state.requestKind==='drawing-inspect'){state.requestKind=null;serviceStopUI?.refresh();refreshWaypointControls();drawingUI?.refresh();}}
 }
 drawingUI=createRouteDrawingUI({inspectBytes:inspectDrawingBytes,applyBytes:(bytes,name,provenance)=>loadBytes(bytes,name,null,provenance),getWorkspace:()=>({revision:`${state.token}:${goalInputRevision}`,plan:state.plan,routeSha256:state.details?.source?.route_sha256||null,gpx:state.gpx,details:state.details}),isBusy:()=>!!(manualPaceUI?.isBusy()||serviceMainBusy||state.request||state.requestKind||transport.pending||$('prediction-form').getAttribute('aria-busy')==='true')});
+
+// Foreground experiment is isolated from planning and never owns a route import.
+createLiveUI({root:$('live-panel'),getContext:()=>({route:state.route,gpx_b64:state.gpx,ready:transportMode==='webworker'&&!pendingRouteImport&&!state.calculationGpx&&!!state.details&&state.details.source?.route_sha256===state.route?.route_sha256,checkpoints:[...$('cp-list').children].filter(cp=>cp.dataset.locationPending!=='true').map(cp=>({id:cp.dataset.cpId,name:cp.querySelector('.cp-name').value.trim(),distance_m:Number(cp.querySelector('.cp-distance').value)*1000}))}),request:(payload,signal)=>{if(transportMode!=='webworker')return Promise.reject(new Error('行進中估算僅支援裝置內計算。'));if(state.request||state.requestKind||transport.pending)return Promise.reject(new Error('目前正在規劃或讀取路線，請稍後再估算。'));return transport.request('live_eta',payload,{signal});}});

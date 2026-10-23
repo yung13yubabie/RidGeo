@@ -55,7 +55,7 @@ export class PythonWorkerTransport {
     return worker;
   }
   request(operation,payload,{signal,onStatus,onDispatch}={}) {
-    if(!['inspect','plan','details','reference','predict','hybrid','repair_propose','repair_apply','surface_propose','surface_apply','timed_history_inspect','manual_pace_prepare','manual_pace_recalculate','quality_inspect','conditional_recovery_preview','selected_history_predict','intervals_history_predict'].includes(operation))return Promise.reject(new TransportError('不支援的計算操作。','invalid_operation'));
+    if(!['inspect','plan','details','reference','predict','hybrid','repair_propose','repair_apply','surface_propose','surface_apply','timed_history_inspect','manual_pace_prepare','manual_pace_recalculate','quality_inspect','live_eta','conditional_recovery_preview','selected_history_predict','intervals_history_predict'].includes(operation))return Promise.reject(new TransportError('不支援的計算操作。','invalid_operation'));
     if(signal?.aborted)return Promise.reject(abortError());
     // Advisory work never preempts an existing request. Admission is synchronous.
     if(operation==='intervals_history_predict'&&!validProviderPayload(payload))return Promise.reject(new TransportError('平台歷史資料格式或容量有誤。','invalid_provider_request'));
@@ -64,7 +64,7 @@ export class PythonWorkerTransport {
     if(operation==='conditional_recovery_preview'&&!validConditionalPayload(payload))return Promise.reject(new TransportError('Conditional preview data is invalid or exceeds its explicit deadline cap.','invalid_preview_request'));
     if(operation==='conditional_recovery_preview'&&JSON.parse(payload.request_json).limits.max_wall_s*1000>Math.min(this.timeoutMs,120000))return Promise.reject(new TransportError('Requested preview deadline exceeds this transport timeout.','invalid_preview_request'));
     if(operation==='conditional_recovery_preview'&&this.pending&&this.pending.operation!=='conditional_recovery_preview')return Promise.reject(new TransportError('Foreground or other advisory work has priority.','worker_busy'));
-    if(['timed_history_inspect','quality_inspect'].includes(operation)&&this.pending)return Promise.reject(new TransportError('目前忙碌，稍後再分析。','worker_busy'));
+    if(['timed_history_inspect','quality_inspect','live_eta'].includes(operation)&&this.pending)return Promise.reject(new TransportError('目前忙碌，稍後再分析。','worker_busy'));
     if(this.pending)this.cancel(); // Newer request owns the result. No overlapping Python execution.
     let worker;try{worker=this.worker||this._createWorker();}catch{this._terminate();return Promise.reject(new TransportError('此瀏覽器無法建立背景計算，請使用支援 WebWorker 的瀏覽器。','worker_unavailable'));}
     const requestId=++this.sequence;const generation=this.generation;

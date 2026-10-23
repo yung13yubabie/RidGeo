@@ -1,0 +1,21 @@
+/** Real bundled Pyodide integration; no browser claim. Artificial data only. */
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {pathToFileURL,fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
+const runtime=root+'/public/runtime/pyodide/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/';
+const {loadPyodide}=await import(pathToFileURL(runtime+'pyodide.mjs'));
+const {createPythonEngine,browserSha256}=await import(pathToFileURL(root+'/public/python-engine.mjs'));
+let fetches=0;globalThis.fetch=async()=>{fetches++;throw Error('No network permitted');};
+const engine=createPythonEngine({loadPyodide,indexURL:runtime,readAsset:async name=>new Uint8Array(await fs.readFile(root+'/public/'+name)),sha256:browserSha256});
+const points=Array.from({length:21},(_,i)=>`<trkpt lat="${25+i*.001}" lon="121"><ele>${100+i*10}</ele><time>2001-01-01T00:00:00Z</time></trkpt>`).join('');
+const gpx_b64=Buffer.from(`<gpx version="1.1" creator="synthetic-test"><trk><trkseg>${points}</trkseg></trk></gpx>`).toString('base64');
+const inspected=await engine.request('inspect',{gpx_b64});assert.equal(inspected.ok,true);const route=inspected.result;
+const details=await engine.request('details',{gpx_b64});assert.equal(details.ok,true);assert.equal(details.result.source.route_sha256,route.route_sha256);
+const payload={gpx_b64,owner_revision:'actual-wasm-test',settings:{geometry_sha256:route.geometry_sha256,start_distance_m:0,progress_distance_m:500,target_distance_m:1500,target_id:'summit',moving_seconds:600,elapsed_seconds:900,moving_source:'manual',future_stop_seconds:null,slowdown_factor:1,now_utc:'2026-10-23T04:00:00Z'}};
+const unknown=await engine.request('live_eta',payload);assert.equal(unknown.ok,true);assert(Math.abs(unknown.result.remaining_moving_seconds-1200)<.001);assert.equal(unknown.result.remaining_elapsed_seconds,null);assert.equal(unknown.result.arrival_utc,null);assert.equal(unknown.result.owner_revision,payload.owner_revision);assert.equal(unknown.result.metadata.source_activity_timestamps_used,false);
+const known=await engine.request('live_eta',{...payload,settings:{...payload.settings,future_stop_seconds:300}});assert.equal(known.ok,true);assert(Math.abs(known.result.remaining_elapsed_seconds-1500)<.001);assert.equal(known.result.arrival_utc,'2026-10-23T04:25:00+00:00');
+const changed=await engine.request('live_eta',{...payload,settings:{...payload.settings,geometry_sha256:'0'.repeat(64)}});assert.equal(changed.ok,false);assert.equal(changed.error.code,'live_eta_route_changed');
+assert.equal(fetches,0);
+console.log(JSON.stringify({status:'PASS',execution:'real bundled Pyodide WASM under Node, not browser',checks:['real inspect admission','real details binding','manual ETA canonical interval','unknown stops no arrival','known stops explicit arrival','owner echo','GPX timestamp discard metadata','wrong geometry rejection'],external_fetches:fetches,remaining_moving_seconds:unknown.result.remaining_moving_seconds},null,2));
