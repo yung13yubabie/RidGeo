@@ -1,5 +1,11 @@
 # RidGeo
 
+## 線上配速規劃網站
+
+[開啟 RidGeo 配速規劃網站](https://ridgeq.brycelin.chatgpt.site)
+
+線上部署版本可能與本儲存庫的原始碼版本不同；更新本儲存庫不會自動部署或更新線上網站。
+
 Public-source candidate for RidGeo 0.5.56, intended repository owner
 `yung13yubabie`. Original project code is MIT licensed; third-party code and data
 retain their own terms. This copy has not been published or deployed and does
