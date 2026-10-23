@@ -1,0 +1,146 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self'; connect-src 'self' https://pdf.utmb.world https://46eaea7aca.clvaw-cdnwnd.com https://drive.usercontent.google.com https://tiles.openfreemap.org; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'
+/runtime/pyodide/314.0.7/*
+  Cache-Control: public, max-age=31536000, immutable
+/runtime/pyodide/314.0.7/*.mjs
+  Content-Type: text/javascript; charset=utf-8
+/runtime/pyodide/314.0.7/*.wasm
+  Content-Type: application/wasm
+
+/
+  Cache-Control: no-cache
+/index.html
+  Cache-Control: no-cache
+/app.js
+  Cache-Control: no-cache
+/style.css
+  Cache-Control: no-cache
+/catalog-data.js
+  Cache-Control: no-cache
+/race-loader.js
+  Cache-Control: no-cache
+/engine-worker.js
+  Cache-Control: no-cache
+/transport.js
+  Cache-Control: no-cache
+/python-engine.mjs
+  Cache-Control: no-cache
+/python/core-manifest.json
+  Cache-Control: no-cache
+
+/terrain-segments.mjs
+  Cache-Control: no-cache
+/official-checkpoints.js
+  Cache-Control: no-cache
+/gpx-export.js
+  Cache-Control: no-cache
+/python/details-manifest.json
+  Cache-Control: no-cache
+/python/details.py
+  Cache-Control: no-cache
+/ability-ui.js
+  Cache-Control: no-cache
+/python/ability-manifest.json
+  Cache-Control: no-cache
+/python/ability_reference.py
+  Cache-Control: no-cache
+/python/ability_adapter.py
+  Cache-Control: no-cache
+
+/profile-coordinate.js
+  Cache-Control: no-cache
+/event-catalog.js
+  Cache-Control: no-cache
+/global-catalog-data.js
+  Cache-Control: no-cache
+/checkpoint-groups.mjs
+  Cache-Control: no-cache
+/prediction-ui.js
+  Cache-Control: no-cache
+/python/prediction-manifest.json
+  Cache-Control: no-cache
+/python/cross_trail_predictor.py
+  Cache-Control: no-cache
+
+/prediction-table.js
+  Cache-Control: no-cache
+
+/workspace.css
+  Cache-Control: no-cache
+/guided-tour.js
+  Cache-Control: no-cache
+
+/cutoff-view.js
+  Cache-Control: no-cache
+/python/hybrid-manifest.json
+  Cache-Control: no-cache
+/python/hybrid_trail_scenario.py
+  Cache-Control: no-cache
+
+/source-endpoints.js
+  Cache-Control: no-cache
+
+/profile-checkpoints.js
+  Cache-Control: no-cache
+
+/error-navigation.js
+  Cache-Control: no-cache
+
+/python/route-repair-manifest.json
+  Cache-Control: no-cache
+/python/local_elevation_gap.py
+  Cache-Control: no-cache
+/python/route_geometry_repair.py
+  Cache-Control: no-cache
+
+/workout-ui.js
+  Cache-Control: no-cache
+/intervals-workout-export.mjs
+  Cache-Control: no-cache
+
+/drawing/*
+  Cache-Control: no-cache
+/drawing/*.mjs
+  Content-Type: text/javascript; charset=utf-8
+/drawing/src/*.mjs
+  Content-Type: text/javascript; charset=utf-8
+/drawing/vendor/maplibre/*.mjs
+  Content-Type: text/javascript; charset=utf-8
+/drawing/vendor/*.js
+  Content-Type: text/javascript; charset=utf-8
+/drawing/vendor/maplibre/*.css
+  Content-Type: text/css; charset=utf-8
+
+/python/surface-reference-manifest.json
+  Cache-Control: no-cache
+/python/surface_reference.py
+  Cache-Control: no-cache
+/terrain-reference/*
+  Cache-Control: no-cache
+
+/runtime/pyodide/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/*
+  Cache-Control: public, max-age=31536000, immutable
+/runtime/pyodide/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/*.mjs
+  Content-Type: text/javascript; charset=utf-8
+/runtime/pyodide/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/*.js
+  Content-Type: text/javascript; charset=utf-8
+/runtime/pyodide/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/*.wasm
+  Content-Type: application/wasm
+/runtime/pyodide/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/*.zip
+  Content-Type: application/zip
+/runtime/pyodide/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/*.json
+  Content-Type: application/json; charset=utf-8
+/runtime/pyodide/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/*.map
+  Content-Type: application/json; charset=utf-8
+/notices/NOTICE.md
+  Cache-Control: no-cache
+/notices/runtime-assets-manifest.json
+  Cache-Control: no-cache
+/notices/runtime-build-provenance.json
+  Cache-Control: no-cache
+/notices/source-index.json
+  Cache-Control: no-cache
+/notices/notices-source-manifest.json
+  Cache-Control: no-cache

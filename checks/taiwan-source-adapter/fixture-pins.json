@@ -1,0 +1,393 @@
+{
+  "schema": "reviewed-taiwan-source-adapter-fixtures/1",
+  "baselineManifestSha256": "482e88b14e0c8ad950685bced1cc7e353bb8c5e7aaf98a7de1db9604720d399e",
+  "rawPinBasis": "Separately reviewed ordered-course pin registry raw SHA/size fields, and explicit qualified Taiwan source ID set. Numeric fingerprint does not grant authenticity or edition; pre-existing source qualification remains the authority.",
+  "rawPinRegistrySha256": "c5f77d8792dea2a979c7ea3a3b750aea47983101b2757c820dd0ec4b2085599c",
+  "rights": "Public official originals retained only for private transient analysis; no redistribution permission or training-trace input.",
+  "records": [
+    {
+      "id": "xtrail-2027-top-100k",
+      "sha256": "6d045d90b008f28e5bac7741020a322fa28800d1df874552d1e9119ca551d946",
+      "bytes": 2404723,
+      "edition": 2027,
+      "officialPage": "https://xtrail.utmb.world/races/Top-100K",
+      "gpxUrl": "https://pdf.utmb.world/raw/upload/v1779934971/xtrail/2027%20%E5%BB%BA%E7%BD%AE/GPX/%E7%B8%BD%E9%83%A8%E6%8F%90%E4%BE%9B/Kenting_98k_3300_2605_2ebd00856a.gpx",
+      "transport": "direct",
+      "sourceFilename": null,
+      "catalogFactsSha256": "706b53af2e72d191455955d9b8a6aec57ac2521146b3a916d7da14ffb533d1c7"
+    },
+    {
+      "id": "xtrail-2027-top-50k",
+      "sha256": "1f0c9f431d25553f1ce5e04aecaf68fcd8a7029812d37b4139e0aae17fe4a6e2",
+      "bytes": 943742,
+      "edition": 2027,
+      "officialPage": "https://xtrail.utmb.world/races/Top-50K",
+      "gpxUrl": "https://pdf.utmb.world/raw/upload/v1779934969/xtrail/2027%20%E5%BB%BA%E7%BD%AE/GPX/%E7%B8%BD%E9%83%A8%E6%8F%90%E4%BE%9B/Kenting_51k_1500_2605_d3096953a5.gpx",
+      "transport": "direct",
+      "sourceFilename": null,
+      "catalogFactsSha256": "726c596d3a326601b218c0f7126f591fe0189a644544e138131842eee24d2c40"
+    },
+    {
+      "id": "xtrail-2027-top-25k",
+      "sha256": "cc9475f372e0324d8fb4aecf3b54f44e0f8af9b26e4d87682611281a98d0ef20",
+      "bytes": 510022,
+      "edition": 2027,
+      "officialPage": "https://xtrail.utmb.world/races/Top-25K",
+      "gpxUrl": "https://pdf.utmb.world/raw/upload/v1779934966/xtrail/2027%20%E5%BB%BA%E7%BD%AE/GPX/%E7%B8%BD%E9%83%A8%E6%8F%90%E4%BE%9B/Kenting_26k_600_2605_4a7645b980.gpx",
+      "transport": "direct",
+      "sourceFilename": null,
+      "catalogFactsSha256": "9369ab425d7060ef2d182e2e804782f603617787babdd97ad4df2b2feb812207"
+    },
+    {
+      "id": "xtrail-2027-top-10k",
+      "sha256": "a29ffcaf50edebd1e849b58494d3de601a6d63c9cef043014fb98aa63e23e271",
+      "bytes": 113846,
+      "edition": 2027,
+      "officialPage": "https://xtrail.utmb.world/races/Top-10K",
+      "gpxUrl": "https://pdf.utmb.world/raw/upload/v1779934965/xtrail/2027%20%E5%BB%BA%E7%BD%AE/GPX/%E7%B8%BD%E9%83%A8%E6%8F%90%E4%BE%9B/Kenting_11k_300_2605_0553286663.gpx",
+      "transport": "direct",
+      "sourceFilename": null,
+      "catalogFactsSha256": "2be39fbde6204cb88069f87bbc18ca17a0ef9863068af760b9f63f593d4a9553"
+    },
+    {
+      "id": "xtrail-2027-top-2k",
+      "sha256": "966434f5922832796adeaaf646361863fe7d6b4f19952ae6c0f183552a2839e7",
+      "bytes": 19610,
+      "edition": 2027,
+      "officialPage": "https://xtrail.utmb.world/races/Top-2K",
+      "gpxUrl": "https://pdf.utmb.world/raw/upload/v1782460067/xtrail/2027%20%E5%BB%BA%E7%BD%AE/GPX/Xtrail_2_K_2_Kids_ba5ed259dd.gpx",
+      "transport": "direct",
+      "sourceFilename": null,
+      "catalogFactsSha256": "0dee8e73177c88e98294c80c7cdb924358cbc8161f87c1a40e9106eacce156b8"
+    },
+    {
+      "id": "skyhunter-shilin-2026-3k",
+      "sha256": "b8f25e442ac037d657a72010ad13fd0bfb8ae85705779e01f3b4f6741867cbbc",
+      "bytes": 15696,
+      "edition": 2026,
+      "officialPage": "https://www.twttra.com/posts/2026-skyhunter-shilin-trail",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1z8-JyHyiEFInO4aXO42eL-fpSk1BZz-p&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": null,
+      "catalogFactsSha256": "036e03c658b5a48ebd804fc27438437268147aa6948728760b7b3b2cf04529b7"
+    },
+    {
+      "id": "skyhunter-shilin-2026-8k",
+      "sha256": "868b9938af8ca589f4180399eddfb4f8ca754a2a047e44f3c402eceacf703634",
+      "bytes": 39758,
+      "edition": 2026,
+      "officialPage": "https://www.twttra.com/posts/2026-skyhunter-shilin-trail",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1KOYYz5ujl6hpE7xyqaJZFklmXm5ESP13&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": null,
+      "catalogFactsSha256": "89cefad786ab96453d3d31e6b6a56fa09ae247878326354bddcc1b1a12d8d0dc"
+    },
+    {
+      "id": "skyhunter-shilin-2026-50k",
+      "sha256": "3c1418187ef8b59df5ae7af72a9e551dbe1c6c7504a0e83d87202ea0feca4e05",
+      "bytes": 261289,
+      "edition": 2026,
+      "officialPage": "https://www.twttra.com/posts/2026-skyhunter-shilin-trail",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1opWQvt5jfcWsFyFUru38Fr1LR4GBNNso&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": null,
+      "catalogFactsSha256": "6a0bfc2053768b1c881bc21028c11cfbe1604f61d78d297e1df89a386f73f8cc"
+    },
+    {
+      "id": "skyhunter-shilin-2026-24k",
+      "sha256": "9fd013b6a0b26dc135056e0f785444c2d8500b66d7c51b034d870dd26bbac6a1",
+      "bytes": 131014,
+      "edition": 2026,
+      "officialPage": "https://www.twttra.com/posts/2026-skyhunter-shilin-trail",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1lXuGlKFIVXIltM9H5IiZJLcDYAoPYEIY&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": null,
+      "catalogFactsSha256": "a96e09d332de9d0f4e1569d1ccafd1f17983978e017e63cef7559bc7a59d7347"
+    },
+    {
+      "id": "formosa-trail-2026-10k",
+      "sha256": "0549cefe00a1ea25a34308f1a7011dbb1739e5290cec4b7783422cfca2bf1e61",
+      "bytes": 105364,
+      "edition": 2026,
+      "officialPage": "https://formosatrail.com/zh/course/",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1ZAIv9f7CBQW2DOUTh9iGnhm40vIjEIev&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": null,
+      "catalogFactsSha256": "f5da1013fc7178a9010f5bfa14f7a8e7b65bc59980e822e473715f8af4494d7d"
+    },
+    {
+      "id": "formosa-trail-2026-18k",
+      "sha256": "ee20f1397ff78d355d581f5657498f437d15efab6ed4e4f1ea35c95283c7d106",
+      "bytes": 188375,
+      "edition": 2026,
+      "officialPage": "https://formosatrail.com/zh/course/",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1Qx_t0uo3-dkQV0LCVP5G8ImyJIpo1Pac&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": null,
+      "catalogFactsSha256": "f2972187df72f10527edd1af41a8c6664896567d933fb17b0dc3a3af35bad5c5"
+    },
+    {
+      "id": "formosa-trail-2026-40k",
+      "sha256": "e8883da6487a4f095fdf625bf1cb9f7f9a3d32c8c9a194cf411729ec2914bf4d",
+      "bytes": 313657,
+      "edition": 2026,
+      "officialPage": "https://formosatrail.com/zh/course/",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1eEuglVNUf_KmeBBPUeOS5mjH_t07YB0G&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": null,
+      "catalogFactsSha256": "3b0618a6acf2925314ae4d768e405e3260c8609eaa8bc94f72a5d86d412b386f"
+    },
+    {
+      "id": "formosa-trail-2026-54k",
+      "sha256": "202bcdcbafca7d9b2a66b22a97a1f3b0634b88fff20b38f4eca62ef71ef7dd79",
+      "bytes": 520680,
+      "edition": 2026,
+      "officialPage": "https://formosatrail.com/zh/course/",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1r-ZiQhDeo2HJvHZV1ENVWra64EuaAA6R&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": null,
+      "catalogFactsSha256": "8f1e6dd946e311270ef254eae9bd2988ebc72fad16abe9fb3086774ee5e23b1d"
+    },
+    {
+      "id": "formosa-trail-2026-75k",
+      "sha256": "376bda98fd3da357c7710ac4cdc1f3ee7b75a3177a0ec0b972e06ee6a2a28988",
+      "bytes": 590500,
+      "edition": 2026,
+      "officialPage": "https://formosatrail.com/zh/course/",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1SqI276YkvpIPSPIEo5WZu5Z3Pgi_Wdyn&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": null,
+      "catalogFactsSha256": "025ebf40404b721c3e438304348b5b5d65a7d14fd4d426d80cf60b01ed9182a8"
+    },
+    {
+      "id": "formosa-trail-2026-104k",
+      "sha256": "b8ce9b9e109a4d914f6fbd2e047640f45a0cb62cf74187d00033704eda2ed04d",
+      "bytes": 903828,
+      "edition": 2026,
+      "officialPage": "https://formosatrail.com/zh/course/",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1gAaEVFBVtVScNfmcooEdidLJFBMtFte1&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": null,
+      "catalogFactsSha256": "022c9a096051e76d6b2a98d14ee12c168e70422f02f4fba2cc1c6f2554390fec"
+    },
+    {
+      "id": "taiwan-action-asia-2026-50km",
+      "sha256": "13662c94c91da42580d0cfb7c8e0a70781cb9e67c2265180e33eaaee2a6d700c",
+      "bytes": 194612,
+      "edition": 2026,
+      "officialPage": "https://actionasiaevents.com/2026-taiwan-action-asia-50-shihmen-reservoir/",
+      "gpxUrl": "https://actionasiaevents.com/wp-content/uploads/2026/07/TWAA50.gpx",
+      "transport": "same_origin_bridge",
+      "sourceFilename": null,
+      "catalogFactsSha256": "29e6fe65d24540f67294a547d4d692148d50bc54c04b8f7144168ac7c80164d4"
+    },
+    {
+      "id": "taiwan-action-asia-2026-26km",
+      "sha256": "cc1b1d611b720ec964acfe9b5390c7a83209505c4630463911b5b8563a2dacb2",
+      "bytes": 85282,
+      "edition": 2026,
+      "officialPage": "https://actionasiaevents.com/2026-taiwan-action-asia-50-shihmen-reservoir/",
+      "gpxUrl": "https://actionasiaevents.com/wp-content/uploads/2026/06/26km-NEW-Taiwan-Action-Asia-50-Taiwan-Shihmen-Reservoir.gpx",
+      "transport": "same_origin_bridge",
+      "sourceFilename": null,
+      "catalogFactsSha256": "b68d9521d00a04676d7bd79b2cc4e62991cc6f06a4f4f0642a88a960d131ff79"
+    },
+    {
+      "id": "taiwan-action-asia-2026-12km",
+      "sha256": "dec270e17cc0c2528af01e212c8429fc895384482573e1baa792bf5f9b265592",
+      "bytes": 42392,
+      "edition": 2026,
+      "officialPage": "https://actionasiaevents.com/2026-taiwan-action-asia-50-shihmen-reservoir/",
+      "gpxUrl": "https://actionasiaevents.com/wp-content/uploads/2026/06/12-km-Taiwan-Action-Asia-50-Shihmen.gpx",
+      "transport": "same_origin_bridge",
+      "sourceFilename": null,
+      "catalogFactsSha256": "53822d4b2582ab2aee21d560021c5ead189a8e743e345a0286271786276501fc"
+    },
+    {
+      "id": "mountain-antelope-hutoushan-2026-5k",
+      "sha256": "e8d63dbababe801f4873fad66f94295c9e7f98c66f5b40ead7f347a96a4f14fe",
+      "bytes": 26781,
+      "edition": 2026,
+      "officialPage": "https://www.bao-ming.com/eb/content/6957",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1woooEIpLrnHHrZ0tjgG-C5EL5qydBgti&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": "親子組5k.gpx",
+      "catalogFactsSha256": "89b0c52e18556c2bbc8ae08a23c5cd6e3a6f0c93bd3fd360b2ed2b04af183d66"
+    },
+    {
+      "id": "mountain-antelope-hutoushan-2026-10k",
+      "sha256": "7d4def26b7ca8db5f11318e2a4e57ef481fa4679e6f459ca6cc95ce308ec9622",
+      "bytes": 1492025,
+      "edition": 2026,
+      "officialPage": "https://www.bao-ming.com/eb/content/6957",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=15D_-DBB-7ERQ9y-Z2NVBt1RfTsfWcOB2&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": "虎頭山越野10K.gpx（副本）",
+      "catalogFactsSha256": "e7df6b7b468d675f6aaf13a207ec9339aa12dd770c454283d3a65388a12f78bb"
+    },
+    {
+      "id": "mountain-antelope-hutoushan-2026-25k",
+      "sha256": "1562c1f0128d1a13aa0f330fcd6fad3195adb67c992285269bf9bcbcbcd9b1c0",
+      "bytes": 872541,
+      "edition": 2026,
+      "officialPage": "https://www.bao-ming.com/eb/content/6957",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1RJcJtw7SWLPRWYsXHgdyUYYSyyPbZ8nH&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": "虎頭山25K.gpx",
+      "catalogFactsSha256": "a238a7f59b76d8816f65a058b3dd57e99036465f72bb5f9930f623641ebcc967"
+    },
+    {
+      "id": "explore-your-backyard-2026-13k",
+      "sha256": "8efb3134ba7ee83f1c6cc5a58e2e34fa5b49028c6430d10ec8e942e35e8c652a",
+      "bytes": 142529,
+      "edition": 2026,
+      "officialPage": "https://backyard.run/",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1AviXiCA4S-nSkBWLOCm9EvbIfbR401Xj&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": "EYB2026 13km.gpx",
+      "catalogFactsSha256": "45429b28ff3f342c5725955d0b50fcbb7de9d423d475712c676e1e302983f3fb"
+    },
+    {
+      "id": "skyhunter-qiyan-2026-4k",
+      "sha256": "493290d157a33df69090106b32f4b8ac1df75497b88f205079e7133bb65ce874",
+      "bytes": 34143,
+      "edition": 2026,
+      "officialPage": "https://www.twttra.com/pages/26-skyhuntertrail",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1KkEdQYxzotCGBlOBrl_cEJackaEwrC0G&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": "親子組 4km.gpx",
+      "catalogFactsSha256": "6a4d00560bed9bb53699ad2d99cb13e94490c992b134d757b5610f9a66f97cc3"
+    },
+    {
+      "id": "skyhunter-qiyan-2026-13k",
+      "sha256": "5c82c53c8f761f827cb6a6d1d8efb02ff492856115b20fc39c4349e4d7cbf255",
+      "bytes": 88053,
+      "edition": 2026,
+      "officialPage": "https://www.twttra.com/pages/26-skyhuntertrail",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1Wh5ky4uNLcoKfHwPLFdHrm8n-bUmcm0A&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": "體驗組13K.gpx",
+      "catalogFactsSha256": "ff847e2b69b740d0b8ed0e1a264971afac3bf54b2a637174966d4aa0a5e616ec"
+    },
+    {
+      "id": "skyhunter-qiyan-2026-6k",
+      "sha256": "4dcee2cedee883cb0e72911863eac4df4a39b4bd0e2c1835ef0f53a77cee6676",
+      "bytes": 46422,
+      "edition": 2026,
+      "officialPage": "https://www.twttra.com/pages/26-skyhuntertrail",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1OHtSJ2DF4BP6U5tKhg1VLCQocWvZG9Ua&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": "休閒&接力組6K.gpx",
+      "catalogFactsSha256": "e604dfd48f92d3f8c73fc29821738256332b72b0c392c1c7d3f781c862b14a99"
+    },
+    {
+      "id": "skyhunter-qiyan-2026-30k",
+      "sha256": "28b83bdac9366635958ec031f237bc30a41784e503cd7d353ebe9383baf6e44b",
+      "bytes": 5145297,
+      "edition": 2026,
+      "officialPage": "https://www.twttra.com/pages/26-skyhuntertrail",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=18ca6LOP85FCBlmS6OdTYwTcsE0m4WjiL&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": "挑戰組30K.gpx",
+      "catalogFactsSha256": "11da2812f3ed9c80688e02e04856359db565b5bcf0181faa817800ca3fe74d22"
+    },
+    {
+      "id": "runningstream-dadu-2026-12k",
+      "sha256": "5d8eb4265ca601da9240ccc65b1d71f05b1f797b43c0200ef87b0fc095a8aa6e",
+      "bytes": 716808,
+      "edition": 2026,
+      "officialPage": "https://www.runningstream.run/tmd/t-m-d-course/t-m-d-12k",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1UGvSAdhVVpmE6VROjhOdXGLW_kLb8wN6&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": "2026_12K___Trail_M.t_Dadu.gpx",
+      "catalogFactsSha256": "b2f97e09bb5ab3b19b2daf7487bcdb2d184d3e11446efa2e80ed83540c90c696"
+    },
+    {
+      "id": "formosa-xtri-2026-run-42k",
+      "sha256": "83ab5c4a139c1a1bfa0c3a08393f922e2847d9f43583aa2706a2592348a52cda",
+      "bytes": 137874,
+      "edition": 2026,
+      "officialPage": "https://formosaxtri.com/",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1wa0mx_RxR4tOB1spF0Ld3iLG9lVXBIhe&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": "2026 FXT RUN.gpx",
+      "catalogFactsSha256": "ade07d603f1fb5bdce8b332245361657c7d4a1f14ff60a58f1607df922b3c720"
+    },
+    {
+      "id": "aa-maokong-2027-25k",
+      "sha256": "ac78b0fbea5814dc1f4a6ed353a8682f0a483be9419ea1228b4459c5472c401b",
+      "bytes": 113962,
+      "edition": 2027,
+      "officialPage": "https://actionasiaevents.com/2027-action-asia-x-trail-taiwan/",
+      "gpxUrl": "https://actionasiaevents.com/wp-content/uploads/2026/09/Action-Asia-X-Trail-Maokong-Taipei-25km-newcp3.gpx",
+      "transport": "same_origin_bridge",
+      "sourceFilename": "Action-Asia-X-Trail-Maokong-Taipei-25km-newcp3.gpx",
+      "catalogFactsSha256": "d7a2aa6a6a481ab977aa7714bd980f7a5e2567c9be194ddd03a175c321e4bcb4"
+    },
+    {
+      "id": "aa-maokong-2027-18k",
+      "sha256": "52f795d42116f980165aaeb70930745da7264c65780eefe6b129c0f08a13b452",
+      "bytes": 90461,
+      "edition": 2027,
+      "officialPage": "https://actionasiaevents.com/2027-action-asia-x-trail-taiwan/",
+      "gpxUrl": "https://actionasiaevents.com/wp-content/uploads/2026/09/18kmAction-Asia-X-Trail-Maokong-Taiwan-new18km-old-17.gpx",
+      "transport": "same_origin_bridge",
+      "sourceFilename": "18kmAction-Asia-X-Trail-Maokong-Taiwan-new18km-old-17.gpx",
+      "catalogFactsSha256": "54e6cf3a7ee63634302ad9a7d37e8f548504d5ae4cdc51a506c2efebe965ae36"
+    },
+    {
+      "id": "aa-maokong-2027-10k",
+      "sha256": "e57423702bef8a97d18892d96216592e5cbbd1e52b8e7233d6dffcdd4bd8a412",
+      "bytes": 53627,
+      "edition": 2027,
+      "officialPage": "https://actionasiaevents.com/2027-action-asia-x-trail-taiwan/",
+      "gpxUrl": "https://actionasiaevents.com/wp-content/uploads/2026/09/Action-Asia-X-Trail-Maokong-Taiwan-new10k-old9km.gpx",
+      "transport": "same_origin_bridge",
+      "sourceFilename": "Action-Asia-X-Trail-Maokong-Taiwan-new10k-old9km.gpx",
+      "catalogFactsSha256": "92db4b0beb8997bb0dbdfbb594a5838322ceb94afe51ce4e844f8a3268d6ff05"
+    },
+    {
+      "id": "galerdo-trail-carnival-2025-7p6k",
+      "sha256": "5a8752665feffe95940b9d637cb7bfa22ed67e1c0c2799122a6cded1e6f2e0f0",
+      "bytes": 51895,
+      "edition": 2025,
+      "officialPage": "https://www.galerdo.net/post/%E5%8D%A1%E6%B4%9B%E5%8B%95%E5%98%89%E5%B9%B4%E8%8F%AF%E9%81%B8%E6%89%8B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85%E6%89%8B%E5%86%8A",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1spe3MaBHvuNOpms6qaMxUYNDRXHoDhIw&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": "卡洛動越野嘉年華-8km((更新).gpx",
+      "catalogFactsSha256": "0d8598689cfe68bd9009dc73190433d4840aaaed01d08df1eae949320fd7cfc4"
+    },
+    {
+      "id": "galerdo-trail-carnival-2025-18k",
+      "sha256": "2307e754c835f93915187886221b3ddc3549a931e3790d952b79f9ebf318c339",
+      "bytes": 93189,
+      "edition": 2025,
+      "officialPage": "https://www.galerdo.net/post/%E5%8D%A1%E6%B4%9B%E5%8B%95%E5%98%89%E5%B9%B4%E8%8F%AF%E9%81%B8%E6%89%8B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85%E6%89%8B%E5%86%8A",
+      "gpxUrl": "https://drive.usercontent.google.com/download?id=1H04CyUCQcf7waZcX8zFBtu-QS_FGq2h4&export=download",
+      "transport": "same_origin_bridge",
+      "sourceFilename": "卡洛動越野嘉年華-18km.gpx",
+      "catalogFactsSha256": "54ebd4afc767755e3435c35e5bcc5dbf40589bcf395ffb1f92a5b0ce11e60334"
+    }
+  ],
+  "rawPinRegistryScope": "Original26 independently accepted source pins are preserved; Dadu2026 and FXT2026 RUN are separately source-qualified supplements. This does not relabel earlier26-only receipts.",
+  "supplementalPinBasis": {
+    "id": "runningstream-dadu-2026-12k",
+    "qualification": "Dadu2026 retained official-reader/Drive chain + exact raw + independent bounded XML + current protected Worker details",
+    "sourceContractSha256": "838bae1680bc21f1d4f4760dd7af35e59aa19d72e2aa815c2b7fb4a0998baaba",
+    "actualStreamPinSha256": "3e70d16f5a389eef6415906f3f451a77db982dacc0f2ed751ddad8cfb3d0f71a"
+  },
+  "supplementalPinBases": [
+    {
+      "id": "runningstream-dadu-2026-12k",
+      "qualification": "Dadu2026 retained official-reader/Drive chain + exact raw + independent bounded XML + current protected Worker details",
+      "sourceContractSha256": "838bae1680bc21f1d4f4760dd7af35e59aa19d72e2aa815c2b7fb4a0998baaba",
+      "actualStreamPinSha256": "3e70d16f5a389eef6415906f3f451a77db982dacc0f2ed751ddad8cfb3d0f71a"
+    },
+    {
+      "id": "formosa-xtri-2026-run-42k",
+      "qualification": "Official2026 RUN link/public original + independently bounded XML + actual protected Worker current goal domain",
+      "sourceContractSha256": "ff7053db494d31de7b320049f771ee89e06a5ae2aa0b829f1b6921954d4a95df",
+      "actualStreamPinSha256": "e79a02bf189f0e4ea2894b9a7913900600479fe13863737144fa879f4832c0f6"
+    }
+  ]
+}

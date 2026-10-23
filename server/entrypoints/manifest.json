@@ -1,0 +1,22 @@
+[
+  {
+    "path": "/index.html",
+    "bytes": 62458,
+    "sha256": "0b54e7e61134809b06c174aefd3efc5f85b8559ecdb489c9628603dee2de34ec"
+  },
+  {
+    "path": "/notices/index.html",
+    "bytes": 2419,
+    "sha256": "67fcf2b1499a7854518d6542a859f9bd8d466139e9acf6034742747941b90575"
+  },
+  {
+    "path": "/notices/SQLITE-COPYRIGHT.html",
+    "bytes": 8351,
+    "sha256": "44ca9f793055c8e32fc65f65a4f5bcf813a33f5bdaaa084067dd617a4ed3cc70"
+  },
+  {
+    "path": "/engine-worker.js",
+    "bytes": 3088,
+    "sha256": "ed8ffea8f27bf10c018d59117ac97249606411a1eaeab1c413ea34cbde493be9"
+  }
+]

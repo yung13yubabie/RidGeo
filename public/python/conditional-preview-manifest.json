@@ -1,0 +1,83 @@
+{
+  "schema_version": "conditional-preview-runtime/0.2-capsule",
+  "runtime_version": "314.0.7",
+  "integrity_profile": "conditional-runtime-capsule/1.0",
+  "integration_base_commit": "d3f68a7f8f4adf10b1d6b25f9d9ac39ace545253",
+  "model_source_base_commit": "5d2a8fcede539551d4d62f6ac3a469b8106f34db",
+  "source_bridge_module_sha256": "ad437060fd8224611609f504bd2aa431b5c6de34c030497dd2dda90451f2b8ae",
+  "source_bridge_freeze_manifest_sha256": "cf052324ed6ba2a418148623aac6543a0dbcbf51fe99d8e7c4214dc79d4fc924",
+  "requires_existing_core": {
+    "__init__.py": "06096ad97f2c6ce19894e9686fe836cd438309522d0781bf9a9bf263c41b15f3",
+    "gpx.py": "734e1aae59de0b4775d74257c767de9e5f4648b69247988b1087ec27fa18fe6f",
+    "geometry.py": "8a527265f1f890f913c4cc33e513afb7cb61cd14150e6155e9d9fcfe2d37bd25",
+    "planning.py": "219bdcc59fea3d2ec581bd45adad0d8162e789d367437f1bec79d2066d276080"
+  },
+  "requires_core_manifest_sha256": "5d95ff358e92248ebbafdcdc99327362f4ad5416b2948751200ec2c794456546",
+  "requires_gpx_admission_sha256": "3b66d3b9334cb80a85e6f3c2bbd1154cbdaed4e455076a50cc169ef83aa94912",
+  "requires_admission_manifest_sha256": "8a029bd647015293330008ee9100a01fc4b2af35fb1ab228e9f0c514cc2805e6",
+  "files": {
+    "frozen-search/conditional_stop_search.py": {
+      "sha256": "1861e7f1a38bce441ee4680edc82ee1f5727cc38cf3343691bbf928c4b8a597b",
+      "bytes": 34539
+    },
+    "frozen-search/frozen-r3/artifact-template.json": {
+      "sha256": "e9e55ba9060fa676edf3ceeec2371682ff2d67bb171853ce90fe363f6746e200",
+      "bytes": 3990
+    },
+    "frozen-search/frozen-r3/conditional_adapter.py": {
+      "sha256": "8d1112d6807abe08d4ccd9294c99d33be0298f709786d623882e98b188c50024",
+      "bytes": 58645
+    },
+    "frozen-search/frozen-r3/dependencies/cross_trail_predictor.py": {
+      "sha256": "2f91c50c176c626acd2665f1d229f4baeb394e01d7ed1e1f37ad52bca74c0be3",
+      "bytes": 20843
+    },
+    "frozen-search/frozen-r3/dependencies/dependencies/intensity_transition.py": {
+      "sha256": "f6b9f0a4d768e838e40de8320d225615339291ce8ce82915334e4189bc7c22ed",
+      "bytes": 20592
+    },
+    "frozen-search/frozen-r3/dependencies/trail_planner/__init__.py": {
+      "sha256": "06096ad97f2c6ce19894e9686fe836cd438309522d0781bf9a9bf263c41b15f3",
+      "bytes": 363
+    },
+    "frozen-search/frozen-r3/dependencies/trail_planner/geometry.py": {
+      "sha256": "8a527265f1f890f913c4cc33e513afb7cb61cd14150e6155e9d9fcfe2d37bd25",
+      "bytes": 7831
+    },
+    "frozen-search/frozen-r3/dependencies/trail_planner/gpx.py": {
+      "sha256": "734e1aae59de0b4775d74257c767de9e5f4648b69247988b1087ec27fa18fe6f",
+      "bytes": 5651
+    },
+    "frozen-search/frozen-r3/dependencies/trail_planner/planning.py": {
+      "sha256": "219bdcc59fea3d2ec581bd45adad0d8162e789d367437f1bec79d2066d276080",
+      "bytes": 20211
+    },
+    "frozen-search/frozen-r3/dependencies/variable_transition.py": {
+      "sha256": "95b6ad84d3cc19e4d8758c08a92669ad82eca956e9ddbb07db1b8a22529c08fd",
+      "bytes": 15073
+    },
+    "production/gpx_admission.py": {
+      "sha256": "3b66d3b9334cb80a85e6f3c2bbd1154cbdaed4e455076a50cc169ef83aa94912",
+      "bytes": 13294
+    },
+    "production/manual_pace_adapter.py": {
+      "sha256": "596475dd924ec78ce1aef115e339cb14ecbc2fd97aad930858b078ae3e255c0f",
+      "bytes": 21094
+    },
+    "production_recovery_bridge.py": {
+      "sha256": "33ec21c1c2c5368c8d8c92955b706ae1ac5122bbc1deb2e43adb62392de7fd0c",
+      "bytes": 17409
+    },
+    "runtime_integrity.py": {
+      "sha256": "872c67f918758176e7f45b1705a3e667126a37e7d121dd5a2f04039435919788",
+      "bytes": 8683
+    },
+    "worker_adapter.py": {
+      "sha256": "9ce707507b51c923bc5b450d9b61021a2a3d2001a6a8dbdad3da36807b4a92b4",
+      "bytes": 15751
+    }
+  },
+  "total_bytes": 263969,
+  "apply_admitted": false,
+  "export_admitted": false
+}

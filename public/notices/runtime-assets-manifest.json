@@ -1,0 +1,166 @@
+{
+  "archive_only_companions": {
+    "console-v2.html": {
+      "bytes": 17073,
+      "sha256": "77a31e268337325d77bdf98932c3a5ffafce297a88790c8f1cfd98a47449e6a7"
+    },
+    "console.html": {
+      "bytes": 10037,
+      "sha256": "e7be5fc9db7c510c9287c5e25c4d63141ed8ad6707404136aec299699e42a6bd"
+    },
+    "module_test.html": {
+      "bytes": 668,
+      "sha256": "1ab37fdaaaccce61c77700d51b0c0ca117b4b2f0dadebc1606c23bcf88ed4945"
+    },
+    "python": {
+      "bytes": 1689,
+      "sha256": "75c993490871f2e2d6b4e41481bfc9f1f509a15b69a230cb1d6c8c43f3c98633"
+    },
+    "python.bat": {
+      "bytes": 3990,
+      "sha256": "42d08a330aafc75b049da7c8f1f8f2c00f4445339536bfb6792511ed603a11c9"
+    },
+    "python_cli_entry.mjs": {
+      "bytes": 8597,
+      "sha256": "7dd7ff1284371feefda711c809e469a896cf4a1c1eee1597a91804ffdd45fe68"
+    },
+    "test.html": {
+      "bytes": 691,
+      "sha256": "4b5136e388a51ba000d162076f7f3b1cec31098d8b7c286f2c8dcaa6849d622e"
+    }
+  },
+  "artifact_kind": "locally-compiled-derivative",
+  "base_url": "/runtime/pyodide/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/",
+  "build_id": "ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2",
+  "primary_assets": {
+    "pyodide-lock.json": {
+      "bytes": 133,
+      "sha256": "a0633ad7cfcc9f711ebbca4fe4569e70c55487fde05416cc4051d9ddbb73c74b"
+    },
+    "pyodide.asm.mjs": {
+      "bytes": 1251268,
+      "sha256": "234a4f30c6537e565b0be41abc1de10eaf6327c8965b657f2c481faf0d40005c"
+    },
+    "pyodide.asm.wasm": {
+      "bytes": 9646738,
+      "sha256": "11d79a24dde350e7b55489b814792035be096f222c46fbe55c28dd057de65697"
+    },
+    "pyodide.mjs": {
+      "bytes": 17931,
+      "sha256": "3780a5f1f30d0b2c3b1f45a254ebb00da3e0fdec68d229392b1410f914abc821"
+    },
+    "python_stdlib.zip": {
+      "bytes": 2568652,
+      "sha256": "b008a808e2a2a719c60c3e2ce8a6fa6129e7194a591c42d6395f685729dffdeb"
+    }
+  },
+  "provenance": "/notices/runtime-build-provenance.json",
+  "public_companions": {
+    "package.json": {
+      "bytes": 2999,
+      "sha256": "40ca48e43ce4ddc68412d5b7a7ca9e2477cd4f0e672277ae468ac2245717079b"
+    },
+    "pyodide.js": {
+      "bytes": 18912,
+      "sha256": "f1dee443c3b9d03a5e47e985741cbda965fbfa7cac45a6b937ef2cc3022abb92"
+    },
+    "pyodide.js.map": {
+      "bytes": 85289,
+      "sha256": "0f7afa220641c481c78c7d32c63d00ba5cd75b1250c410aad275c1e4d17f077f"
+    },
+    "pyodide.mjs.map": {
+      "bytes": 84911,
+      "sha256": "0d97147b5f205398c614021ca450d1d95b87cdf8abd1b9ab4fc86c4169f88c36"
+    }
+  },
+  "rollback": {
+    "base_url": "/runtime/pyodide/314.0.7/",
+    "primary_assets": {
+      "pyodide-lock.json": {
+        "bytes": 119077,
+        "sha256": "5dc2fc119108bc148c7457dc86e7675b5c87e1cafd420b9c34c1eaef7b36c010"
+      },
+      "pyodide.asm.mjs": {
+        "bytes": 1250344,
+        "sha256": "f7cdc8ece80678ceb712f8e65ebe6d3a83203a180c399865f49612a051693635"
+      },
+      "pyodide.asm.wasm": {
+        "bytes": 9598218,
+        "sha256": "cc36e3cab04fdfc9a63ff13eb52eae2b911bf46c025cc7b281f394bd3de1d5e6"
+      },
+      "pyodide.mjs": {
+        "bytes": 17931,
+        "sha256": "6f1d60f7bf529beb300f0f47983c921d3982363640ba20af0e38efdddbc66109"
+      },
+      "python_stdlib.zip": {
+        "bytes": 2545637,
+        "sha256": "fa1957e5777068fc4f7437f96d860ae2fbe9c19732ba06c84e004ec16dd7dd7a"
+      }
+    }
+  },
+  "rollback_provenance": {
+    "classic_loader_optional": {
+      "bytes": 18912,
+      "file": "pyodide.js",
+      "gzip_bytes": 7462,
+      "note": "classic importScripts entry; use instead of .mjs entry, or retain both if Node tests use ESM; update final bundle manifest",
+      "sha256": "3141b814715a72e59b51b1b18b9ceae5bf19f7c852417e431bb0a34feadf825c",
+      "source": "https://registry.npmjs.org/pyodide/-/pyodide-314.0.7.tgz"
+    },
+    "note": "exact approved npm runtime core assets; gzip bytes measured offline, not live CDN transport; preserve separate licensing notices; no scientific wheels, Node ws/types are development only",
+    "npm_tarball_integrity": "sha512-0YvXxEhfEdpLfb/XkM2BFAeMROq0iMUX2bzzH9pOttyMcWkwq+HbE5uyuGD82LN7y2q+SNvi/6V5JEsOlD2R1A==",
+    "runtime_files": [
+      {
+        "bytes": 17931,
+        "file": "pyodide.mjs",
+        "gzip_bytes": 7152,
+        "sha256": "6f1d60f7bf529beb300f0f47983c921d3982363640ba20af0e38efdddbc66109",
+        "source": "https://registry.npmjs.org/pyodide/-/pyodide-314.0.7.tgz"
+      },
+      {
+        "bytes": 1250344,
+        "file": "pyodide.asm.mjs",
+        "gzip_bytes": 259957,
+        "sha256": "f7cdc8ece80678ceb712f8e65ebe6d3a83203a180c399865f49612a051693635",
+        "source": "https://registry.npmjs.org/pyodide/-/pyodide-314.0.7.tgz"
+      },
+      {
+        "bytes": 9598218,
+        "file": "pyodide.asm.wasm",
+        "gzip_bytes": 3528803,
+        "sha256": "cc36e3cab04fdfc9a63ff13eb52eae2b911bf46c025cc7b281f394bd3de1d5e6",
+        "source": "https://registry.npmjs.org/pyodide/-/pyodide-314.0.7.tgz"
+      },
+      {
+        "bytes": 2545637,
+        "file": "python_stdlib.zip",
+        "gzip_bytes": 2503129,
+        "sha256": "fa1957e5777068fc4f7437f96d860ae2fbe9c19732ba06c84e004ec16dd7dd7a",
+        "source": "https://registry.npmjs.org/pyodide/-/pyodide-314.0.7.tgz"
+      },
+      {
+        "bytes": 119077,
+        "file": "pyodide-lock.json",
+        "gzip_bytes": 26335,
+        "sha256": "5dc2fc119108bc148c7457dc86e7675b5c87e1cafd420b9c34c1eaef7b36c010",
+        "source": "https://registry.npmjs.org/pyodide/-/pyodide-314.0.7.tgz"
+      }
+    ],
+    "total_bytes": 13531207,
+    "total_gzip_bytes": 6325376,
+    "version": "314.0.7"
+  },
+  "runtime_identity": {
+    "abi": "2026_0",
+    "api": "314.0.7",
+    "arch": "wasm32",
+    "emscripten": "5.0.3",
+    "expat": "2.9.0",
+    "pointer_bytes": 4,
+    "python": "3.14.8"
+  },
+  "schema": "ridgeq-runtime-assets/2",
+  "scope": "Exact custom derivative assets; API number is not an assertion of unchanged official npm binary identity. Runtime probes do not establish browser, application or production acceptance.",
+  "source_index": "/notices/source-index.json",
+  "version": "314.0.7"
+}

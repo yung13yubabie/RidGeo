@@ -1,0 +1,7 @@
+{
+  "schema_version": "manual-performance-reference-v1",
+  "files": {
+    "ability_reference.py": "a9bf17562f4caf5327751118a18d1cf192d4bdacc68de3ed207af686e2f26ca0",
+    "ability_adapter.py": "e0461c02e7cff482a3c0023f6fc75f230c376d7e5f3c96d4987b9d60a6b8dbd1"
+  }
+}

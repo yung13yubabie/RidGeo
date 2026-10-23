@@ -1,0 +1,116 @@
+{
+  "build_id": "ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2",
+  "build_instructions": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/BUILD.md",
+  "files": [
+    {
+      "bytes": 7961,
+      "kind": "modified-source-or-build-instructions",
+      "sha256": "cfdd1439647abc40935b0353e66b4254611cc5da09d886d05904a067832c2df8",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/Makefile.envs"
+    },
+    {
+      "bytes": 840,
+      "kind": "modified-source-or-build-instructions",
+      "sha256": "8e4705a4782c3c5b7b7f1a6c9aa0a7e70217392f3274122f964194bc925d75b3",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/pyodide_env.sh"
+    },
+    {
+      "bytes": 1322,
+      "kind": "modified-source-or-build-instructions",
+      "sha256": "182c5245ca933f71b874f97e109a1926ab54ec0a245616246bed9217a16b5807",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/emsdk/Makefile"
+    },
+    {
+      "bytes": 10237,
+      "kind": "modified-source-or-build-instructions",
+      "sha256": "4a58271b4044ac48067b93c32d1df03f59db667fca667a077ef0e540f25d47cf",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/Makefile"
+    },
+    {
+      "bytes": 401,
+      "kind": "modified-source-or-build-instructions",
+      "sha256": "355ae763657fb25d4c5a62d3c3459e1cfdde485b8dbd877ae83772bb387a41e0",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0001-Public-pymain_run_python.patch"
+    },
+    {
+      "bytes": 1020,
+      "kind": "modified-source-or-build-instructions",
+      "sha256": "e840dcb6c2f70ce7e2029ff51028fc980f0f98f6807c755a63ba1336c791ce08",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0002-Fix-LONG_BIT-constant-to-be-always-32bit.patch"
+    },
+    {
+      "bytes": 1968,
+      "kind": "modified-source-or-build-instructions",
+      "sha256": "a359c12516cc2f08720096d51f8cfb31d62ce57d096255beae0ca6848ede8cbe",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0003-Add-call-to-JsProxy_GetMethod-to-help-remove-tempora.patch"
+    },
+    {
+      "bytes": 1181,
+      "kind": "modified-source-or-build-instructions",
+      "sha256": "4297a7694d0f58e5c620f322b94bfdeef6ef5926bdf62d7dd9038c80d4f51720",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0004-Make-from-x-import-aware-of-jsproxy-modules.patch"
+    },
+    {
+      "bytes": 10614,
+      "kind": "modified-source-or-build-instructions",
+      "sha256": "5f7a57b74af22f3d2afd89d0cb99b8a44eed37d2b7a7cbbc28fe8f796c99d5cb",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0005-Remove-JSPI-related-parts-in-emscripten_syscalls.c.patch"
+    },
+    {
+      "bytes": 3415,
+      "kind": "modified-source-or-build-instructions",
+      "sha256": "ba13244a5c1003f55c4ddfb4087c977c38b5fdeccf68f819deb0617bf04adc6a",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0006-Teach-json-encoder.py-to-encode-jsnull.patch"
+    },
+    {
+      "bytes": 1085,
+      "kind": "modified-source-or-build-instructions",
+      "sha256": "bcf92273acce4b4b0ea8bed3fab3f375e944a2874a27b0f8e7b79ecb40f5a685",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0007-Warn-if-ZoneInfo-is-imported-without-tzdata.patch"
+    },
+    {
+      "bytes": 1609,
+      "kind": "modified-source-or-build-instructions",
+      "sha256": "7cf220d962a8a1f24d7c96a588d9c1f3d32849c3bc89329cbf76dff517ca737b",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0008-Export-_Py_emscripten_signal_clock-and-_Py_emscripte.patch"
+    },
+    {
+      "bytes": 9964,
+      "kind": "modified-source-or-build-instructions",
+      "sha256": "e4de0006020fa3118da139e566a6eea3d747ef11d39785d1d7cc5e74c8638371",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0009-Fix-Emscripten-trampoline-with-emcc-4.0.19.patch.upstream-satisfied"
+    },
+    {
+      "bytes": 76066,
+      "kind": "modified-source-or-build-instructions",
+      "sha256": "2b9953c0487f9e99c282addd0581cd4402716a2c95f2cac35a6382c95f43440a",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0010-cpython-expat-2.9.0-db34557.patch"
+    },
+    {
+      "bytes": 762,
+      "kind": "modified-source-or-build-instructions",
+      "sha256": "e2f6c802d538bb6f1216094c9d110ae1ac1bdaec2de3ca2c5acc41eea45a9717",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/trampoline-threads.patch"
+    },
+    {
+      "bytes": 12763,
+      "kind": "modified-source-or-build-instructions",
+      "sha256": "aaca652b5dc449e08abf01c1ad087fa2f7633126e658345421d54e2011acbb13",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/BUILD.md"
+    },
+    {
+      "bytes": 37032,
+      "kind": "modified-source-or-build-instructions",
+      "sha256": "e24a5db4fb81513ce36689b75e3335ca28dad4fc8e388a91c886e6d2c5dbbd2c",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/upstream-sources.json"
+    }
+  ],
+  "limits": [
+    "Source identities and build instructions are not an independent authenticity or bit-identical reproducibility attestation.",
+    "The unchanged 0009 patch is preserved as an upstream-satisfied marker and is not applied again.",
+    "No runtime package wheels or private build logs are published by this source index."
+  ],
+  "schema": "ridgeq-runtime-corresponding-source/2",
+  "status": "CORRESPONDING_SOURCE_AND_BUILD_INSTRUCTIONS",
+  "upstream_sources": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/upstream-sources.json"
+}

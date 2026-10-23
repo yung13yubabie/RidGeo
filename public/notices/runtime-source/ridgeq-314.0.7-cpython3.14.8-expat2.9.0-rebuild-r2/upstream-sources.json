@@ -1,0 +1,786 @@
+{
+  "schema": "ridgeq-runtime-public-upstream-sources/1",
+  "runtime_id": "ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2",
+  "official_pyodide_distribution": false,
+  "recovered_r1": false,
+  "identity": {
+    "pyodide_api": "314.0.7",
+    "cpython": "3.14.8",
+    "expat": "2.9.0",
+    "abi": "2026_0",
+    "platform": "emscripten_5_0_3",
+    "arch": "wasm32"
+  },
+  "scope": "Exact source inputs and local modifications for a new r2 derivation. An archive content hash is not a claim of independent authenticity or a bit-for-bit reproducible-build attestation.",
+  "artifacts": [
+    {
+      "name": "cpython",
+      "version": "3.14.8",
+      "git_commit": "8e6e75d9102e39bed2a2b279203a396741180f12",
+      "url": "https://www.python.org/ftp/python/3.14.8/Python-3.14.8.tgz",
+      "filename": "Python-3.14.8.tgz",
+      "archive_root": "Python-3.14.8",
+      "bytes": 31525240,
+      "sha256": "a65b20a728f169f4e66ae143f40b1bd3d33c38d770251663f627c9767b79b210",
+      "role": "upstream-source"
+    },
+    {
+      "name": "pyodide",
+      "version": "314.0.7",
+      "git_commit": "b1e4fcc2488962f6360a97f19b9982d6fdb5d16f",
+      "url": "https://codeload.github.com/pyodide/pyodide/tar.gz/b1e4fcc2488962f6360a97f19b9982d6fdb5d16f",
+      "filename": "pyodide-b1e4fcc2488962f6360a97f19b9982d6fdb5d16f.tar.gz",
+      "archive_root": "pyodide-b1e4fcc2488962f6360a97f19b9982d6fdb5d16f",
+      "bytes": 1465591,
+      "sha256": "a9c7ac66311ed7e0805b9970054ee5be4f69d02204d28bffe4b017310a24bad9",
+      "role": "upstream-source"
+    },
+    {
+      "name": "pyodide-build",
+      "git_commit": "79fb82b2a576a833a12f3889061ca976de2f4167",
+      "url": "https://codeload.github.com/pyodide/pyodide-build/tar.gz/79fb82b2a576a833a12f3889061ca976de2f4167",
+      "filename": "pyodide-build-79fb82b2a576a833a12f3889061ca976de2f4167.tar.gz",
+      "archive_root": "pyodide-build-79fb82b2a576a833a12f3889061ca976de2f4167",
+      "bytes": 632523,
+      "sha256": "c7409e2376725d36fbd8ed1229d1ec861c155bdfab8ddd707de6f89a9f0b9ca9",
+      "role": "upstream-source"
+    },
+    {
+      "name": "libffi",
+      "url": "https://codeload.github.com/libffi/libffi/tar.gz/f08493d249d2067c8b3207ba46693dd858f95db3",
+      "filename": "libffi-f08493d249d2067c8b3207ba46693dd858f95db3.tar.gz",
+      "bytes": 595072,
+      "archive_root": "libffi-f08493d249d2067c8b3207ba46693dd858f95db3",
+      "sha256": "0c4e5647b79e21b900eb872dd98a3e0a66be12b36ad89677f61fd901a2615778",
+      "role": "runtime-native",
+      "identity": {
+        "tag_or_release": null,
+        "commit_or_source_id": "f08493d249d2067c8b3207ba46693dd858f95db3"
+      },
+      "verification": {
+        "sha256_origin": "measured locally from official HTTPS acquisition",
+        "vendor_signature_cryptographically_valid": false,
+        "trust_boundary": "Official HTTPS origin; not an out-of-band identity attestation.",
+        "method": "Pinned official repository archive via HTTPS; self-measured transport SHA-256, no independent vendor archive checksum/signature"
+      }
+    },
+    {
+      "name": "hiwire",
+      "url": "https://codeload.github.com/pyodide/hiwire/tar.gz/6a1e67280a15d929ebeceee54a6358c9c8d5f697",
+      "filename": "hiwire-6a1e67280a15d929ebeceee54a6358c9c8d5f697.tar.gz",
+      "bytes": 27264,
+      "archive_root": "hiwire-6a1e67280a15d929ebeceee54a6358c9c8d5f697",
+      "sha256": "0d64144f149c0de3bd157551421833c6c16fdc0492c312a6325ffc25d185c93c",
+      "role": "runtime-native",
+      "identity": {
+        "tag_or_release": null,
+        "commit_or_source_id": "6a1e67280a15d929ebeceee54a6358c9c8d5f697"
+      },
+      "verification": {
+        "sha256_origin": "measured locally from official HTTPS acquisition",
+        "vendor_signature_cryptographically_valid": false,
+        "trust_boundary": "Official HTTPS origin; not an out-of-band identity attestation.",
+        "method": "Pinned official repository archive via HTTPS; self-measured transport SHA-256, no independent vendor archive checksum/signature"
+      }
+    },
+    {
+      "name": "xz",
+      "url": "https://github.com/xz-mirror/xz/releases/download/v5.2.2/xz-5.2.2.tar.gz",
+      "filename": "xz-5.2.2.tar.gz",
+      "bytes": 1464228,
+      "archive_root": "xz-5.2.2",
+      "sha256": "73df4d5d34f0468bd57d09f2d8af363e95ed6cc3a4a86129d2f2c366259902a2",
+      "role": "runtime-native",
+      "identity": {
+        "tag_or_release": "v5.2.2",
+        "commit_or_source_id": null
+      },
+      "verification": {
+        "sha256_origin": "measured locally from official HTTPS acquisition",
+        "vendor_signature_cryptographically_valid": true,
+        "trust_boundary": "Public key acquired from official Tukaani HTTPS link; GPG owner trust unknown, not independently certified.",
+        "method": "Detached signature cryptographically valid using official Tukaani public key",
+        "signing_fingerprint": "3690C240CE51B4670D30AD1C38EE757D69184620"
+      }
+    },
+    {
+      "name": "cpython-source-deps-zstd",
+      "url": "https://github.com/python/cpython-source-deps/archive/refs/tags/zstd-1.5.7.tar.gz",
+      "filename": "cpython-source-deps-zstd-1.5.7.tar.gz",
+      "bytes": 2440298,
+      "archive_root": "cpython-source-deps-zstd-1.5.7",
+      "sha256": "f24b52470d12f466e9fa4fcc94e6c530625ada51d7b36de7fdc6ed7e6f499c8e",
+      "role": "runtime-native",
+      "identity": {
+        "tag_or_release": "zstd-1.5.7",
+        "commit_or_source_id": null
+      },
+      "verification": {
+        "sha256_origin": "measured locally from official HTTPS acquisition",
+        "vendor_signature_cryptographically_valid": false,
+        "trust_boundary": "Official HTTPS origin; not an out-of-band identity attestation.",
+        "method": "Pinned official repository archive via HTTPS; self-measured transport SHA-256, no independent vendor archive checksum/signature"
+      }
+    },
+    {
+      "name": "sqlite",
+      "url": "https://www.sqlite.org/2022/sqlite-autoconf-3390000.tar.gz",
+      "filename": "sqlite-autoconf-3390000.tar.gz",
+      "bytes": 3064015,
+      "archive_root": "sqlite-autoconf-3390000",
+      "sha256": "e90bcaef6dd5813fcdee4e867f6b65f3c9bfd0aec0f1017f9f3bbce1e4ed09e2",
+      "role": "runtime-native",
+      "identity": {
+        "tag_or_release": "3.39.0",
+        "commit_or_source_id": "14e166f40dbfa6e055543f8301525f2ca2e96a02a57269818b9e69e162e98918"
+      },
+      "verification": {
+        "sha256_origin": "measured locally from official HTTPS acquisition",
+        "vendor_signature_cryptographically_valid": false,
+        "trust_boundary": "Official HTTPS origin; not an out-of-band identity attestation.",
+        "method": "HTTPS acquisition plus sqlite3.h version/source-id and sqlite3.c SHA3-256 matching official 3.39.0 release log"
+      }
+    },
+    {
+      "name": "cmake",
+      "url": "https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-linux-x86_64.tar.gz",
+      "filename": "cmake-3.31.6-linux-x86_64.tar.gz",
+      "bytes": 55010959,
+      "archive_root": "cmake-3.31.6-linux-x86_64",
+      "sha256": "5a1133ff103c71eb5120e2cc3de922733e7d8a26a98ae716397e8676adb367bf",
+      "role": "host-tool-binary",
+      "identity": {
+        "tag_or_release": "v3.31.6",
+        "commit_or_source_id": "859ca5c4d7396a011a462878179bc173e1283731"
+      },
+      "verification": {
+        "sha256_origin": "official cmake-3.31.6-SHA-256.txt and locally measured matching bytes",
+        "vendor_signature_cryptographically_valid": false,
+        "trust_boundary": "Official HTTPS origin; not an out-of-band identity attestation.",
+        "method": "SHA-256 matched official Kitware release checksum manifest"
+      }
+    },
+    {
+      "name": "bzip2",
+      "url": "https://github.com/emscripten-ports/bzip2/archive/1.0.6.zip",
+      "filename": "emscripten-bzip2-1.0.6.zip",
+      "bytes": 806648,
+      "archive_root": "bzip2-1.0.6",
+      "sha256": "9628e7bc598719335ce1d1219c1a4fc241652c0a7b4d993fa82a9b98a6c5dec6",
+      "role": "emscripten-port",
+      "identity": {
+        "tag_or_release": "1.0.6",
+        "commit_or_source_id": null
+      },
+      "verification": {
+        "sha256_origin": "measured locally from official HTTPS acquisition",
+        "vendor_signature_cryptographically_valid": false,
+        "trust_boundary": "Official HTTPS origin; not an out-of-band identity attestation.",
+        "method": "SHA-512 matched hard-coded official Emscripten 5.0.3 port source",
+        "upstream_source_commit": "285c424dfa9e83b03cf8490c65ceadb7c45f28eb"
+      }
+    },
+    {
+      "name": "zlib",
+      "url": "https://github.com/madler/zlib/archive/refs/tags/v1.3.1.tar.gz",
+      "filename": "zlib-1.3.1.tar.gz",
+      "bytes": 1572744,
+      "archive_root": "zlib-1.3.1",
+      "sha256": "17e88863f3600672ab49182f217281b6fc4d3c762bde361935e436a95214d05c",
+      "role": "emscripten-port",
+      "identity": {
+        "tag_or_release": "v1.3.1",
+        "commit_or_source_id": null
+      },
+      "verification": {
+        "sha256_origin": "measured locally from official HTTPS acquisition",
+        "vendor_signature_cryptographically_valid": false,
+        "trust_boundary": "Official HTTPS origin; not an out-of-band identity attestation.",
+        "method": "SHA-512 matched hard-coded official Emscripten 5.0.3 port source",
+        "upstream_source_commit": "285c424dfa9e83b03cf8490c65ceadb7c45f28eb"
+      }
+    },
+    {
+      "name": "m4",
+      "url": "https://ftp.gnu.org/gnu/m4/m4-1.4.19.tar.xz",
+      "filename": "m4-1.4.19.tar.xz",
+      "bytes": 1654908,
+      "archive_root": "m4-1.4.19",
+      "sha256": "63aede5c6d33b6d9b13511cd0be2cac046f2e70fd0a07aa9573a04a82783af96",
+      "role": "host-tool-source",
+      "identity": {
+        "tag_or_release": "1.4.19",
+        "commit_or_source_id": null
+      },
+      "verification": {
+        "sha256_origin": "measured locally from official HTTPS acquisition",
+        "vendor_signature_cryptographically_valid": true,
+        "trust_boundary": "Public keyring acquired from official GNU HTTPS origin; GPG owner trust unknown, not independently certified.",
+        "method": "Detached signature cryptographically valid using official GNU public keyring",
+        "signing_fingerprint": "71C2CC22B1C4602927D2F3AAA7A16B4A2527436A"
+      }
+    },
+    {
+      "name": "autoconf",
+      "url": "https://ftp.gnu.org/gnu/autoconf/autoconf-2.72.tar.xz",
+      "filename": "autoconf-2.72.tar.xz",
+      "bytes": 1389680,
+      "archive_root": "autoconf-2.72",
+      "sha256": "ba885c1319578d6c94d46e9b0dceb4014caafe2490e437a0dbca3f270a223f5a",
+      "role": "host-tool-source",
+      "identity": {
+        "tag_or_release": "2.72",
+        "commit_or_source_id": null
+      },
+      "verification": {
+        "sha256_origin": "measured locally from official HTTPS acquisition",
+        "vendor_signature_cryptographically_valid": true,
+        "trust_boundary": "Public keyring acquired from official GNU HTTPS origin; GPG owner trust unknown, not independently certified.",
+        "method": "Detached signature cryptographically valid using official GNU public keyring",
+        "signing_fingerprint": "82F854F3CE73174B8B63174091FCC32B6769AA64"
+      }
+    },
+    {
+      "name": "automake",
+      "url": "https://ftp.gnu.org/gnu/automake/automake-1.17.tar.xz",
+      "filename": "automake-1.17.tar.xz",
+      "bytes": 1652632,
+      "archive_root": "automake-1.17",
+      "sha256": "8920c1fc411e13b90bf704ef9db6f29d540e76d232cb3b2c9f4dc4cc599bd990",
+      "role": "host-tool-source",
+      "identity": {
+        "tag_or_release": "1.17",
+        "commit_or_source_id": null
+      },
+      "verification": {
+        "sha256_origin": "measured locally from official HTTPS acquisition",
+        "vendor_signature_cryptographically_valid": true,
+        "trust_boundary": "Public keyring acquired from official GNU HTTPS origin; GPG owner trust unknown, not independently certified.",
+        "method": "Detached signature cryptographically valid using official GNU public keyring",
+        "signing_fingerprint": "155D3FC500C834486D1EEA677FD9FCCB000BEEEE"
+      }
+    },
+    {
+      "name": "libtool",
+      "url": "https://ftp.gnu.org/gnu/libtool/libtool-2.5.4.tar.xz",
+      "filename": "libtool-2.5.4.tar.xz",
+      "bytes": 1056924,
+      "archive_root": "libtool-2.5.4",
+      "sha256": "f81f5860666b0bc7d84baddefa60d1cb9fa6fceb2398cc3baca6afaa60266675",
+      "role": "host-tool-source",
+      "identity": {
+        "tag_or_release": "2.5.4",
+        "commit_or_source_id": null
+      },
+      "verification": {
+        "sha256_origin": "measured locally from official HTTPS acquisition",
+        "vendor_signature_cryptographically_valid": true,
+        "trust_boundary": "Public keyring acquired from official GNU HTTPS origin; GPG owner trust not independently certified. Historical libtool signer key is now expired.",
+        "method": "Detached signature cryptographically valid using official GNU public keyring",
+        "signing_fingerprint": "FA26CA784BE188927F22B99F6570EA01146F7354"
+      }
+    },
+    {
+      "name": "emsdk-source",
+      "url": "https://codeload.github.com/emscripten-core/emsdk/tar.gz/a620cf1d71c62dfdfbb0c01fe0a371e2af2dda6c",
+      "filename": "emsdk-a620cf1d71c62dfdfbb0c01fe0a371e2af2dda6c.tar.gz",
+      "bytes": 171405,
+      "sha256": "9913121bce5d295d771a8354a6bbf834e60b0b534d39a63fadd94a2abb03c475",
+      "verification": "Pinned official source commit via HTTPS; measured archive digest is a content lock, not a vendor signature.",
+      "role": "toolchain"
+    },
+    {
+      "name": "emscripten-sdk-linux-x86_64",
+      "url": "https://storage.googleapis.com/webassembly/emscripten-releases-builds/linux/065bfade0ee2c02138b83cb10049d8be95e146b6/wasm-binaries.tar.xz",
+      "filename": "emscripten-5.0.3-wasm-binaries.tar.xz",
+      "bytes": 354893508,
+      "sha256": "7ae996db24911edc535cccf069fb8a3ed63e8dac7abe58e758431abfe3255165",
+      "verification": "Official emsdk commit release map selects build ID; manifest has no independent SHA256 or signature, measured digest is first-acquisition provenance.",
+      "role": "toolchain"
+    },
+    {
+      "name": "emsdk-node-linux-x86_64",
+      "url": "https://storage.googleapis.com/webassembly/emscripten-releases-builds/deps/node-v22.16.0-linux-x64.tar.xz",
+      "filename": "node-v22.16.0-linux-x64.tar.xz",
+      "bytes": 30425588,
+      "sha256": "f4cb75bb036f0d0eddf6b79d9596df1aaab9ddccd6a20bf489be5abe9467e84e",
+      "verification": "Official emsdk manifest selection; compare exact archive digest with official nodejs.org release SHA256 file.",
+      "role": "toolchain"
+    }
+  ],
+  "expat_backport": {
+    "git_commit": "db34557ea0c00ab309db9c64f0f33aea6d429868",
+    "url": "https://github.com/python/cpython/commit/db34557ea0c00ab309db9c64f0f33aea6d429868.patch",
+    "sha256": "2b9953c0487f9e99c282addd0581cd4402716a2c95f2cac35a6382c95f43440a",
+    "bytes": 76066
+  },
+  "emsdk": {
+    "git_commit": "a620cf1d71c62dfdfbb0c01fe0a371e2af2dda6c",
+    "version": "5.0.3",
+    "release_build_id": "065bfade0ee2c02138b83cb10049d8be95e146b6",
+    "emscripten_source_commit": "285c424dfa9e83b03cf8490c65ceadb7c45f28eb"
+  },
+  "emscripten_patches": [
+    {
+      "file": "0001-Add-useful-error-when-symbol-resolution-fails.patch",
+      "sha256": "49fe15971dffd37da96ecaa55de036890c92d06a752d9bc481299ef844f22ab7"
+    },
+    {
+      "file": "0002-Fix-promise-order.patch",
+      "sha256": "7e6166923dc703fb571b449334ebcfbebfc5283c322d740297bf213a3e508089"
+    },
+    {
+      "file": "0003-dylink-Normalize-library-paths-to-prevent-duplicate-loading.patch",
+      "sha256": "6b04b74f6737f0e604a524e4217c7d5859a852e57308fce3793c7e07f64b33a0"
+    },
+    {
+      "file": "0004-Append-pic-directory-when-SIDE_MODULE.patch",
+      "sha256": "4e96b6bff08733dab7cad4f52e368df3669e518e0cf3aa8ba297e8097fb22147"
+    },
+    {
+      "file": "0005-Don-t-bundle-the-LLVM-profile-runtime-into-libcompil.patch",
+      "sha256": "cf23a6cb9a8b0c83230564f171afc559110dae4c4d6afa572c700264741244d8"
+    }
+  ],
+  "javascript": {
+    "package_lock": "src/js/package-lock.json",
+    "package_lock_sha256": "3f413b340094bfb220c2bf05558271a96db0a78ab32530e266981d43f0edfe3a",
+    "install": "npm ci --ignore-scripts --no-audit --no-fund",
+    "distribution": "Use the lock and sources from the exact Pyodide archive; do not regenerate the lock."
+  },
+  "python_build_wheels": [
+    {
+      "name": "annotated-doc",
+      "version": "0.0.5",
+      "filename": "annotated_doc-0.0.5-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/3e/30/e900b21425a860e195f32e37657aa1f7c7f2b1bfb26f03ca209b90933c06/annotated_doc-0.0.5-py3-none-any.whl",
+      "bytes": 5302,
+      "sha256": "117bac03a25ede5df5440e855b32d556049ca169ead221505badf432fed4b101"
+    },
+    {
+      "name": "attrs",
+      "version": "26.1.0",
+      "filename": "attrs-26.1.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/64/b4/17d4b0b2a2dc85a6df63d1157e028ed19f90d4cd97c36717afef2bc2f395/attrs-26.1.0-py3-none-any.whl",
+      "bytes": 67548,
+      "sha256": "c647aa4a12dfbad9333ca4e71fe62ddc36f4e63b2d260a37a8b83d2f043ac309"
+    },
+    {
+      "name": "auditwheel-emscripten",
+      "version": "0.2.5",
+      "filename": "auditwheel_emscripten-0.2.5-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/93/2b/b878a3087517894630f77acaca28f3e9e8356aac3ae1c0380d4354436e74/auditwheel_emscripten-0.2.5-py3-none-any.whl",
+      "bytes": 33854,
+      "sha256": "c76a2c26f6c731c00d97a59d384d55033c7b2a5f4612c7c454f259ae8c2543aa"
+    },
+    {
+      "name": "build",
+      "version": "1.5.0",
+      "filename": "build-1.5.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/0d/fe/6bea5c9162869c5beba5d9c8abbed835ec85bf1ec1fba05a3822325c45f3/build-1.5.0-py3-none-any.whl",
+      "bytes": 26018,
+      "sha256": "13f3eecb844759ab66efec90ca17639bbf14dc06cb2fdf37a9010322d9c50a6f"
+    },
+    {
+      "name": "cattrs",
+      "version": "26.2.1",
+      "filename": "cattrs-26.2.1-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/e8/cf/22794a399d99480486120e26e879ef008e21f5e85274c2ed591d568bb326/cattrs-26.2.1-py3-none-any.whl",
+      "bytes": 74843,
+      "sha256": "a12aaa3453dc8f633a815293179f08b7421ed18d2575c459c3c736f840beac24"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.10.19",
+      "filename": "certifi-2026.10.19-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/c4/51/29046e48f693c54e5b7412216d447a1d8362c9653148d98c02cdf65fa733/certifi-2026.10.19-py3-none-any.whl",
+      "bytes": 136464,
+      "sha256": "42d35340cc5b9ba78e818ddbff0c5b1c2b779de448a340fd1b989f5fa8670e1b"
+    },
+    {
+      "name": "charset-normalizer",
+      "version": "3.5.2",
+      "filename": "charset_normalizer-3.5.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "url": "https://files.pythonhosted.org/packages/18/24/bad3ac4271589df29cf5ce2f5ae490518a5739358052bd0d61209e6fea54/charset_normalizer-3.5.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "bytes": 255056,
+      "sha256": "34276fd796040bf0993ab33a369aa572e6979c7aab225a88893667ad8eac8f7a"
+    },
+    {
+      "name": "click",
+      "version": "8.1.8",
+      "filename": "click-8.1.8-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/7e/d4/7ebdbd03970677812aac39c869717059dbb71a4cfc033ca6e5221787892c/click-8.1.8-py3-none-any.whl",
+      "bytes": 98188,
+      "sha256": "63c132bbbed01578a06712a2d1f497bb62d9c1c0d329b7903a866228027263b2"
+    },
+    {
+      "name": "distlib",
+      "version": "0.4.4",
+      "filename": "distlib-0.4.4-py2.py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/c1/2b/238f02a4927fa2e27aa995371d240a468b52e42eae44a678434aff736b38/distlib-0.4.4-py2.py3-none-any.whl",
+      "bytes": 472099,
+      "sha256": "cf09d55b1e85a89576b036aeb71550bfd68320f3f21761ca329eadadad918638"
+    },
+    {
+      "name": "editables",
+      "version": "0.6",
+      "filename": "editables-0.6-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/cc/0e/d095533037fc9468f947b19f2da53f869804632b508808de41e86e801797/editables-0.6-py3-none-any.whl",
+      "bytes": 5438,
+      "sha256": "d70e4698078a1d033e7786d9c64e5be070d058a67c21417024d38a58ac20aa43"
+    },
+    {
+      "name": "filelock",
+      "version": "4.2.4",
+      "filename": "filelock-4.2.4-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/e0/1b/5e74289a1878e666bb4b65fe5805a04cafcac2aa5f519ef1ead67ef91c56/filelock-4.2.4-py3-none-any.whl",
+      "bytes": 162475,
+      "sha256": "301241438c57936ef93f4243a94f2559022268bfcf9b375a9a72eb0f8db8358e"
+    },
+    {
+      "name": "hatch-vcs",
+      "version": "0.5.0",
+      "filename": "hatch_vcs-0.5.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/5f/48/1f85cee4b7b4f40b9b814b1febbc661bda6ced9649e410a0b74f6e415dd0/hatch_vcs-0.5.0-py3-none-any.whl",
+      "bytes": 8507,
+      "sha256": "b49677dbdc597460cc22d01b27ab3696f5e16a21ecf2700fb01bc28e1f2a04a7"
+    },
+    {
+      "name": "hatchling",
+      "version": "1.32.4",
+      "filename": "hatchling-1.32.4-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/5f/80/91f51f439c05d4ec4623c22928ce16a938d6d793bf709477830823497859/hatchling-1.32.4-py3-none-any.whl",
+      "bytes": 78748,
+      "sha256": "08ecf7548fb48205e7f213d70c71e67b8271b7242093dc3f1da578b42c734a2c"
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "filename": "idna-3.20-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/58/a2/bb081bab032533a855d44de1d56f8e8426114ff1ba5d1f07a438a0a654f8/idna-3.20-py3-none-any.whl",
+      "bytes": 69583,
+      "sha256": "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c"
+    },
+    {
+      "name": "leb128",
+      "version": "1.0.9",
+      "filename": "leb128-1.0.9-py2.py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/0c/f6/62cd379fe8527c6d685013ebed11c85fd4fced125bde9b3c80ebd5759850/leb128-1.0.9-py2.py3-none-any.whl",
+      "bytes": 3700,
+      "sha256": "fef16ef20aca33dfdd2f4841d8004ec4acb7ed8545b63a7bc1183292c9a3e594"
+    },
+    {
+      "name": "markdown-it-py",
+      "version": "4.2.0",
+      "filename": "markdown_it_py-4.2.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/b3/81/4da04ced5a082363ecfa159c010d200ecbd959ae410c10c0264a38cac0f5/markdown_it_py-4.2.0-py3-none-any.whl",
+      "bytes": 91687,
+      "sha256": "9f7ebbcd14fe59494226453aed97c1070d83f8d24b6fc3a3bcf9a38092641c4a"
+    },
+    {
+      "name": "mdurl",
+      "version": "0.1.2",
+      "filename": "mdurl-0.1.2-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl",
+      "bytes": 9979,
+      "sha256": "84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "filename": "packaging-26.3-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl",
+      "bytes": 129956,
+      "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c"
+    },
+    {
+      "name": "pathspec",
+      "version": "1.1.1",
+      "filename": "pathspec-1.1.1-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/f1/d9/7fb5aa316bc299258e68c73ba3bddbc499654a07f151cba08f6153988714/pathspec-1.1.1-py3-none-any.whl",
+      "bytes": 57328,
+      "sha256": "a00ce642f577bf7f473932318056212bc4f8bfdf53128c78bbd5af0b9b20b189"
+    },
+    {
+      "name": "pip",
+      "version": "26.2.1",
+      "filename": "pip-26.2.1-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/f3/6e/1736e5b4ae2b778ef2f81c47d797de9f891d4d8acb047a24ca37a60294dd/pip-26.2.1-py3-none-any.whl",
+      "bytes": 1816632,
+      "sha256": "71138adf1f4ca900cdb7d289c21b7494329f2332b6d85f0e1c42108c0384ed3e"
+    },
+    {
+      "name": "platformdirs",
+      "version": "4.13.5",
+      "filename": "platformdirs-4.13.5-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/6c/8a/1d8cb3842909dc193a73835adedf412e32e18f8ffd59f43983949622fe6f/platformdirs-4.13.5-py3-none-any.whl",
+      "bytes": 32779,
+      "sha256": "53d3ec4280b815c1e0b02edad7f9ee8fda1ba9c0865dd9c2e6e63849ce82fc1e"
+    },
+    {
+      "name": "pluggy",
+      "version": "1.7.0",
+      "filename": "pluggy-1.7.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/40/9e/2b38731e0fc536806f16490e1a12d7f0dc2a1235aa8cc07bcc75416a7daa/pluggy-1.7.0-py3-none-any.whl",
+      "bytes": 27082,
+      "sha256": "7dd7b0d8832ba3cb632c306926ded123429211b83641b35dc5c41ad2d34f9bec"
+    },
+    {
+      "name": "pygments",
+      "version": "2.21.0",
+      "filename": "pygments-2.21.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/71/46/17f022dd3e953bf20a04a028a21ec746d942f8d2af30fa0f124fa0e6a684/pygments-2.21.0-py3-none-any.whl",
+      "bytes": 1250147,
+      "sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9"
+    },
+    {
+      "name": "pyodide-cli",
+      "version": "0.4.2",
+      "filename": "pyodide_cli-0.4.2-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/ec/4d/656a3407dff53d4632d5e06229816c0c3e91e668927aebaa35fd3b27e08f/pyodide_cli-0.4.2-py3-none-any.whl",
+      "bytes": 12615,
+      "sha256": "ead3c789a29ecd733a502bc851638c8cdbc24bc39051cbe5055d61bd6b1c2335"
+    },
+    {
+      "name": "pyodide-lock",
+      "version": "0.2.1",
+      "filename": "pyodide_lock-0.2.1-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/d3/4a/bd0bfb7aabdada073774b4c7203069de4ba5cc515a92e489d3014c6a14d2/pyodide_lock-0.2.1-py3-none-any.whl",
+      "bytes": 16062,
+      "sha256": "5181ec109ab230d0539884b29b45ddb736e5df79d9378e68a2ccd41574346879"
+    },
+    {
+      "name": "pyproject-hooks",
+      "version": "1.3.3",
+      "filename": "pyproject_hooks-1.3.3-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/85/11/044d1ae1b4ec0d7af88ee5bc91e081be1022533032b906a7bdabdbb60977/pyproject_hooks-1.3.3-py3-none-any.whl",
+      "bytes": 10724,
+      "sha256": "5fc53fdac9f7bd63fbcdc868fb5f90b4784d78a53a3d3388cd738b807441a20b"
+    },
+    {
+      "name": "python-discovery",
+      "version": "1.6.4",
+      "filename": "python_discovery-1.6.4-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/60/91/1aa70d3dfcab0dbcf88a2cbc3bce7f7c69562287a90216e617eaa4937e25/python_discovery-1.6.4-py3-none-any.whl",
+      "bytes": 39385,
+      "sha256": "530179cc51a1816d512b15635b3dc931295ae12efb183783ad31190a5d425d2b"
+    },
+    {
+      "name": "requests",
+      "version": "2.34.2",
+      "filename": "requests-2.34.2-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/a0/f4/c67b0b3f1b9245e8d266f0f112c500d50e5b4e83cb6f3b71b6528104182a/requests-2.34.2-py3-none-any.whl",
+      "bytes": 73075,
+      "sha256": "2a0d60c172f83ac6ab31e4554906c0f3b3588d37b5cb939b1c061f4907e278e0"
+    },
+    {
+      "name": "rich",
+      "version": "15.0.0",
+      "filename": "rich-15.0.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/82/3b/64d4899d73f91ba49a8c18a8ff3f0ea8f1c1d75481760df8c68ef5235bf5/rich-15.0.0-py3-none-any.whl",
+      "bytes": 310654,
+      "sha256": "33bd4ef74232fb73fe9279a257718407f169c09b78a87ad3d296f548e27de0bb"
+    },
+    {
+      "name": "ruamel-yaml",
+      "version": "0.19.1",
+      "filename": "ruamel_yaml-0.19.1-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/b8/0c/51f6841f1d84f404f92463fc2b1ba0da357ca1e3db6b7fbda26956c3b82a/ruamel_yaml-0.19.1-py3-none-any.whl",
+      "bytes": 118102,
+      "sha256": "27592957fedf6e0b62f281e96effd28043345e0e66001f97683aa9a40c667c93"
+    },
+    {
+      "name": "setuptools",
+      "version": "84.2.1",
+      "filename": "setuptools-84.2.1-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/ef/55/6dc6d6bb953bdfc52519a0059592c52b6e3b8ad51cf8256dffceb55b0610/setuptools-84.2.1-py3-none-any.whl",
+      "bytes": 876263,
+      "sha256": "ca140b45d5325a9478f880e351484f62fef15f336462e449ca0c03c873d589c2"
+    },
+    {
+      "name": "setuptools-scm",
+      "version": "10.3.4",
+      "filename": "setuptools_scm-10.3.4-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/da/f5/54538a1f17ea753c42b0928dc2e62986d463f8c393340b9a1e602f2d4dd9/setuptools_scm-10.3.4-py3-none-any.whl",
+      "bytes": 33366,
+      "sha256": "82f34c3e3084fc2b57d397200637cc13f2338004052d2fee47baa5f0e902464e"
+    },
+    {
+      "name": "shellingham",
+      "version": "1.5.4",
+      "filename": "shellingham-1.5.4-py2.py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/e0/f9/0595336914c5619e5f28a1fb793285925a8cd4b432c9da0a987836c7f822/shellingham-1.5.4-py2.py3-none-any.whl",
+      "bytes": 9755,
+      "sha256": "7ecfff8f2fd72616f7481040475a65b2bf8af90a56c89140852d1120324e8686"
+    },
+    {
+      "name": "tomlkit",
+      "version": "0.15.2",
+      "filename": "tomlkit-0.15.2-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/da/46/7d84138a60a8bd796825b2d38ebe92d0d16501ca57d501b7c5d677401bbc/tomlkit-0.15.2-py3-none-any.whl",
+      "bytes": 52225,
+      "sha256": "05562412163a3037b94497385fb7f9204c637bc605af7a48199e41cf2272f437"
+    },
+    {
+      "name": "trove-classifiers",
+      "version": "2026.9.21.13",
+      "filename": "trove_classifiers-2026.9.21.13-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/30/81/0da8afb52a71d0a4f2bd3152357b1a441e393b286374802b9d3addab4ab5/trove_classifiers-2026.9.21.13-py3-none-any.whl",
+      "bytes": 14232,
+      "sha256": "8b1ff4f9c191b1040b71c37f1e445ab99732911e3cd91de52838453a854d7a17"
+    },
+    {
+      "name": "typer",
+      "version": "0.23.1",
+      "filename": "typer-0.23.1-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/d5/91/9b286ab899c008c2cb05e8be99814807e7fbbd33f0c0c960470826e5ac82/typer-0.23.1-py3-none-any.whl",
+      "bytes": 56813,
+      "sha256": "3291ad0d3c701cbf522012faccfbb29352ff16ad262db2139e6b01f15781f14e"
+    },
+    {
+      "name": "typing-extensions",
+      "version": "4.16.0",
+      "filename": "typing_extensions-4.16.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl",
+      "bytes": 45571,
+      "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+    },
+    {
+      "name": "urllib3",
+      "version": "2.8.0",
+      "filename": "urllib3-2.8.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/92/9d/c4e665119135114480843e7ab388fa94d8480650450e6f8e26b70d323a4c/urllib3-2.8.0-py3-none-any.whl",
+      "bytes": 135717,
+      "sha256": "0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3"
+    },
+    {
+      "name": "vcs-versioning",
+      "version": "2.6.0",
+      "filename": "vcs_versioning-2.6.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/73/1d/ad4064bf12f4503bf61e65d74c93c523672776d25ee0a06aaf42ae09ef3f/vcs_versioning-2.6.0-py3-none-any.whl",
+      "bytes": 123154,
+      "sha256": "f8bebd1302ebc12e67ceb30fc7dd698ec969414b6fa43b30c3f14ac9b1e72c41"
+    },
+    {
+      "name": "virtualenv",
+      "version": "21.14.12",
+      "filename": "virtualenv-21.14.12-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/a0/92/f3b8af2d36ddec4dc61dc25655dc010e419ff456cb4ca0e720c8112f1047/virtualenv-21.14.12-py3-none-any.whl",
+      "bytes": 5556824,
+      "sha256": "7820aeaef23f1f59a96458edfc7f9d3deac937155718de15f1c9a64471e15551"
+    },
+    {
+      "name": "wheel",
+      "version": "0.48.0",
+      "filename": "wheel-0.48.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/2e/29/69cfbb602cd91690c55d38ba9fe53e6a7e76a6fa647bf38f19c138d25449/wheel-0.48.0-py3-none-any.whl",
+      "bytes": 33320,
+      "sha256": "3217dcc807155e45db462d7ef2431f5ddda0d7273b700d05a67b271ceb1287ab"
+    }
+  ],
+  "pyodide_build_local_metadata": "0.0.0+ridgeq.r2.79fb82b2",
+  "cpython_patch_order": [
+    "0001-Public-pymain_run_python.patch",
+    "0002-Fix-LONG_BIT-constant-to-be-always-32bit.patch",
+    "0003-Add-call-to-JsProxy_GetMethod-to-help-remove-tempora.patch",
+    "0004-Make-from-x-import-aware-of-jsproxy-modules.patch",
+    "0005-Remove-JSPI-related-parts-in-emscripten_syscalls.c.patch",
+    "0006-Teach-json-encoder.py-to-encode-jsnull.patch",
+    "0007-Warn-if-ZoneInfo-is-imported-without-tzdata.patch",
+    "0008-Export-_Py_emscripten_signal_clock-and-_Py_emscripte.patch",
+    "0010-cpython-expat-2.9.0-db34557.patch",
+    "trampoline-threads.patch"
+  ],
+  "upstream_satisfied_marker": {
+    "file": "pyodide/cpython/patches/0009-Fix-Emscripten-trampoline-with-emcc-4.0.19.patch.upstream-satisfied",
+    "sha256": "e4de0006020fa3118da139e566a6eea3d747ef11d39785d1d7cc5e74c8638371",
+    "apply": false,
+    "reason": "CPython 3.14.8 already contains the C/header changes and required configure export string. Full reverse application is not claimed because neighboring configure context changed."
+  },
+  "source_files": [
+    {
+      "path": "pyodide/Makefile.envs",
+      "bytes": 7961,
+      "sha256": "cfdd1439647abc40935b0353e66b4254611cc5da09d886d05904a067832c2df8"
+    },
+    {
+      "path": "pyodide/pyodide_env.sh",
+      "bytes": 840,
+      "sha256": "8e4705a4782c3c5b7b7f1a6c9aa0a7e70217392f3274122f964194bc925d75b3"
+    },
+    {
+      "path": "pyodide/emsdk/Makefile",
+      "bytes": 1322,
+      "sha256": "182c5245ca933f71b874f97e109a1926ab54ec0a245616246bed9217a16b5807"
+    },
+    {
+      "path": "pyodide/cpython/Makefile",
+      "bytes": 10237,
+      "sha256": "4a58271b4044ac48067b93c32d1df03f59db667fca667a077ef0e540f25d47cf"
+    },
+    {
+      "path": "pyodide/cpython/patches/0001-Public-pymain_run_python.patch",
+      "bytes": 401,
+      "sha256": "355ae763657fb25d4c5a62d3c3459e1cfdde485b8dbd877ae83772bb387a41e0"
+    },
+    {
+      "path": "pyodide/cpython/patches/0002-Fix-LONG_BIT-constant-to-be-always-32bit.patch",
+      "bytes": 1020,
+      "sha256": "e840dcb6c2f70ce7e2029ff51028fc980f0f98f6807c755a63ba1336c791ce08"
+    },
+    {
+      "path": "pyodide/cpython/patches/0003-Add-call-to-JsProxy_GetMethod-to-help-remove-tempora.patch",
+      "bytes": 1968,
+      "sha256": "a359c12516cc2f08720096d51f8cfb31d62ce57d096255beae0ca6848ede8cbe"
+    },
+    {
+      "path": "pyodide/cpython/patches/0004-Make-from-x-import-aware-of-jsproxy-modules.patch",
+      "bytes": 1181,
+      "sha256": "4297a7694d0f58e5c620f322b94bfdeef6ef5926bdf62d7dd9038c80d4f51720"
+    },
+    {
+      "path": "pyodide/cpython/patches/0005-Remove-JSPI-related-parts-in-emscripten_syscalls.c.patch",
+      "bytes": 10614,
+      "sha256": "5f7a57b74af22f3d2afd89d0cb99b8a44eed37d2b7a7cbbc28fe8f796c99d5cb"
+    },
+    {
+      "path": "pyodide/cpython/patches/0006-Teach-json-encoder.py-to-encode-jsnull.patch",
+      "bytes": 3415,
+      "sha256": "ba13244a5c1003f55c4ddfb4087c977c38b5fdeccf68f819deb0617bf04adc6a"
+    },
+    {
+      "path": "pyodide/cpython/patches/0007-Warn-if-ZoneInfo-is-imported-without-tzdata.patch",
+      "bytes": 1085,
+      "sha256": "bcf92273acce4b4b0ea8bed3fab3f375e944a2874a27b0f8e7b79ecb40f5a685"
+    },
+    {
+      "path": "pyodide/cpython/patches/0008-Export-_Py_emscripten_signal_clock-and-_Py_emscripte.patch",
+      "bytes": 1609,
+      "sha256": "7cf220d962a8a1f24d7c96a588d9c1f3d32849c3bc89329cbf76dff517ca737b"
+    },
+    {
+      "path": "pyodide/cpython/patches/0009-Fix-Emscripten-trampoline-with-emcc-4.0.19.patch.upstream-satisfied",
+      "bytes": 9964,
+      "sha256": "e4de0006020fa3118da139e566a6eea3d747ef11d39785d1d7cc5e74c8638371"
+    },
+    {
+      "path": "pyodide/cpython/patches/0010-cpython-expat-2.9.0-db34557.patch",
+      "bytes": 76066,
+      "sha256": "2b9953c0487f9e99c282addd0581cd4402716a2c95f2cac35a6382c95f43440a"
+    },
+    {
+      "path": "trampoline-threads.patch",
+      "bytes": 762,
+      "sha256": "e2f6c802d538bb6f1216094c9d110ae1ac1bdaec2de3ca2c5acc41eea45a9717"
+    }
+  ],
+  "build_instructions": "BUILD.md",
+  "notices": {
+    "directory": "notices/",
+    "scope": "33 retained non-npm source/runtime notice files; inclusion is conservative and does not assert every listed library is linked. Development-only npm notices remain in the build checkpoint."
+  },
+  "reproduction_limits": [
+    "Rebuild in a clean, separately provisioned Linux x86_64 environment. Source and toolchain content pins are supplied; this text does not assert an independently reproducible base image or bit-identical binary output.",
+    "The source-preparation and build instructions must be independently replayed and output-tested before labeling another runtime accepted."
+  ]
+}

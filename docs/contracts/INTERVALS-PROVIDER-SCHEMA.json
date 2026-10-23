@@ -1,0 +1,1286 @@
+{
+  "hostContext": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "schema_version",
+      "context_id",
+      "account_namespace",
+      "grant_epoch",
+      "source_policy_revision"
+    ],
+    "properties": {
+      "schema_version": {
+        "enum": [
+          "intervals-host-context/0.1"
+        ]
+      },
+      "context_id": {
+        "type": "string",
+        "maxLength": 96,
+        "pattern": "^[A-Za-z0-9_-]{16,96}$"
+      },
+      "account_namespace": {
+        "type": "string",
+        "maxLength": 128,
+        "pattern": "^[A-Za-z0-9_-]{1,128}$"
+      },
+      "grant_epoch": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      },
+      "source_policy_revision": {
+        "type": "string",
+        "maxLength": 128,
+        "pattern": "^[A-Za-z0-9_-]{1,128}$"
+      }
+    }
+  },
+  "contextResponse": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "schema_version",
+      "host_context"
+    ],
+    "properties": {
+      "schema_version": {
+        "enum": [
+          "intervals-provider-context/0.1"
+        ]
+      },
+      "host_context": {
+        "$ref": "#/$defs/hostContext"
+      }
+    }
+  },
+  "listResponse": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "schema_version",
+      "host_context",
+      "list"
+    ],
+    "properties": {
+      "schema_version": {
+        "enum": [
+          "intervals-provider-list/0.1"
+        ]
+      },
+      "host_context": {
+        "$ref": "#/$defs/hostContext"
+      },
+      "list": {
+        "$ref": "#/$defs/acceptedSelectionListResult"
+      }
+    }
+  },
+  "importResponse": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "schema_version",
+      "host_context",
+      "import_result"
+    ],
+    "properties": {
+      "schema_version": {
+        "enum": [
+          "intervals-provider-import/0.1"
+        ]
+      },
+      "host_context": {
+        "$ref": "#/$defs/hostContext"
+      },
+      "import_result": {
+        "$ref": "#/$defs/acceptedImportResult"
+      }
+    }
+  },
+  "safeError": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "error"
+    ],
+    "properties": {
+      "error": {
+        "type": "string",
+        "maxLength": 96,
+        "pattern": "^[a-z0-9_]{1,96}$"
+      }
+    }
+  },
+  "selectionEntry": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "choiceId"
+    ],
+    "properties": {
+      "choiceId": {
+        "type": "string",
+        "maxLength": 96,
+        "pattern": "^[A-Za-z0-9_-]{16,96}$"
+      }
+    }
+  },
+  "importRequest": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "selections"
+    ],
+    "properties": {
+      "selections": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/selectionEntry"
+        },
+        "minItems": 1,
+        "maxItems": 8,
+        "denseOwnData": true
+      }
+    }
+  },
+  "userQualification": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "completed_on",
+      "actual",
+      "comparable",
+      "whole_route_confirmed",
+      "high_effort_confirmed",
+      "reference_kind",
+      "classification_overridden",
+      "distinct_activity_confirmed"
+    ],
+    "properties": {
+      "completed_on": {
+        "type": "string",
+        "maxLength": 10,
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+      },
+      "actual": {
+        "type": "boolean"
+      },
+      "comparable": {
+        "type": "boolean"
+      },
+      "whole_route_confirmed": {
+        "type": "boolean"
+      },
+      "high_effort_confirmed": {
+        "type": "boolean"
+      },
+      "reference_kind": {
+        "enum": [
+          "unclassified",
+          "race",
+          "benchmark",
+          "easy"
+        ]
+      },
+      "classification_overridden": {
+        "type": "boolean"
+      },
+      "distinct_activity_confirmed": {
+        "type": "boolean"
+      }
+    }
+  },
+  "workerRecord": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "selection_id",
+      "activity_index",
+      "user_qualification"
+    ],
+    "properties": {
+      "selection_id": {
+        "type": "string",
+        "maxLength": 96,
+        "pattern": "^[A-Za-z0-9_-]{1,96}$"
+      },
+      "activity_index": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 7
+      },
+      "user_qualification": {
+        "$ref": "#/$defs/userQualification"
+      }
+    }
+  },
+  "dates": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "forecast_as_of",
+      "target_start"
+    ],
+    "properties": {
+      "forecast_as_of": {
+        "type": "string",
+        "maxLength": 10,
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+      },
+      "target_start": {
+        "type": "string",
+        "maxLength": 10,
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+      }
+    }
+  },
+  "limits": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "max_wall_s"
+    ],
+    "properties": {
+      "max_wall_s": {
+        "type": "number",
+        "finite": true,
+        "exclusiveMinimum": 0,
+        "maximum": 120
+      }
+    }
+  },
+  "workerRequest": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "schema_version",
+      "source_kind",
+      "import_response_json",
+      "import_response_sha256",
+      "target_gpx_b64",
+      "target_sha256",
+      "records",
+      "dates",
+      "assumptions",
+      "limits"
+    ],
+    "properties": {
+      "schema_version": {
+        "enum": [
+          "intervals-provider-request/0.1"
+        ]
+      },
+      "source_kind": {
+        "enum": [
+          "intervals_provider"
+        ]
+      },
+      "import_response_json": {
+        "type": "string",
+        "maxLength": 16777216
+      },
+      "import_response_sha256": {
+        "type": "string",
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "target_gpx_b64": {
+        "type": "string",
+        "maxLength": 6990508
+      },
+      "target_sha256": {
+        "type": "string",
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "records": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/workerRecord"
+        },
+        "minItems": 1,
+        "maxItems": 8,
+        "denseOwnData": true
+      },
+      "dates": {
+        "$ref": "#/$defs/dates"
+      },
+      "assumptions": {
+        "$ref": "#/$defs/modelAssumptions"
+      },
+      "limits": {
+        "$ref": "#/$defs/limits"
+      }
+    },
+    "semanticConstraints": [
+      "records selection_id unique and activity_index unique; referenced index exists in immutable import activities",
+      "full imported batch format/byte/node/resource/identity/alias counts validated; usability and selected-set overlap recomputed only for chosen activity_indices",
+      "unselected limited/rejected/overlap rows remain viewable; never converted or used as extra references",
+      "derived GPX only for selected unique activities; charge each selected activity original choiceAliases count conservatively before source weighting"
+    ]
+  },
+  "modelAssumptions": {
+    "acceptedSchemas": [
+      "unchanged cross_trail_predictor.ASSUMPTION_FIELDS + OPTIONAL_ASSUMPTION_FIELDS",
+      "unchanged hybrid_trail_scenario singleton extra fields"
+    ],
+    "multiExactFields": [
+      "fatigue_model",
+      "reference_end_slowdown",
+      "max_speed_m_s",
+      "uphill_cap_grade",
+      "uphill_cap_m_s",
+      "downhill_cap_grade",
+      "downhill_cap_m_s",
+      "target_stops_s",
+      "target_checkpoints"
+    ],
+    "singleModes": [
+      "constant_rate",
+      "cumulative_effort",
+      "explicit_hybrid"
+    ],
+    "multiConstraints": {
+      "fatigue_model": "constant_rate",
+      "reference_end_slowdown": null,
+      "hybrid": false
+    },
+    "target_checkpoints_max": 100,
+    "no_extra_goal_or_ability_fields": true
+  },
+  "ownerRecord": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "selection_id",
+      "activity_index",
+      "evidence_revision",
+      "user_qualification"
+    ],
+    "properties": {
+      "selection_id": {
+        "type": "string",
+        "maxLength": 96,
+        "pattern": "^[A-Za-z0-9_-]{1,96}$"
+      },
+      "activity_index": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 7
+      },
+      "evidence_revision": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      },
+      "user_qualification": {
+        "$ref": "#/$defs/userQualification"
+      }
+    }
+  },
+  "targetContext": {
+    "exactBaselineSource": "public/app.js#getHistoryContext",
+    "fields": [
+      "mode",
+      "route_revision",
+      "input_revision",
+      "geometry_sha256",
+      "original_gpx_sha256",
+      "source",
+      "calculation_provenance",
+      "raw_checkpoints"
+    ],
+    "rawCheckpointFields": [
+      "id",
+      "fields",
+      "source_binding"
+    ],
+    "rawCheckpointOwnership": "Exact DOM IDs/field tuples/dataset; no adopted official CP inference; same shape as existing private local owner snapshot."
+  },
+  "workerOwner": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "schema_version",
+      "target_sha256",
+      "forecast_as_of",
+      "target_start",
+      "start_local_time",
+      "assumptions",
+      "input_revision",
+      "control_signature",
+      "target_context",
+      "provider_generation",
+      "provider_revision",
+      "host_context",
+      "import_response_sha256",
+      "records",
+      "active_record_id",
+      "visible_evidence_signature"
+    ],
+    "properties": {
+      "schema_version": {
+        "enum": [
+          "intervals-provider-owner/0.1"
+        ]
+      },
+      "target_sha256": {
+        "type": "string",
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "forecast_as_of": {
+        "type": "string",
+        "maxLength": 10,
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+      },
+      "target_start": {
+        "type": "string",
+        "maxLength": 10,
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+      },
+      "start_local_time": {
+        "type": "string",
+        "maxLength": 5,
+        "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$"
+      },
+      "assumptions": {
+        "$ref": "#/$defs/modelAssumptions"
+      },
+      "input_revision": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      },
+      "control_signature": {
+        "type": "string",
+        "maxLength": 8192
+      },
+      "target_context": {
+        "$ref": "#/$defs/targetContext"
+      },
+      "provider_generation": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      },
+      "provider_revision": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      },
+      "host_context": {
+        "$ref": "#/$defs/hostContext"
+      },
+      "import_response_sha256": {
+        "type": "string",
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "records": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/ownerRecord"
+        },
+        "minItems": 1,
+        "maxItems": 8,
+        "denseOwnData": true
+      },
+      "active_record_id": {
+        "type": "string",
+        "maxLength": 96,
+        "pattern": "^[A-Za-z0-9_-]{1,96}$"
+      },
+      "visible_evidence_signature": {
+        "type": "string",
+        "maxLength": 16384
+      }
+    }
+  },
+  "payload": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "request_json",
+      "request_sha256",
+      "owner_snapshot_json",
+      "owner_snapshot_sha256",
+      "owner_generation"
+    ],
+    "properties": {
+      "request_json": {
+        "type": "string",
+        "maxLength": 33554432
+      },
+      "request_sha256": {
+        "type": "string",
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "owner_snapshot_json": {
+        "type": "string",
+        "maxLength": 131072
+      },
+      "owner_snapshot_sha256": {
+        "type": "string",
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "owner_generation": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      }
+    }
+  },
+  "jsCorrelation": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "generation",
+      "requestId"
+    ],
+    "properties": {
+      "generation": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      },
+      "requestId": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      }
+    }
+  },
+  "wireCorrelation": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "generation",
+      "request_id"
+    ],
+    "properties": {
+      "generation": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      },
+      "request_id": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      }
+    }
+  },
+  "workerMetadata": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "request_sha256",
+      "owner_snapshot_json",
+      "owner_snapshot_sha256",
+      "owner_generation",
+      "correlation",
+      "initialization_elapsed_s"
+    ],
+    "properties": {
+      "request_sha256": {
+        "type": "string",
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "owner_snapshot_json": {
+        "type": "string",
+        "maxLength": 131072
+      },
+      "owner_snapshot_sha256": {
+        "type": "string",
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "owner_generation": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      },
+      "correlation": {
+        "$ref": "#/$defs/wireCorrelation"
+      },
+      "initialization_elapsed_s": {
+        "type": "number",
+        "finite": true,
+        "minimum": 0
+      }
+    }
+  },
+  "providerIdentity": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "provider",
+      "accountNamespace",
+      "activityId"
+    ],
+    "properties": {
+      "provider": {
+        "enum": [
+          "Intervals.icu"
+        ]
+      },
+      "accountNamespace": {
+        "type": "string",
+        "maxLength": 128,
+        "pattern": "^[A-Za-z0-9_-]{1,128}$"
+      },
+      "activityId": {
+        "type": "string",
+        "maxLength": 96,
+        "pattern": "^[A-Za-z0-9_-]{1,96}$"
+      }
+    }
+  },
+  "derivedGeometry": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "kind",
+      "schema_version",
+      "sha256",
+      "bytes",
+      "path_sha256",
+      "path_sample_binding_sha256",
+      "path_points",
+      "samples",
+      "segments"
+    ],
+    "properties": {
+      "kind": {
+        "enum": [
+          "derived_gpx_geometry_not_original_activity_file"
+        ]
+      },
+      "schema_version": {
+        "enum": [
+          "intervals-derived-gpx/0.1"
+        ]
+      },
+      "sha256": {
+        "type": "string",
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "bytes": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5242880
+      },
+      "path_sha256": {
+        "type": "string",
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "path_sample_binding_sha256": {
+        "type": "string",
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "path_points": {
+        "type": "integer",
+        "minimum": 2,
+        "maximum": 50000
+      },
+      "samples": {
+        "type": "integer",
+        "minimum": 2,
+        "maximum": 50000
+      },
+      "segments": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 50000
+      }
+    }
+  },
+  "selectionReceipt": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "selection_id",
+      "activity_index",
+      "provider_identity",
+      "derived_geometry",
+      "source_response_sha256",
+      "observed_snapshot",
+      "coverage",
+      "classification_audit"
+    ],
+    "properties": {
+      "selection_id": {
+        "type": "string",
+        "maxLength": 96,
+        "pattern": "^[A-Za-z0-9_-]{1,96}$"
+      },
+      "activity_index": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 7
+      },
+      "provider_identity": {
+        "$ref": "#/$defs/providerIdentity"
+      },
+      "derived_geometry": {
+        "$ref": "#/$defs/derivedGeometry"
+      },
+      "source_response_sha256": {
+        "type": "string",
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "observed_snapshot": {
+        "$ref": "#/$defs/acceptedObservedSnapshot"
+      },
+      "coverage": {
+        "$ref": "#/$defs/acceptedCoverageAssessment"
+      },
+      "classification_audit": {
+        "$ref": "#/$defs/classificationAudit"
+      }
+    }
+  },
+  "classificationAudit": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "original_classification",
+      "import_selected_classification",
+      "import_classification_source",
+      "current_selected_classification",
+      "current_classification_source"
+    ],
+    "properties": {
+      "original_classification": {
+        "enum": [
+          "unclassified",
+          "race",
+          "benchmark",
+          "easy"
+        ]
+      },
+      "import_selected_classification": {
+        "enum": [
+          "unclassified",
+          "race",
+          "benchmark",
+          "easy"
+        ]
+      },
+      "import_classification_source": {
+        "enum": [
+          "upstream",
+          "explicit_user_confirmation"
+        ]
+      },
+      "current_selected_classification": {
+        "enum": [
+          "unclassified",
+          "race",
+          "benchmark",
+          "easy"
+        ]
+      },
+      "current_classification_source": {
+        "enum": [
+          "upstream",
+          "explicit_user_confirmation"
+        ]
+      }
+    }
+  },
+  "singleReference": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "schema_version",
+      "status",
+      "unique_activity_count",
+      "records",
+      "target_prediction",
+      "errors"
+    ],
+    "properties": {
+      "schema_version": {
+        "enum": [
+          "intervals-single-reference/0.1"
+        ]
+      },
+      "status": {
+        "enum": [
+          "experimental_single_reference"
+        ]
+      },
+      "unique_activity_count": {
+        "enum": [
+          1
+        ]
+      },
+      "records": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/sourceModelReceipt"
+        },
+        "minItems": 1,
+        "maxItems": 1,
+        "denseOwnData": true
+      },
+      "target_prediction": {
+        "$ref": "#/$defs/providerTaggedPlan"
+      },
+      "errors": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/modelError"
+        },
+        "minItems": 0,
+        "maxItems": 80,
+        "denseOwnData": true
+      }
+    }
+  },
+  "sourceModelReceipt": {
+    "exactFields": [
+      "activity_key",
+      "evidence",
+      "qualification",
+      "source_assessment",
+      "source_observations"
+    ],
+    "acceptedModelSource": "public/python/history_selection/multi_history_reference.py#RECORD_KEYS minus reference_gpx",
+    "provider": "Intervals.icu",
+    "kind": "normalized_history",
+    "bindingHashContentsVerifiedByNewAdapter": true,
+    "byte_limit": 16384,
+    "noCallerOverrideOfOriginalObservations": true
+  },
+  "modelError": {
+    "exactFields": [
+      "code",
+      "scope",
+      "occurrence_index",
+      "message"
+    ],
+    "scopeEnum": [
+      "selection",
+      "history",
+      "request",
+      "target",
+      "aggregation"
+    ],
+    "maxCodeLength": 96,
+    "maxMessageLength": 2000,
+    "occurrenceIndicesBoundToSelectedRequest": true
+  },
+  "providerTaggedPlan": {
+    "coreFields": "Unchanged predict/hybrid or mean target_prediction fields for the selected mode",
+    "additionalMandatoryExactField": {
+      "source_kind": "intervals_provider"
+    },
+    "sourceCoreNumericalOutputDifferential": "remove only source_kind, compare all core fields to unchanged corresponding core output",
+    "mustBeOriginalReceiptChild": true,
+    "immutableAfterAdmission": true
+  },
+  "reference": {
+    "oneOf": [
+      {
+        "$ref": "#/$defs/singleReference"
+      },
+      {
+        "acceptedModelOutput": "public/python/history_selection/multi_history_reference.py#predict_multi_from_gpx",
+        "schema_version": "multi-history-reference/0.2-local-source",
+        "sourceMeaning": "Model schema string preserved; every record source remains Intervals.icu normalized_history, not LocalGPX.",
+        "target_prediction": {
+          "$ref": "#/$defs/providerTaggedPlan"
+        }
+      }
+    ]
+  },
+  "capabilities": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "application_binding",
+      "external_event_identity",
+      "source_kind",
+      "account_calls_in_worker",
+      "empirical_calibration",
+      "recovery_prediction",
+      "personal_best_rest"
+    ],
+    "properties": {
+      "application_binding": {
+        "enum": [
+          "verified_exact_provider_request_bytes"
+        ]
+      },
+      "external_event_identity": {
+        "enum": [
+          "trusted_host_account_activity_identity_not_empirical_authentication"
+        ]
+      },
+      "source_kind": {
+        "enum": [
+          "intervals_provider"
+        ]
+      },
+      "account_calls_in_worker": {
+        "enum": [
+          false
+        ]
+      },
+      "empirical_calibration": {
+        "enum": [
+          false
+        ]
+      },
+      "recovery_prediction": {
+        "enum": [
+          false
+        ]
+      },
+      "personal_best_rest": {
+        "enum": [
+          false
+        ]
+      }
+    }
+  },
+  "resources": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "normalized_response_bytes",
+      "normalized_response_nodes",
+      "normalized_samples",
+      "path_points",
+      "derived_gpx_bytes",
+      "total_gpx_bytes",
+      "target_cells",
+      "max_target_cells",
+      "max_response_bytes",
+      "max_wall_s",
+      "requested_checkpoint_count",
+      "initialization_elapsed_s",
+      "wrapper_elapsed_s",
+      "selected_normalized_samples",
+      "selected_path_points",
+      "charged_selected_aliases"
+    ],
+    "properties": {
+      "normalized_response_bytes": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 16777216
+      },
+      "normalized_response_nodes": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 1500000
+      },
+      "normalized_samples": {
+        "type": "integer",
+        "minimum": 2,
+        "maximum": 50000
+      },
+      "path_points": {
+        "type": "integer",
+        "minimum": 2,
+        "maximum": 50000
+      },
+      "derived_gpx_bytes": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 12582912
+      },
+      "total_gpx_bytes": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 12582912
+      },
+      "target_cells": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 15000
+      },
+      "max_target_cells": {
+        "enum": [
+          15000
+        ]
+      },
+      "max_response_bytes": {
+        "enum": [
+          16777216
+        ]
+      },
+      "max_wall_s": {
+        "type": "number",
+        "finite": true,
+        "exclusiveMinimum": 0,
+        "maximum": 120
+      },
+      "requested_checkpoint_count": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 100
+      },
+      "initialization_elapsed_s": {
+        "type": "number",
+        "finite": true,
+        "minimum": 0
+      },
+      "wrapper_elapsed_s": {
+        "type": "number",
+        "finite": true,
+        "minimum": 0
+      },
+      "selected_normalized_samples": {
+        "type": "integer",
+        "minimum": 2,
+        "maximum": 50000
+      },
+      "selected_path_points": {
+        "type": "integer",
+        "minimum": 2,
+        "maximum": 50000
+      },
+      "charged_selected_aliases": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 8
+      }
+    },
+    "semanticConstraints": [
+      "max_wall_s equals requested max_wall_s",
+      "initialization_elapsed_s and wrapper_elapsed_s finite >=0; wrapper excludes initialization; sum <= requested max_wall_s",
+      "normalized_samples/path_points describe entire import batch; selected_normalized_samples/selected_path_points only chosen rows",
+      "derived_gpx_bytes actual unique selected carrier bytes; total_gpx_bytes target bytes plus each selected carrier bytes multiplied by original choiceAliases count; charged_selected_aliases sum original selected aliases"
+    ]
+  },
+  "workerResult": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "schema_version",
+      "runtime_manifest_sha256",
+      "operation",
+      "source_kind",
+      "request_sha256",
+      "owner_snapshot_sha256",
+      "owner_generation",
+      "correlation",
+      "target_sha256",
+      "import_response_sha256",
+      "host_context",
+      "selection",
+      "model_mode",
+      "reference",
+      "capabilities",
+      "resources"
+    ],
+    "properties": {
+      "schema_version": {
+        "enum": [
+          "intervals-provider-result/0.1"
+        ]
+      },
+      "runtime_manifest_sha256": {
+        "type": "string",
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "operation": {
+        "enum": [
+          "intervals_history_predict"
+        ]
+      },
+      "source_kind": {
+        "enum": [
+          "intervals_provider"
+        ]
+      },
+      "request_sha256": {
+        "type": "string",
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "owner_snapshot_sha256": {
+        "type": "string",
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "owner_generation": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      },
+      "correlation": {
+        "$ref": "#/$defs/wireCorrelation"
+      },
+      "target_sha256": {
+        "type": "string",
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "import_response_sha256": {
+        "type": "string",
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "host_context": {
+        "$ref": "#/$defs/hostContext"
+      },
+      "selection": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/selectionReceipt"
+        },
+        "minItems": 1,
+        "maxItems": 8,
+        "denseOwnData": true
+      },
+      "model_mode": {
+        "enum": [
+          "single_predict",
+          "single_hybrid",
+          "multi_mean"
+        ]
+      },
+      "reference": {
+        "$ref": "#/$defs/reference"
+      },
+      "capabilities": {
+        "$ref": "#/$defs/capabilities"
+      },
+      "resources": {
+        "$ref": "#/$defs/resources"
+      }
+    }
+  },
+  "workoutCapability": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "source_kind",
+      "receipt",
+      "payload",
+      "correlation"
+    ],
+    "properties": {
+      "source_kind": {
+        "enum": [
+          "intervals_provider"
+        ]
+      },
+      "receipt": {
+        "$ref": "#/$defs/workerResult"
+      },
+      "payload": {
+        "$ref": "#/$defs/payload"
+      },
+      "correlation": {
+        "$ref": "#/$defs/jsCorrelation"
+      }
+    }
+  },
+  "publicWrapper": {
+    "mandatoryFields": [
+      "source_kind",
+      "prediction",
+      "provider_history_receipt",
+      "target_provenance",
+      "model_assumptions",
+      "reference_activities",
+      "start_local_time",
+      "deadline_context"
+    ],
+    "source_kind": "intervals_provider",
+    "privateOnlyFieldsExcluded": [
+      "payload",
+      "request_json",
+      "owner_snapshot_json",
+      "import_response_json",
+      "host_context",
+      "provider sourceSummary details",
+      "provider full samples/path",
+      "principalId",
+      "sessionId",
+      "athleteId",
+      "authorization",
+      "cookies"
+    ],
+    "provider_history_receipt": "Compact public provenance projection: schema/mode/request+runtime hashes, selected application IDs, stable provider identity, derived geometry hashes/counts, raw-body hashes/non-atomic caveat, exact moving/elapsed observations/classification provenance and qualification. Full private worker receipt stays held by controller; public projection cannot mint current capability.",
+    "reference_activities": "≤8 name/selection_id/provider/activity identity/derived geometry provenance, no URLs or auth fields"
+  },
+  "workerErrorEnvelope": {
+    "exactFields": [
+      "ok",
+      "error"
+    ],
+    "ok": false,
+    "errorExactFields": [
+      "code",
+      "message",
+      "admission_rejected",
+      "details"
+    ],
+    "detailsExactFields": [
+      "source_role",
+      "selection_id",
+      "source_sha256",
+      "request_sha256",
+      "owner_snapshot_sha256",
+      "owner_generation",
+      "correlation"
+    ],
+    "source_roleEnum": [
+      "request",
+      "provider",
+      "history",
+      "target"
+    ],
+    "target_retirement": "Only exact original target SHA, matching current payload/owner/correlation and admission_rejected=true; provider/history error has no retirement authority."
+  },
+  "acceptedSelectionListResult": {
+    "pinnedStructuralType": {
+      "sourceRef": "intervals-history-provider/contracts-v2",
+      "type": "SelectionListResult",
+      "sha256": "883be9b9ffc0e41cb60af66587b4887162c2de7fc6d95d3868bb2cf1c6fb6a9d"
+    },
+    "versionedRuntimeValidation": "All exact accepted emitted fields from the17-member frozen-r2 prototype; independently revalidated before install/Worker use; no unknown additional fields accepted."
+  },
+  "acceptedImportResult": {
+    "pinnedStructuralType": {
+      "sourceRef": "intervals-history-provider/contracts-v2",
+      "type": "ImportResult",
+      "sha256": "883be9b9ffc0e41cb60af66587b4887162c2de7fc6d95d3868bb2cf1c6fb6a9d"
+    },
+    "versionedRuntimeValidation": "All exact accepted emitted fields from the17-member frozen-r2 prototype; independently revalidated before install/Worker use; no unknown additional fields accepted."
+  },
+  "acceptedObservedSnapshot": {
+    "pinnedStructuralType": {
+      "sourceRef": "intervals-history-provider/contracts-v2",
+      "type": "ObservedProviderSnapshot",
+      "sha256": "883be9b9ffc0e41cb60af66587b4887162c2de7fc6d95d3868bb2cf1c6fb6a9d"
+    },
+    "versionedRuntimeValidation": "All exact accepted emitted fields from the17-member frozen-r2 prototype; independently revalidated before install/Worker use; no unknown additional fields accepted."
+  },
+  "acceptedCoverageAssessment": {
+    "pinnedStructuralType": {
+      "sourceRef": "intervals-history-provider/contracts-v2",
+      "type": "CoverageAssessment",
+      "sha256": "883be9b9ffc0e41cb60af66587b4887162c2de7fc6d95d3868bb2cf1c6fb6a9d"
+    },
+    "versionedRuntimeValidation": "All exact accepted emitted fields from the17-member frozen-r2 prototype; independently revalidated before install/Worker use; no unknown additional fields accepted."
+  }
+}

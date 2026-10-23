@@ -1,0 +1,1619 @@
+{
+  "api_manifest_paths": [
+    "python/core-manifest.json",
+    "python/conditional-preview-manifest.json",
+    "python/history-selection-manifest.json",
+    "python/intervals-provider-manifest.json"
+  ],
+  "build_id": "ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2",
+  "built_additions_policy": "Exact generated client manifest graph plus closed runtime/python/notices namespaces; generated Worker graph is snapshotted and served through real local ASSETS with outbound denied.",
+  "critical_source_files": {
+    ".npmrc": {
+      "bytes": 45,
+      "sha256": "a3909ac0447c469fda12c57374993be70f47ce73e49fd3124678c7c047f2214d"
+    },
+    ".openai/hosting.json": {
+      "bytes": 3,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    "app/layout.tsx": {
+      "bytes": 168,
+      "sha256": "719a9fc4555317a54187bae2b7b3736366f8a04949d802d3e6bd03d434aef3f2"
+    },
+    "app/page.tsx": {
+      "bytes": 121,
+      "sha256": "99d8ae835089cf2e5051b7b8090e6f142780e63b4df4245bea4a974e9473eeec"
+    },
+    "build/connector-preview-plugin.mjs": {
+      "bytes": 7211,
+      "sha256": "a6a9fe2086e302f94a3f91e3c1a68a45bb3aa07d4a79faf01b14732191eb4e80"
+    },
+    "build/connector-preview-worker.mjs": {
+      "bytes": 594,
+      "sha256": "c1b6b2c420cb67d9e28f8f4ae440f578c0dfd4cb840a12cfe4b58076629a17ba"
+    },
+    "build/sites-vite-plugin.LICENSE": {
+      "bytes": 1063,
+      "sha256": "7de1e115d165f176e68f962acdb809b5ab8d8ae78d3981e0701392b2ac50c713"
+    },
+    "build/sites-vite-plugin.ts": {
+      "bytes": 7185,
+      "sha256": "07af20e7097d9ed1d76f7c446d02997550b8fc5ca89668b249e25eabd62c6834"
+    },
+    "build/sites-worker.ts": {
+      "bytes": 2132,
+      "sha256": "93e2e3c85696cc1fabed5c484322d95c9f9aa7a0ab37de24d47e168e49ac51d9"
+    },
+    "checks/catalog-dates/known-source-baseline.json": {
+      "bytes": 101371,
+      "sha256": "adea2fe794d449917b80eae622aa8bfed1bc742e9e38a365f7f0b05ad9b73a1b"
+    },
+    "checks/catalog-dates/pure.mjs": {
+      "bytes": 6645,
+      "sha256": "bc1a3bf3600d5044e054102c4b17732a625ceb55dae9998c3fe095f9b954254b"
+    },
+    "checks/gpx-acquisition/pure.mjs": {
+      "bytes": 13228,
+      "sha256": "24214a84056b4500e55fd5a7658725b5bf0a178426a2fcb7f0e3d4d881d1d8e6"
+    },
+    "checks/public-release/integrity.test.mjs": {
+      "bytes": 3756,
+      "sha256": "56c134e7ba256298efdd314efe6ef3efabffdc823256c8122ac293d1c74972a2"
+    },
+    "checks/route-admission/README.md": {
+      "bytes": 2026,
+      "sha256": "40363e4cbbfb02ca062ed326a0d429dc3c4cefea3d7039883a6ff65e824287ff"
+    },
+    "checks/route-admission/pure.mjs": {
+      "bytes": 6428,
+      "sha256": "de64137c0de6de151e3c5d629421f6fd67aaf532e75d18df8585d73b1662a04c"
+    },
+    "checks/strict-bridge-acquisition/pure.mjs": {
+      "bytes": 17470,
+      "sha256": "a7f6949406d62c3d4b8221302bfd680afd2f53a4e4f28364b5de42cf921ee99e"
+    },
+    "checks/taiwan-source-adapter/fixture-pins.json": {
+      "bytes": 20724,
+      "sha256": "fe2adb617d0dff4417b2100d25051fc0ad4b5b6972039c6715260d37e69e3c3a"
+    },
+    "cloudflare-env.d.ts": {
+      "bytes": 259,
+      "sha256": "86cb564cbf4ed8745e38fa258b7cf82aeda0e454e8fe31263a8e3e54c2afd114"
+    },
+    "lib/connector-context.ts": {
+      "bytes": 612,
+      "sha256": "bbddff68689cb0f6926fecd4b8b96f12f2054277c296e97b0df07d4ad5ece24e"
+    },
+    "lib/connector-contract.mts": {
+      "bytes": 5362,
+      "sha256": "e1a7b24a8793af34b595690d9b1300c897c7321c14f215cedf58ad95799d7c3e"
+    },
+    "lib/connector-preview.d.ts": {
+      "bytes": 433,
+      "sha256": "abd69a94f7f61f1359063bb557574faae35e8ff5a028cc4c04b9ee248ef52642"
+    },
+    "next.config.ts": {
+      "bytes": 133,
+      "sha256": "614bce25b089c3f19b1e17a6346c74b858034040154c6621e7d35303004767cc"
+    },
+    "package-lock.json": {
+      "bytes": 504140,
+      "sha256": "9da6e91ccb26c77bd8172e88a7a02a8ba283308567025c6b0e8121c8c6c7d231"
+    },
+    "package.json": {
+      "bytes": 3212,
+      "sha256": "f2e27ffd801389fbd33c9ac24afee83b42379118b06534bcec1fc25d02db1740"
+    },
+    "postcss.config.mjs": {
+      "bytes": 94,
+      "sha256": "dfac7ac2d86d326a0e5adb024e7943c181393ed17a5fcb8f0315b24c7da6ddde"
+    },
+    "scripts/build-verified.sh": {
+      "bytes": 661,
+      "sha256": "2ae5329ac860076070c9217a43106a15cb5ecf907a0f7baeb9ef903f76b53c68"
+    },
+    "scripts/connector-preview/connector-preview-session.mjs": {
+      "bytes": 6855,
+      "sha256": "57224ad185a25115a14fccc68d3217e55b199260c3dd98a2c807beffec1a0a9b"
+    },
+    "scripts/connector-preview/host-binding.mjs": {
+      "bytes": 7793,
+      "sha256": "9e44ab6864133a5c82f834a5904ebb7d6104cb783c24efba3c0fe1a161182cea"
+    },
+    "scripts/connector-preview/protocol.mjs": {
+      "bytes": 1781,
+      "sha256": "111e062ebf08d3f180130f5bc3dcb3c1414c1d7be3c032c9d675a61c0c7513a8"
+    },
+    "scripts/execution-profile.mjs": {
+      "bytes": 624,
+      "sha256": "2e71116f4d2b70cff8bb70436f8dd5c709ec7ff62893424530f404e0193d3630"
+    },
+    "scripts/install-ci.mjs": {
+      "bytes": 1685,
+      "sha256": "4a5a92d60a08d0ba54effd8373da2da06284312c55b767287c68a0bec7200da7"
+    },
+    "scripts/install-ci.sh": {
+      "bytes": 6783,
+      "sha256": "10d8764a61be50351dc3496e13588270de7956f0aa5f1189c49cabb2d89fe5c0"
+    },
+    "scripts/install-pnpm.sh": {
+      "bytes": 9015,
+      "sha256": "a684c02c2b493dfbf262a66252a5cd36f81ca995a4024761728662ae63aa40c0"
+    },
+    "scripts/npm-install.mjs": {
+      "bytes": 7025,
+      "sha256": "9715c6a32d1d4a0289ef6376a0e819c3b6a6416b8a9877733d9fb4339ce626b6"
+    },
+    "scripts/pin-intervals-provider-schema.mjs": {
+      "bytes": 4156,
+      "sha256": "53b1e9fb068e18f7b760bf30e84c34f9ded9bb6d0a5f252a9ab1ff798561dc53"
+    },
+    "scripts/pnpm-install.mjs": {
+      "bytes": 10633,
+      "sha256": "a83164e344c1947053def83b546be8115deaa827314bbaead7afe6b6451c5cdf"
+    },
+    "scripts/repin-hiking-reference.py": {
+      "bytes": 1749,
+      "sha256": "c491ab071097090961ec601520e3d7a3f86ed3b6a3322d7f07e06e95f0e79fdb"
+    },
+    "scripts/repin-manual-pace.py": {
+      "bytes": 3738,
+      "sha256": "e4c86820ab4a3b1a51e7720d92b6f80af0a3b01ac2a32a18beab7daf9cf50fae"
+    },
+    "scripts/run-framework.mjs": {
+      "bytes": 993,
+      "sha256": "9bf9f41a29314cabe0238b8e9c540ec3f7b5a6adafc7c8fb6c3940722d061dca"
+    },
+    "scripts/sites-env.mjs": {
+      "bytes": 906,
+      "sha256": "5de99d6806b01f0ee0b941af3684d75dcf1afbbcff22cb95bfa2e584c5dafa88"
+    },
+    "scripts/sites-env.sh": {
+      "bytes": 1530,
+      "sha256": "df86ebfc27d2f00860036658e933ac0ddd7b5f6879aa5d51218f0863c7e1fb60"
+    },
+    "scripts/verify-built-entrypoints.mjs": {
+      "bytes": 4033,
+      "sha256": "ebacfbdf79ee8d426195964319f06194808b71f0218ccd6e2cedc078f6a01ce0"
+    },
+    "scripts/verify-built-static-modules.mjs": {
+      "bytes": 3168,
+      "sha256": "690cee92cca8e00082b421a823c6d1c2ea2283bac35ea5ca58b10825e2e2ffd9"
+    },
+    "scripts/verify-entrypoint-manifest.mjs": {
+      "bytes": 1620,
+      "sha256": "67bb414ec1639218a03a52c6f341671a7be6709b9c053aec9a34abc1ebcec0fe"
+    },
+    "scripts/verify-public-assets.mjs": {
+      "bytes": 1342,
+      "sha256": "4896b74583624d6f7d7327487b84cb9f062d86b24f75ecbbf38e2b623091dcfd"
+    },
+    "server/asset-security/asset-security.mjs": {
+      "bytes": 1940,
+      "sha256": "6405b7d3b9dd47848116e0ac47f60ccd5a3d3a67c6e2025e35ce157b4c8382b2"
+    },
+    "server/entrypoints/bundled-entrypoints.ts": {
+      "bytes": 392,
+      "sha256": "fc85b3e3100b67d70e9d05001c19df0a00a95e8fc7861ed9ba5081dc935fbc3a"
+    },
+    "server/entrypoints/engine-worker.js": {
+      "bytes": 3088,
+      "sha256": "ed8ffea8f27bf10c018d59117ac97249606411a1eaeab1c413ea34cbde493be9"
+    },
+    "server/entrypoints/entrypoint-handler.mjs": {
+      "bytes": 2481,
+      "sha256": "d8957023de804f10317ec4d5b1145e86aeb599a4e1967fa487ec3c7e68a4d0d6"
+    },
+    "server/entrypoints/index.html": {
+      "bytes": 62458,
+      "sha256": "0b54e7e61134809b06c174aefd3efc5f85b8559ecdb489c9628603dee2de34ec"
+    },
+    "server/entrypoints/manifest.json": {
+      "bytes": 581,
+      "sha256": "3ee0cd38b931138ffdbc103bc02a2f0ad2f3fc4122ebebefe72d77b8adcb1fb4"
+    },
+    "server/entrypoints/notices/SQLITE-COPYRIGHT.html": {
+      "bytes": 8351,
+      "sha256": "44ca9f793055c8e32fc65f65a4f5bcf813a33f5bdaaa084067dd617a4ed3cc70"
+    },
+    "server/entrypoints/notices/index.html": {
+      "bytes": 2419,
+      "sha256": "67fcf2b1499a7854518d6542a859f9bd8d466139e9acf6034742747941b90575"
+    },
+    "server/history-provider/core/normalize.mjs": {
+      "bytes": 13864,
+      "sha256": "2ae4506ea788837127235e0c0a3e97b1c4966c48c23aca249f7277a101fe1fa3"
+    },
+    "server/history-provider/core/provider-boundary.mjs": {
+      "bytes": 10466,
+      "sha256": "4371e46b9e4fe93def2a8bbf5d464010a89747bcd75ad301ed11ed54bd61c687"
+    },
+    "server/history-provider/core/server.mjs": {
+      "bytes": 35058,
+      "sha256": "1daa9c4908ecd3897da86140c3b1d3e93fb66916d6aa34080e47bec9101451a3"
+    },
+    "server/history-provider/history-provider.mjs": {
+      "bytes": 13075,
+      "sha256": "a1aa8772b7141d46c3d648a00b04a60e3c5073af3253e8cd5d46182b00132ebf"
+    },
+    "server/history-provider/selected-state.mjs": {
+      "bytes": 15469,
+      "sha256": "e44a851e442102c4051f226e94289b8385a4ce465bd926ec39ba1ffce1c45da3"
+    },
+    "server/route-bridge/route-bridge.mjs": {
+      "bytes": 16257,
+      "sha256": "b06e209f6d6dbf4a7acae7b2af2f26ff75d84fe3baca1d69a0f57c1eef3ee7d4"
+    },
+    "server/route-bridge/route-sources.mjs": {
+      "bytes": 6242,
+      "sha256": "dee56dd1c6062b8911d82bd4c82dc8783712d5eec3867284d7d123e06d7f6615"
+    },
+    "tsconfig.json": {
+      "bytes": 800,
+      "sha256": "7199c6e4e400921e8049729840165a39f1476fa97901bed00239e7697bfe8da4"
+    },
+    "vite.config.ts": {
+      "bytes": 3419,
+      "sha256": "2f8a42a51ecb8d16c493587183f51a5a4b52bdd95eb1500abd4eae0e11d2cd01"
+    }
+  },
+  "integrity_boundary": "Public release baseline; fixed contract hash in reviewed verifier source. No historical acceptance or reproducible-compiler attestation. A coordinated verifier/contract edit requires independent review.",
+  "protected_entrypoints": [
+    {
+      "bytes": 62458,
+      "path": "/index.html",
+      "sha256": "0b54e7e61134809b06c174aefd3efc5f85b8559ecdb489c9628603dee2de34ec"
+    },
+    {
+      "bytes": 2419,
+      "path": "/notices/index.html",
+      "sha256": "67fcf2b1499a7854518d6542a859f9bd8d466139e9acf6034742747941b90575"
+    },
+    {
+      "bytes": 8351,
+      "path": "/notices/SQLITE-COPYRIGHT.html",
+      "sha256": "44ca9f793055c8e32fc65f65a4f5bcf813a33f5bdaaa084067dd617a4ed3cc70"
+    },
+    {
+      "bytes": 3088,
+      "path": "/engine-worker.js",
+      "sha256": "ed8ffea8f27bf10c018d59117ac97249606411a1eaeab1c413ea34cbde493be9"
+    }
+  ],
+  "protected_source_paths": [
+    "bundled-entrypoints.ts",
+    "engine-worker.js",
+    "entrypoint-handler.mjs",
+    "index.html",
+    "manifest.json",
+    "notices/SQLITE-COPYRIGHT.html",
+    "notices/index.html"
+  ],
+  "provenance": {
+    "historical_acceptance": "Not applicable; private hosting identity, old documentation/package and internal acceptance artifacts are excluded, not passed.",
+    "public_runtime_assets": "Unchanged from supplied application assets; embedded upstream notices/provenance remain intact.",
+    "scope": "Sanitized public source release 0.5.56"
+  },
+  "public_files": {
+    "_headers": {
+      "bytes": 4222,
+      "sha256": "8a830803f59a1a21f51b67c25f86e109afb2f48784c27a18db6ffade8294775c"
+    },
+    "ability-ui.js": {
+      "bytes": 7281,
+      "sha256": "8c6ec391bc891a302e6bc96a1251e220cc504e31c59a412ffa3a3c88722c6b1b"
+    },
+    "app.js": {
+      "bytes": 260453,
+      "sha256": "d6e8c018e668c8599eaf6d22da9cb9840a766a79b2a7b2d67650488ee7369a74"
+    },
+    "bounded-asset-reader.mjs": {
+      "bytes": 2092,
+      "sha256": "6ba75ca07b790b92a26b2b1266ee4760bbdef3bba52b7d757dddf6c450bfebd1"
+    },
+    "branding/ridgeq-approved-favicon-32.png": {
+      "bytes": 840,
+      "sha256": "eb5fc2c01e5f107da1249a92cbaa46cc523b66681bb5c38d83b1938f71ea4cd0"
+    },
+    "branding/ridgeq-approved-favicon.svg": {
+      "bytes": 725,
+      "sha256": "3f25486070843d4363a385296b1d9481cca3bc4684ba7b6a56f7783a794db31c"
+    },
+    "branding/ridgeq-approved-header-lossless.png": {
+      "bytes": 487078,
+      "sha256": "330df14a2c19d58680751728b205340bb57f198d9ff9e86bac17bd991742074a"
+    },
+    "catalog-data.js": {
+      "bytes": 217420,
+      "sha256": "5a18b881881a96045d68c58deb2c7f4f4eb86c929c51542de9a6afe971043cb2"
+    },
+    "catalog-dates.mjs": {
+      "bytes": 5639,
+      "sha256": "c8240150ec5299d6d290a989ce5a32a8e9ed9f2495d6bd5b0814c7831b73129e"
+    },
+    "checkpoint-coordinate-mapping.mjs": {
+      "bytes": 2923,
+      "sha256": "8ed3f5a2d1d475ad913935aec33d8cd941cb38060c746a5985b88f2e600b0560"
+    },
+    "checkpoint-export-import.mjs": {
+      "bytes": 22388,
+      "sha256": "7ca3e375be02d160992eb3cf37c5deb217bbd8b2766271906e5007fccbbfed2d"
+    },
+    "checkpoint-groups.mjs": {
+      "bytes": 9569,
+      "sha256": "04d80e088762082a64e2cac1796ba1bee798ff8481e9faaaf267ac785f011a03"
+    },
+    "checkpoint-order.mjs": {
+      "bytes": 1709,
+      "sha256": "d8ea8ca20c43fad486372b059c98690eb9196a27b6fab75fb0400dee9d8a8348"
+    },
+    "checkpoint-time.mjs": {
+      "bytes": 1927,
+      "sha256": "b4f167958f6ebe93a1540fbdf855fe14736aef99e64c7d8d7cbabe2211529c07"
+    },
+    "checkpoint-waypoint-choices.mjs": {
+      "bytes": 4258,
+      "sha256": "865d50a2dd791867c18f586260e38d22c79ec74f1b2024df4e57a3747973dd27"
+    },
+    "conditional-forward-input.mjs": {
+      "bytes": 12115,
+      "sha256": "a230636713122624da0837de51fb83a11e81365eaf6583d62c1454a106247a27"
+    },
+    "conditional-forward-receipt.mjs": {
+      "bytes": 18514,
+      "sha256": "dd85e2d4b9bb9920ebad714ab5ddca0b48f325dd73dc0d39a07fc80fff7d136b"
+    },
+    "conditional-preview-controller.mjs": {
+      "bytes": 13052,
+      "sha256": "e070414daadb5b25c8a72dafbf04130eed0f70421404d92cb09a597c5c75b004"
+    },
+    "conditional-preview-engine.mjs": {
+      "bytes": 6200,
+      "sha256": "71c31617e300fbb17497cb3baffc610f6ca678f28371bc191365e8a497000b01"
+    },
+    "conditional-preview-owner.mjs": {
+      "bytes": 5855,
+      "sha256": "60421ae5a90a50a1e3294d1a1786e34f1d250ffebd892a8f7c0b1c3297c7e041"
+    },
+    "conditional-preview-receipt.mjs": {
+      "bytes": 43615,
+      "sha256": "577ba7642cd90478061453d4b3874e92aa78d6405f83b8900ffbef393324561d"
+    },
+    "cp-stop-seconds.mjs": {
+      "bytes": 5355,
+      "sha256": "57577350d1b9ac793835d8fbe0069e4d7c18ddf2e680a0d6e0b2c5a7e4436bc8"
+    },
+    "cutoff-view.js": {
+      "bytes": 3300,
+      "sha256": "93a719343550c0476485da632f284162c377ed80fe06fd6c6150ab0669c63311"
+    },
+    "drawing/map-loader.mjs": {
+      "bytes": 4689,
+      "sha256": "4c2f380c6bb463aa86e480b0aa17678b2f54d9f18bab7a39d8c109e6b852b9c2"
+    },
+    "drawing/notices/maplibre-gl.txt": {
+      "bytes": 5984,
+      "sha256": "ee5fc05a0677eaf69601d2c7db0d9ecd6cc27c3abc1d0733bc9ed34707cf8ef2"
+    },
+    "drawing/notices/terra-draw-maplibre-gl-adapter.txt": {
+      "bytes": 1053,
+      "sha256": "78f5dfcbb9d43a76b4919d79dbd23381bb9cb48b4b40e49c050bbc175e3e7e28"
+    },
+    "drawing/notices/terra-draw.txt": {
+      "bytes": 1053,
+      "sha256": "78f5dfcbb9d43a76b4919d79dbd23381bb9cb48b4b40e49c050bbc175e3e7e28"
+    },
+    "drawing/src/route-draft.mjs": {
+      "bytes": 13671,
+      "sha256": "74a179aaa36542b8dab251024044cee88cb32edfff7e913646a8dee5144cd861"
+    },
+    "drawing/src/terra-route-controller.mjs": {
+      "bytes": 9810,
+      "sha256": "d397eab0eb691f48fd811bcc7da6b0f4bc2aa3fd6f718b3d1c6701ece055a0c9"
+    },
+    "drawing/src/wrapped-map-adapter.mjs": {
+      "bytes": 3124,
+      "sha256": "65de031f0b504721cee0406e1d4a1e85548496b94819619fcbffe15fe0e80003"
+    },
+    "drawing/vendor/maplibre/maplibre-gl-shared.mjs": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "drawing/vendor/maplibre/maplibre-gl-worker.mjs": {
+      "bytes": 508314,
+      "sha256": "5f1e2f0e1624082b7e88a06e4c86085992b0f8c02929801e552f3f7a119856a9"
+    },
+    "drawing/vendor/maplibre/maplibre-gl.css": {
+      "bytes": 83263,
+      "sha256": "bacba6a85a867fcf602f2ff88331b8acf7edf3fbd063a519888cfbff39970193"
+    },
+    "drawing/vendor/maplibre/maplibre-gl.mjs": {
+      "bytes": 1078892,
+      "sha256": "244d36122c1398da3a8259817cc6d71e04321afe6404f32606b4b6c6cc4f26fb"
+    },
+    "drawing/vendor/terra-adapter.js": {
+      "bytes": 8914,
+      "sha256": "ca325fd1d8e55fdf357df668184ae677d729eec5c8514f24c2ea1efbe45dce34"
+    },
+    "drawing/vendor/terra-draw.js": {
+      "bytes": 269967,
+      "sha256": "4855431aec1ba98416efb5ceb460e277645dc6a2c73a83b1d8347f37173058bc"
+    },
+    "drawing/workspace-ui.mjs": {
+      "bytes": 18467,
+      "sha256": "7f5e379460812073576c26c51d63b19a6ea406772dcf9c7ec30d6f3aa6dc42a2"
+    },
+    "drawing/workspace.css": {
+      "bytes": 1083,
+      "sha256": "e33c0f7a76dd2ee89337e7b2c0d6791a2b0bbfc02f79088781cee996ee47b9ac"
+    },
+    "duration-width-policy.mjs": {
+      "bytes": 764,
+      "sha256": "4a42000299adef01dc7cb6fc9d6279c5eefdfe8b7d07e369f464496a3d51d3c3"
+    },
+    "elevation-locator.mjs": {
+      "bytes": 4713,
+      "sha256": "d3c4f88ecf685ea3d41dc5ce7cd426b05a080d924f238ee22162121928b5fccf"
+    },
+    "error-navigation.js": {
+      "bytes": 10051,
+      "sha256": "6513122597d4d6460201366c6f0c46f0ff57f60b8937e4ca11f12c0ebc629a41"
+    },
+    "event-catalog.js": {
+      "bytes": 18732,
+      "sha256": "f22edc85b3215d91025c38a25568d9251d439a44ab1fb4e3b09f951f69099c03"
+    },
+    "global-catalog-data.js": {
+      "bytes": 181756,
+      "sha256": "48048051acaf89566e50c3586b60794d971d6c19952da5bb1c39c0be0ce7e0b7"
+    },
+    "goal-target-suggestion-ui.mjs": {
+      "bytes": 4079,
+      "sha256": "e18ec248e30b6e017b25cc183e48fbd8acd101fdca1e4d4f8627914cd795190e"
+    },
+    "goal-target-suggestions.mjs": {
+      "bytes": 16460,
+      "sha256": "5c870b295d807371ee0f3f87f3025249016ccee286c24dda9f2c3211ca303df2"
+    },
+    "google-route-sources.mjs": {
+      "bytes": 28806,
+      "sha256": "8766783e80a83afeda7ea4269db933de1e970f84f27db801d862760d2c514b89"
+    },
+    "gpx-export.js": {
+      "bytes": 14769,
+      "sha256": "318b4935eb5f0a900de0f8df2549ffbf275d6ac2850ffc8804bec6af0006ffc3"
+    },
+    "gpx-file-acquisition.mjs": {
+      "bytes": 5225,
+      "sha256": "b6d0d2df523e343b397bc5801ddca98b35f37ccd00fb857047f1bb6314c33bb0"
+    },
+    "gpx-filename.mjs": {
+      "bytes": 5287,
+      "sha256": "23968a35769eb950f6b3e094640759c3ac74dc46d17f88f69ca4651e1abb1b47"
+    },
+    "gpx-xml-markup.mjs": {
+      "bytes": 963,
+      "sha256": "9aaaa84a7d826ffecb4723af3fbc2680e5109463fa7cb054b9258c3fc7a6b178"
+    },
+    "guided-tour.js": {
+      "bytes": 4299,
+      "sha256": "b852fcd9e160ca85a7b8cfd8847da7273e21d23a5fb76a07b55ed2eff0ab028c"
+    },
+    "hiking-reference.mjs": {
+      "bytes": 2092,
+      "sha256": "60b5823feb8912efd287d0dca56cbad3467d0d7de48b441ed60d9d3e7dc692db"
+    },
+    "history-activity-identity.mjs": {
+      "bytes": 4556,
+      "sha256": "5a2428519d1737d5a34bef492711a2442e4ec98388ad6f4dfbeac109652a2371"
+    },
+    "history-selection-contract.mjs": {
+      "bytes": 10443,
+      "sha256": "b631724ea9d7565ca47c9342f2d542f07d52f59680aa4afc5695888615e779cb"
+    },
+    "history-selection-engine.mjs": {
+      "bytes": 4464,
+      "sha256": "6f08be925bf1067d48b5d3ebdf5c4b35bd1e218963683a5f934e273d9d7887d0"
+    },
+    "history-selection-input.mjs": {
+      "bytes": 5396,
+      "sha256": "f56629a225bcb956bd8b6d93f15e16f2e1314cd42083fb99b89c54db15d7b605"
+    },
+    "history-selection-receipt.mjs": {
+      "bytes": 32448,
+      "sha256": "1797a3844719f1924c360736a17b44931137c8bddc1f52cbdd70d7e3b004a6fd"
+    },
+    "history-selection-state.mjs": {
+      "bytes": 17622,
+      "sha256": "adb0ea67ad5cdc551d9875b9e279002421fd7c330b6a047325028fee24dcbc5a"
+    },
+    "interaction-motion.css": {
+      "bytes": 4893,
+      "sha256": "b4e4390f9ad1c46aa643263f06b96189b08f2c3da50004e0b2b7125b0d2a6c4b"
+    },
+    "intervals-provider-binding.mjs": {
+      "bytes": 8153,
+      "sha256": "0428ac8fc4a835abb38f8ddf762408734f59a61431f872990e6933143aa9e129"
+    },
+    "intervals-provider-contract.mjs": {
+      "bytes": 21916,
+      "sha256": "bcb6136624ae30dd4bc2c6b7ada2badccb6b4f73de1ff761791116bf24e0d95f"
+    },
+    "intervals-provider-controller.mjs": {
+      "bytes": 18663,
+      "sha256": "2bf1f7956681b8bcd16f69463dddd719af9c6ec46302e94bf7a8e53ba90a7fba"
+    },
+    "intervals-provider-engine.mjs": {
+      "bytes": 3876,
+      "sha256": "3caba4d9afd9943e4b523796dd72079611ec6d0a31ed5534f0ca463f67faa9d2"
+    },
+    "intervals-provider-reader.mjs": {
+      "bytes": 3446,
+      "sha256": "9f5949b22aa822391e76f57542ee6b71b7bfa18b86628357f8b2cb07b4389048"
+    },
+    "intervals-provider-receipt.mjs": {
+      "bytes": 15488,
+      "sha256": "b94e21ead3b0fc87b0e73aff4c7ea001117d413d40b3784c05f8a37e0e670e5d"
+    },
+    "intervals-provider-runtime-pin.mjs": {
+      "bytes": 106,
+      "sha256": "fb47fc117ae399ff0391360a85f68d2c2eb31216926dd827be8b73df9aceb073"
+    },
+    "intervals-provider-schema.mjs": {
+      "bytes": 21740,
+      "sha256": "3993592d0f052ef7155d945309bc823f23b141ae5ba51b7909dfc82800e4b815"
+    },
+    "intervals-provider-sha256.mjs": {
+      "bytes": 2096,
+      "sha256": "ffdbebf6da9adef7e66765e4ffcdd4a171f19b6309d717e53eb0c787f3971816"
+    },
+    "intervals-provider-ui.mjs": {
+      "bytes": 8721,
+      "sha256": "f75efacf1feba3c88632cce92ac144fb24422ab0e0c16f1cca91a54affd8e7dc"
+    },
+    "intervals-workout-export.mjs": {
+      "bytes": 49773,
+      "sha256": "2d85d2a56698c9d90bc57c873fa250c542c3ed08fe44fd414d9ada32a2cedc8c"
+    },
+    "manual-clock-receipt.mjs": {
+      "bytes": 9662,
+      "sha256": "0bc62f4073ab3f2ea1a9409930439e6e20adb193ba728da912fadbc2de4f9fec"
+    },
+    "manual-pace-state.mjs": {
+      "bytes": 7371,
+      "sha256": "517ed62e17ec2a0f35c2a855ccabfcecb19e5f767378da7c459e5e4e7b9f4854"
+    },
+    "manual-pace-ui.mjs": {
+      "bytes": 16760,
+      "sha256": "a014daa2b730e9ea5131ea75e17c082822110a4d8cd81a200e259dd706552624"
+    },
+    "manual-station-clock.mjs": {
+      "bytes": 15464,
+      "sha256": "4a8653e5b491369aff0829b24e809e1646e351e08298f31474f81fa108ef3249"
+    },
+    "notices/BZIP2-1.0.6-LICENSE.txt": {
+      "bytes": 1901,
+      "sha256": "4919cfb14a73cd64fcef67b107613970cf1659a09aa675dba31314f373bc7204"
+    },
+    "notices/CPYTHON-3.14.2-LICENSE.txt": {
+      "bytes": 13804,
+      "sha256": "b0e25a78cffb43f4d92de8b61ccfa1f1f98ecbc22330b54b5251e7b6ba010231"
+    },
+    "notices/CPYTHON-3.14.2-THIRD-PARTY.rst": {
+      "bytes": 57595,
+      "sha256": "c695d550b135e53e38807e76496d1db17d22c40e461d1f3f354c86188d3305dd"
+    },
+    "notices/CPYTHON-3.14.8-LICENSE.txt": {
+      "bytes": 13804,
+      "sha256": "b0e25a78cffb43f4d92de8b61ccfa1f1f98ecbc22330b54b5251e7b6ba010231"
+    },
+    "notices/CPYTHON-3.14.8-THIRD-PARTY.rst": {
+      "bytes": 60039,
+      "sha256": "cd6f471c0bfdb099efefc25ddff9b3df8bf62e10428987f1f05e6f2f9e35d563"
+    },
+    "notices/CPYTHON-EXPAT-2.9.0-COPYING.txt": {
+      "bytes": 1144,
+      "sha256": "31b15de82aa19a845156169a17a5488bf597e561b2c318d159ed583139b25e87"
+    },
+    "notices/CPYTHON-EXPAT-COPYING.txt": {
+      "bytes": 1144,
+      "sha256": "122f2c27000472a201d337b9b31f7eb2b52d091b02857061a8880371612d9534"
+    },
+    "notices/EMSCRIPTEN-5.0.3-LICENSE.txt": {
+      "bytes": 5093,
+      "sha256": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86"
+    },
+    "notices/EMSCRIPTEN-COMPILER-RT-LICENSE.txt": {
+      "bytes": 16708,
+      "sha256": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d"
+    },
+    "notices/EMSCRIPTEN-LIBCXX-LICENSE.txt": {
+      "bytes": 16703,
+      "sha256": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b"
+    },
+    "notices/EMSCRIPTEN-LIBCXXABI-LICENSE.txt": {
+      "bytes": 16706,
+      "sha256": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c"
+    },
+    "notices/EMSCRIPTEN-MINI-LZ4-JS-SOURCE.txt": {
+      "bytes": 10269,
+      "sha256": "ac1eaa04b68d792d962d5946504ee5141ef58a9df86a0dfcf0ffa63d08634e46"
+    },
+    "notices/EMSCRIPTEN-MUSL-COPYRIGHT.txt": {
+      "bytes": 6204,
+      "sha256": "f9bc4423732350eb0b3f7ed7e91d530298476f8fec0c6c427a1c04ade22655af"
+    },
+    "notices/HIWIRE-LICENSE.txt": {
+      "bytes": 16725,
+      "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5"
+    },
+    "notices/LIBFFI-COPYING.txt": {
+      "bytes": 1132,
+      "sha256": "2c9c2acb9743e6b007b91350475308aee44691d96aa20eacef8e199988c8c388"
+    },
+    "notices/NOTICE.md": {
+      "bytes": 2994,
+      "sha256": "14479218806bb11a6d59a96a36d970735e2ceb0cca6433b726b4fe0179e01e4f"
+    },
+    "notices/PYODIDE-MPL-2.0.txt": {
+      "bytes": 16725,
+      "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5"
+    },
+    "notices/XZ-5.2.2-COPYING.txt": {
+      "bytes": 2774,
+      "sha256": "c4f8e14fafe458d84808a4cd8b69f94673ebe2bf8fc992291629a69ac12218f8"
+    },
+    "notices/ZLIB-1.3.1-LICENSE.txt": {
+      "bytes": 1002,
+      "sha256": "845efc77857d485d91fb3e0b884aaa929368c717ae8186b66fe1ed2495753243"
+    },
+    "notices/ZSTD-1.5.7-LICENSE.txt": {
+      "bytes": 1549,
+      "sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8"
+    },
+    "notices/notices-source-manifest.json": {
+      "bytes": 16736,
+      "sha256": "e5096478fd700a358e52c5108f71723118576d536498799a51f8491f1b35e204"
+    },
+    "notices/runtime-assets-manifest.json": {
+      "bytes": 6091,
+      "sha256": "514ef408c5b15266489c40172b2c81cf3f994f8193e7b4b72dc42d28eecc49ed"
+    },
+    "notices/runtime-build-provenance.json": {
+      "bytes": 3055,
+      "sha256": "1d5681d960eeee191caaa9df266dfb31b4b9815b4b33048f421045dc1258d2ba"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/BUILD.md": {
+      "bytes": 12763,
+      "sha256": "aaca652b5dc449e08abf01c1ad087fa2f7633126e658345421d54e2011acbb13"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/cpython/Doc/license.rst": {
+      "bytes": 60039,
+      "sha256": "cd6f471c0bfdb099efefc25ddff9b3df8bf62e10428987f1f05e6f2f9e35d563"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/cpython/LICENSE": {
+      "bytes": 13804,
+      "sha256": "b0e25a78cffb43f4d92de8b61ccfa1f1f98ecbc22330b54b5251e7b6ba010231"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/emscripten-system/include/SDL/COPYING": {
+      "bytes": 1031,
+      "sha256": "c0340bf02391530fb13cf4170c31253ecd09868fa483553652699584eb4db6ae"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/emscripten-system/lib/compiler-rt/LICENSE.TXT": {
+      "bytes": 16708,
+      "sha256": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/emscripten-system/lib/libcxx/LICENSE.TXT": {
+      "bytes": 16703,
+      "sha256": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/emscripten-system/lib/libcxxabi/LICENSE.TXT": {
+      "bytes": 16706,
+      "sha256": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/emscripten-system/lib/libunwind/LICENSE.TXT": {
+      "bytes": 16706,
+      "sha256": "b5efebcaca80879234098e52d1725e6d9eb8fb96a19fce625d39184b705f7b6d"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/emscripten-system/lib/llvm-libc/LICENSE.TXT": {
+      "bytes": 15140,
+      "sha256": "ebcd9bbf783a73d05c53ba4d586b8d5813dcdf3bbec50265860ccc885e606f47"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/emscripten-system/lib/mimalloc/LICENSE": {
+      "bytes": 1096,
+      "sha256": "19c99805e7a44a34b297a75d1edea9985e300066dfc024d5c99d4236d4573b5d"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/emscripten/LICENSE": {
+      "bytes": 5093,
+      "sha256": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/expat/COPYING": {
+      "bytes": 1144,
+      "sha256": "31b15de82aa19a845156169a17a5488bf597e561b2c318d159ed583139b25e87"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/hiwire/LICENSE": {
+      "bytes": 16725,
+      "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/js-vendor/stackframe/LICENSE": {
+      "bytes": 1080,
+      "sha256": "899da9d991cb211a3642b84e82a9ae0b4b4e44546fd207e34d7d4ec2eb40f420"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/libffi/LICENSE": {
+      "bytes": 1132,
+      "sha256": "2c9c2acb9743e6b007b91350475308aee44691d96aa20eacef8e199988c8c388"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/libffi/LICENSE-BUILDTOOLS": {
+      "bytes": 18698,
+      "sha256": "e67978cd18816c0cb7d29aaaacde7b7447402c2fb321a051698890a8eaedda94"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/bzip2/bzip2-1.0.6/LICENSE": {
+      "bytes": 1901,
+      "sha256": "4919cfb14a73cd64fcef67b107613970cf1659a09aa675dba31314f373bc7204"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/bzip2/bzip2-1.0.6/README": {
+      "bytes": 7582,
+      "sha256": "52ba29d974c085ac7f33603b30aea9d5aed09c6eef0e4a5f6f53747cba22b079"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/zlib/zlib-1.3.1/LICENSE": {
+      "bytes": 1002,
+      "sha256": "845efc77857d485d91fb3e0b884aaa929368c717ae8186b66fe1ed2495753243"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/zlib/zlib-1.3.1/README": {
+      "bytes": 5317,
+      "sha256": "d106dcdb2a0b3087cb3a2380b9f00a0bbadc7eb835cd80408f94a2d78d69727d"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/zlib/zlib-1.3.1/contrib/blast/README": {
+      "bytes": 74,
+      "sha256": "baa763ae03d88ef7ece6eb80d9a099b43d0b57639d6d281e1c7c6ca79d81daba"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/zlib/zlib-1.3.1/contrib/infback9/README": {
+      "bytes": 51,
+      "sha256": "890288f02bb3b1f9cc654b87a07fcea695f90f6b9bd672d25bf6be1da2ec1688"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/zlib/zlib-1.3.1/contrib/iostream3/README": {
+      "bytes": 1490,
+      "sha256": "43ec48ecbd95a8c45db20b107fac73b740bb11595a4737329188f06b713972cc"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/zlib/zlib-1.3.1/contrib/puff/README": {
+      "bytes": 3077,
+      "sha256": "c5b9852fb11e0d6b6e916e5134cf034524d901b95368972133e0381e480eb479"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/zlib/zlib-1.3.1/nintendods/README": {
+      "bytes": 209,
+      "sha256": "e362426c47b39ff6a7d6c75c6660b20abf076cdfa5e1e421716dc629a71aef95"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/zlib/zlib-1.3.1/old/README": {
+      "bytes": 133,
+      "sha256": "551a0f4d91fe0f827a31cbdfbb4a71d1f3dc4d06564d80a3f526b749dd104d11"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/pyodide/LICENSE": {
+      "bytes": 16725,
+      "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/sqlite/sqlite3.h-with-public-domain-notice": {
+      "bytes": 613415,
+      "sha256": "abe0057c5506263d399da1f3d577f957b1f4fdbb3f340481f8cd4da7dc9f1ae5"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/xz/COPYING": {
+      "bytes": 2774,
+      "sha256": "c4f8e14fafe458d84808a4cd8b69f94673ebe2bf8fc992291629a69ac12218f8"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/xz/COPYING.GPLv2": {
+      "bytes": 18092,
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/xz/COPYING.GPLv3": {
+      "bytes": 35147,
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/xz/COPYING.LGPLv2.1": {
+      "bytes": 26530,
+      "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/zstd/COPYING": {
+      "bytes": 18091,
+      "sha256": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/zstd/LICENSE": {
+      "bytes": 1549,
+      "sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/Makefile.envs": {
+      "bytes": 7961,
+      "sha256": "cfdd1439647abc40935b0353e66b4254611cc5da09d886d05904a067832c2df8"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/Makefile": {
+      "bytes": 10237,
+      "sha256": "4a58271b4044ac48067b93c32d1df03f59db667fca667a077ef0e540f25d47cf"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0001-Public-pymain_run_python.patch": {
+      "bytes": 401,
+      "sha256": "355ae763657fb25d4c5a62d3c3459e1cfdde485b8dbd877ae83772bb387a41e0"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0002-Fix-LONG_BIT-constant-to-be-always-32bit.patch": {
+      "bytes": 1020,
+      "sha256": "e840dcb6c2f70ce7e2029ff51028fc980f0f98f6807c755a63ba1336c791ce08"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0003-Add-call-to-JsProxy_GetMethod-to-help-remove-tempora.patch": {
+      "bytes": 1968,
+      "sha256": "a359c12516cc2f08720096d51f8cfb31d62ce57d096255beae0ca6848ede8cbe"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0004-Make-from-x-import-aware-of-jsproxy-modules.patch": {
+      "bytes": 1181,
+      "sha256": "4297a7694d0f58e5c620f322b94bfdeef6ef5926bdf62d7dd9038c80d4f51720"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0005-Remove-JSPI-related-parts-in-emscripten_syscalls.c.patch": {
+      "bytes": 10614,
+      "sha256": "5f7a57b74af22f3d2afd89d0cb99b8a44eed37d2b7a7cbbc28fe8f796c99d5cb"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0006-Teach-json-encoder.py-to-encode-jsnull.patch": {
+      "bytes": 3415,
+      "sha256": "ba13244a5c1003f55c4ddfb4087c977c38b5fdeccf68f819deb0617bf04adc6a"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0007-Warn-if-ZoneInfo-is-imported-without-tzdata.patch": {
+      "bytes": 1085,
+      "sha256": "bcf92273acce4b4b0ea8bed3fab3f375e944a2874a27b0f8e7b79ecb40f5a685"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0008-Export-_Py_emscripten_signal_clock-and-_Py_emscripte.patch": {
+      "bytes": 1609,
+      "sha256": "7cf220d962a8a1f24d7c96a588d9c1f3d32849c3bc89329cbf76dff517ca737b"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0009-Fix-Emscripten-trampoline-with-emcc-4.0.19.patch.upstream-satisfied": {
+      "bytes": 9964,
+      "sha256": "e4de0006020fa3118da139e566a6eea3d747ef11d39785d1d7cc5e74c8638371"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/cpython/patches/0010-cpython-expat-2.9.0-db34557.patch": {
+      "bytes": 76066,
+      "sha256": "2b9953c0487f9e99c282addd0581cd4402716a2c95f2cac35a6382c95f43440a"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/emsdk/Makefile": {
+      "bytes": 1322,
+      "sha256": "182c5245ca933f71b874f97e109a1926ab54ec0a245616246bed9217a16b5807"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide/pyodide_env.sh": {
+      "bytes": 840,
+      "sha256": "8e4705a4782c3c5b7b7f1a6c9aa0a7e70217392f3274122f964194bc925d75b3"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/trampoline-threads.patch": {
+      "bytes": 762,
+      "sha256": "e2f6c802d538bb6f1216094c9d110ae1ac1bdaec2de3ca2c5acc41eea45a9717"
+    },
+    "notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/upstream-sources.json": {
+      "bytes": 37032,
+      "sha256": "e24a5db4fb81513ce36689b75e3335ca28dad4fc8e388a91c886e6d2c5dbbd2c"
+    },
+    "notices/source-index.json": {
+      "bytes": 6187,
+      "sha256": "713e4af7be9cea1b982b610dc31f6d30d8a1181469458cdbf06b5c9fa6212704"
+    },
+    "official-checkpoints.js": {
+      "bytes": 1719,
+      "sha256": "0aa0ce8aa1f9611c615122854a4606a3ee945ee2b066be6706b153ea670a5d10"
+    },
+    "official-coordinate-choices.mjs": {
+      "bytes": 3237,
+      "sha256": "e27e19e2881e26f2efd13b78f6e0dedeb49573595d04839c352cff9b6bcbe1d0"
+    },
+    "prediction-table.js": {
+      "bytes": 671,
+      "sha256": "397a10fcf01a7e6ca30e67e4e94a8269e69a2056153ae965ac59ffcedcbec492"
+    },
+    "prediction-ui.js": {
+      "bytes": 66758,
+      "sha256": "086a7cade1c144769169011391d9583170875f6f772071b6f6e06c58548d4a18"
+    },
+    "profile-checkpoints.js": {
+      "bytes": 1122,
+      "sha256": "ab003ebbc39de5c929af8b4320b0d307640028b34e9a3bea9d0c14cdb9d384e3"
+    },
+    "profile-coordinate.js": {
+      "bytes": 1605,
+      "sha256": "c609206e1aab44dff5035cf1bb5a24a4e75479d9b576fc4cc619b418b2897f53"
+    },
+    "published-checkpoint-table-data.mjs": {
+      "bytes": 194261,
+      "sha256": "1303f79db3e941252e86ffe1b6cf5f5c2a8f989ec49d2c9876d8bbc27f3bc311"
+    },
+    "published-checkpoint-tables.mjs": {
+      "bytes": 26881,
+      "sha256": "c521551916e8c2a726dbdd2d829a727d3f9602945a43f3600922f515a06a1d34"
+    },
+    "published-station-services.mjs": {
+      "bytes": 9858,
+      "sha256": "e38ccc4ab4a78cff2e708cb98468dc4bbf09ca3841136e890f8c6fad628366f1"
+    },
+    "python-engine.mjs": {
+      "bytes": 37442,
+      "sha256": "c5fd4b889296e8e74ed6320e19599c2df3a9fa94c94a3390a54e13119015670d"
+    },
+    "python/ability-manifest.json": {
+      "bytes": 264,
+      "sha256": "4fb3fa7cbc006344eaa4cb7c29532e029b3cf6cb36d1916ce95a17f0da03e2b8"
+    },
+    "python/ability_adapter.py": {
+      "bytes": 7166,
+      "sha256": "e0461c02e7cff482a3c0023f6fc75f230c376d7e5f3c96d4987b9d60a6b8dbd1"
+    },
+    "python/ability_reference.py": {
+      "bytes": 7783,
+      "sha256": "a9bf17562f4caf5327751118a18d1cf192d4bdacc68de3ed207af686e2f26ca0"
+    },
+    "python/conditional-preview-manifest.json": {
+      "bytes": 3820,
+      "sha256": "3293cb360820d8cb56a979ace8f2ea84f1b696da19c3f4120af690ce4ca9d8fe"
+    },
+    "python/conditional_forward/forward_adapter.py": {
+      "bytes": 27360,
+      "sha256": "ce5950cc80dec23797bbee8ea8c3cfe6803b595ccfa27d42dfef4a96632f8e51"
+    },
+    "python/conditional_preview/frozen-search/conditional_stop_search.py": {
+      "bytes": 34539,
+      "sha256": "1861e7f1a38bce441ee4680edc82ee1f5727cc38cf3343691bbf928c4b8a597b"
+    },
+    "python/conditional_preview/frozen-search/frozen-r3/artifact-template.json": {
+      "bytes": 3990,
+      "sha256": "e9e55ba9060fa676edf3ceeec2371682ff2d67bb171853ce90fe363f6746e200"
+    },
+    "python/conditional_preview/frozen-search/frozen-r3/conditional_adapter.py": {
+      "bytes": 58645,
+      "sha256": "8d1112d6807abe08d4ccd9294c99d33be0298f709786d623882e98b188c50024"
+    },
+    "python/conditional_preview/frozen-search/frozen-r3/dependencies/cross_trail_predictor.py": {
+      "bytes": 20843,
+      "sha256": "2f91c50c176c626acd2665f1d229f4baeb394e01d7ed1e1f37ad52bca74c0be3"
+    },
+    "python/conditional_preview/frozen-search/frozen-r3/dependencies/dependencies/intensity_transition.py": {
+      "bytes": 20592,
+      "sha256": "f6b9f0a4d768e838e40de8320d225615339291ce8ce82915334e4189bc7c22ed"
+    },
+    "python/conditional_preview/frozen-search/frozen-r3/dependencies/trail_planner/__init__.py": {
+      "bytes": 363,
+      "sha256": "06096ad97f2c6ce19894e9686fe836cd438309522d0781bf9a9bf263c41b15f3"
+    },
+    "python/conditional_preview/frozen-search/frozen-r3/dependencies/trail_planner/geometry.py": {
+      "bytes": 7831,
+      "sha256": "8a527265f1f890f913c4cc33e513afb7cb61cd14150e6155e9d9fcfe2d37bd25"
+    },
+    "python/conditional_preview/frozen-search/frozen-r3/dependencies/trail_planner/gpx.py": {
+      "bytes": 5651,
+      "sha256": "734e1aae59de0b4775d74257c767de9e5f4648b69247988b1087ec27fa18fe6f"
+    },
+    "python/conditional_preview/frozen-search/frozen-r3/dependencies/trail_planner/planning.py": {
+      "bytes": 20211,
+      "sha256": "219bdcc59fea3d2ec581bd45adad0d8162e789d367437f1bec79d2066d276080"
+    },
+    "python/conditional_preview/frozen-search/frozen-r3/dependencies/variable_transition.py": {
+      "bytes": 15073,
+      "sha256": "95b6ad84d3cc19e4d8758c08a92669ad82eca956e9ddbb07db1b8a22529c08fd"
+    },
+    "python/conditional_preview/production/gpx_admission.py": {
+      "bytes": 13294,
+      "sha256": "3b66d3b9334cb80a85e6f3c2bbd1154cbdaed4e455076a50cc169ef83aa94912"
+    },
+    "python/conditional_preview/production/manual_pace_adapter.py": {
+      "bytes": 21094,
+      "sha256": "596475dd924ec78ce1aef115e339cb14ecbc2fd97aad930858b078ae3e255c0f"
+    },
+    "python/conditional_preview/production_recovery_bridge.py": {
+      "bytes": 17409,
+      "sha256": "33ec21c1c2c5368c8d8c92955b706ae1ac5122bbc1deb2e43adb62392de7fd0c"
+    },
+    "python/conditional_preview/runtime_integrity.py": {
+      "bytes": 8683,
+      "sha256": "872c67f918758176e7f45b1705a3e667126a37e7d121dd5a2f04039435919788"
+    },
+    "python/conditional_preview/worker_adapter.py": {
+      "bytes": 15751,
+      "sha256": "9ce707507b51c923bc5b450d9b61021a2a3d2001a6a8dbdad3da36807b4a92b4"
+    },
+    "python/core-manifest.json": {
+      "bytes": 394,
+      "sha256": "5d95ff358e92248ebbafdcdc99327362f4ad5416b2948751200ec2c794456546"
+    },
+    "python/cross_trail_predictor.py": {
+      "bytes": 20843,
+      "sha256": "2f91c50c176c626acd2665f1d229f4baeb394e01d7ed1e1f37ad52bca74c0be3"
+    },
+    "python/details-manifest.json": {
+      "bytes": 148,
+      "sha256": "9dfefec7d12e06c1ec12ef1ffa99d8f8610390d9a7fef9a96988f778b02eba74"
+    },
+    "python/details.py": {
+      "bytes": 16494,
+      "sha256": "cdc78389372a9bd72be51086f42ee3b004aab0ea3c3f4d0de5ae31052a228f38"
+    },
+    "python/gpx-admission-manifest.json": {
+      "bytes": 154,
+      "sha256": "8a029bd647015293330008ee9100a01fc4b2af35fb1ab228e9f0c514cc2805e6"
+    },
+    "python/gpx_admission.py": {
+      "bytes": 13294,
+      "sha256": "3b66d3b9334cb80a85e6f3c2bbd1154cbdaed4e455076a50cc169ef83aa94912"
+    },
+    "python/hiking-reference-manifest.json": {
+      "bytes": 597,
+      "sha256": "4739e8fab2a47af65876db085e3184bcc77a7483f3a17e619c22b29db72f4ede"
+    },
+    "python/hiking_reference.py": {
+      "bytes": 13422,
+      "sha256": "fd5f7ac24463ea90a7bd3014790a30867e2722ba98f11d661d6b4fd4608996d5"
+    },
+    "python/history-selection-manifest.json": {
+      "bytes": 2335,
+      "sha256": "453984fd020c98c7ae467675ac469351797fab475c195c0f8500b5be09337733"
+    },
+    "python/history_selection/multi_history_reference.py": {
+      "bytes": 37567,
+      "sha256": "1454417fb0d214fc6c7773ee9d32b699720c652acd4b5f8fb23f511d4357a0e6"
+    },
+    "python/history_selection/runtime_integrity.py": {
+      "bytes": 6722,
+      "sha256": "5a6cf74d6d059267c90524bc59abd810b54659c931b405d3903f4cdca251c98d"
+    },
+    "python/history_selection/worker_adapter.py": {
+      "bytes": 23989,
+      "sha256": "dd993701061b04093cc54cb5bd9fe1fab1ce46f5f630e809c485f6b6f35fc1ee"
+    },
+    "python/hybrid-manifest.json": {
+      "bytes": 718,
+      "sha256": "356277a0cb41449b588c9ef18ff6a8bd501f4782071b48911ed534cf6f656264"
+    },
+    "python/hybrid_trail_scenario.py": {
+      "bytes": 15452,
+      "sha256": "02010a8b177d2c83ea68ab0a206f60c0ee5d3242bb8248f4c08a608580ceac66"
+    },
+    "python/intervals-provider-manifest.json": {
+      "bytes": 2591,
+      "sha256": "428a445da6d2e03609beb177f37217c82cc7d0f949c65c0898d2dfa3becbc9a8"
+    },
+    "python/intervals_provider/core_snapshot/cross_trail_predictor.py": {
+      "bytes": 20843,
+      "sha256": "2f91c50c176c626acd2665f1d229f4baeb394e01d7ed1e1f37ad52bca74c0be3"
+    },
+    "python/intervals_provider/core_snapshot/trail_planner/__init__.py": {
+      "bytes": 363,
+      "sha256": "06096ad97f2c6ce19894e9686fe836cd438309522d0781bf9a9bf263c41b15f3"
+    },
+    "python/intervals_provider/core_snapshot/trail_planner/geometry.py": {
+      "bytes": 7831,
+      "sha256": "8a527265f1f890f913c4cc33e513afb7cb61cd14150e6155e9d9fcfe2d37bd25"
+    },
+    "python/intervals_provider/core_snapshot/trail_planner/gpx.py": {
+      "bytes": 5651,
+      "sha256": "734e1aae59de0b4775d74257c767de9e5f4648b69247988b1087ec27fa18fe6f"
+    },
+    "python/intervals_provider/core_snapshot/trail_planner/planning.py": {
+      "bytes": 20211,
+      "sha256": "219bdcc59fea3d2ec581bd45adad0d8162e789d367437f1bec79d2066d276080"
+    },
+    "python/intervals_provider/hybrid_trail_scenario.py": {
+      "bytes": 15452,
+      "sha256": "02010a8b177d2c83ea68ab0a206f60c0ee5d3242bb8248f4c08a608580ceac66"
+    },
+    "python/intervals_provider/multi_history_reference.py": {
+      "bytes": 37567,
+      "sha256": "1454417fb0d214fc6c7773ee9d32b699720c652acd4b5f8fb23f511d4357a0e6"
+    },
+    "python/intervals_provider/production/gpx_admission.py": {
+      "bytes": 13294,
+      "sha256": "3b66d3b9334cb80a85e6f3c2bbd1154cbdaed4e455076a50cc169ef83aa94912"
+    },
+    "python/intervals_provider/runtime_integrity.py": {
+      "bytes": 8046,
+      "sha256": "1222f9dfb60aafc83c5e6c1767d6fec6584c7a370d454547568f59a215c65bd4"
+    },
+    "python/intervals_provider/worker_adapter.py": {
+      "bytes": 31154,
+      "sha256": "2702837b780c48cb28fcb1fb4b741df6bdda59f53ee2f14a268ee9d94844b244"
+    },
+    "python/local_elevation_gap.py": {
+      "bytes": 9294,
+      "sha256": "c6d643b05eb3e1abe4bb74ef81fd088819d309960c30919a506c10e29b6dc944"
+    },
+    "python/manual-pace-manifest.json": {
+      "bytes": 757,
+      "sha256": "2ed161f936c75e763c22e0742a621991a8c184a2b5f8d753e84064c3ed27044a"
+    },
+    "python/manual_pace_adapter.py": {
+      "bytes": 21710,
+      "sha256": "4db0a8876c8db96f40325452b1b1ebd2ec7923cb587b900110a27e679b6e5bd1"
+    },
+    "python/prediction-manifest.json": {
+      "bytes": 602,
+      "sha256": "a5eb9bf7bbe70d6f0afa8c1d0534cbb5c52e2494711d83540160b766520be988"
+    },
+    "python/route-quality-manifest.json": {
+      "bytes": 949,
+      "sha256": "3264b45730f1387b34f4ca4766e9c08090c6a50aeddd8fd61e91737cced81953"
+    },
+    "python/route-repair-manifest.json": {
+      "bytes": 706,
+      "sha256": "50b06acb5b89bad7be9e23d2da5ce6a01207ca12be2f955087910a60738bc4ae"
+    },
+    "python/route_geometry_repair.py": {
+      "bytes": 13432,
+      "sha256": "e25bd39608e91e5dc8151688845a4f3fb9b182630bf75075afafdf8cd2aef2ab"
+    },
+    "python/route_quality_diagnostics.py": {
+      "bytes": 20472,
+      "sha256": "f83d0aa634c7c3e08ff70adbc5e8a029aee6c58ff6bde028b36f792403a8b519"
+    },
+    "python/surface-reference-manifest.json": {
+      "bytes": 1226,
+      "sha256": "98748fb4ae78244a0ec2cf692707b1232b093b8a71e84f65d8c84edac8cee8a6"
+    },
+    "python/surface_reference.py": {
+      "bytes": 14546,
+      "sha256": "a406eb8be086b96f8c9acde0616abc40e2227275a99a0568cd8f20ec0e369866"
+    },
+    "python/timed-history-manifest.json": {
+      "bytes": 988,
+      "sha256": "208a4ca82c2685d2a66e54ddfe4795a561a692076065109c30afe41ca2a74644"
+    },
+    "python/timed_history/compact_observation.py": {
+      "bytes": 12420,
+      "sha256": "7aa927f7824c572278a33226a0904948eab9f4b5fc2f72efa1e901ff0310eb47"
+    },
+    "python/timed_history/dependencies/geometry.py": {
+      "bytes": 7831,
+      "sha256": "8a527265f1f890f913c4cc33e513afb7cb61cd14150e6155e9d9fcfe2d37bd25"
+    },
+    "python/timed_history/dependencies/gpx.py": {
+      "bytes": 5651,
+      "sha256": "734e1aae59de0b4775d74257c767de9e5f4648b69247988b1087ec27fa18fe6f"
+    },
+    "python/timed_history/dependencies/steep_history_observations.py": {
+      "bytes": 27698,
+      "sha256": "816edec0170b2aadc67c5f3ec1b1dc0be0a4b1be3df4ac35d7541db39b089f2f"
+    },
+    "python/timed_history/timed_gpx_producer.py": {
+      "bytes": 25211,
+      "sha256": "ee0e451e3e2d88fe7cf1bfc713cd059eb44a8b2138d19651ca84593d2f8bc292"
+    },
+    "python/trail_planner/__init__.py": {
+      "bytes": 363,
+      "sha256": "06096ad97f2c6ce19894e9686fe836cd438309522d0781bf9a9bf263c41b15f3"
+    },
+    "python/trail_planner/geometry.py": {
+      "bytes": 7831,
+      "sha256": "8a527265f1f890f913c4cc33e513afb7cb61cd14150e6155e9d9fcfe2d37bd25"
+    },
+    "python/trail_planner/gpx.py": {
+      "bytes": 5651,
+      "sha256": "734e1aae59de0b4775d74257c767de9e5f4648b69247988b1087ec27fa18fe6f"
+    },
+    "python/trail_planner/planning.py": {
+      "bytes": 20211,
+      "sha256": "219bdcc59fea3d2ec581bd45adad0d8162e789d367437f1bec79d2066d276080"
+    },
+    "race-loader.js": {
+      "bytes": 9200,
+      "sha256": "fbf7cfcf7d72cd6a8d44579d7114724a22e1ca9009968beeafb3cf2324ce6042"
+    },
+    "route-bridge-client.mjs": {
+      "bytes": 22145,
+      "sha256": "2f6960d300ec7797f26473473652ff01c973f44392e9335c4713814804a6167c"
+    },
+    "route-library-copy.mjs": {
+      "bytes": 3735,
+      "sha256": "e0d97b23576d674607f9eabb2c2f4ee8a0b33e4ab43894c3aaa81dcbabb89078"
+    },
+    "route-quality-ui.mjs": {
+      "bytes": 16560,
+      "sha256": "1cf10b8fd50f095a7886eaa34349e28784924e1c2bc09d6dd71bb492243e6eb6"
+    },
+    "runtime/pyodide/314.0.7/pyodide-lock.json": {
+      "bytes": 119077,
+      "sha256": "5dc2fc119108bc148c7457dc86e7675b5c87e1cafd420b9c34c1eaef7b36c010"
+    },
+    "runtime/pyodide/314.0.7/pyodide.asm.mjs": {
+      "bytes": 1250344,
+      "sha256": "f7cdc8ece80678ceb712f8e65ebe6d3a83203a180c399865f49612a051693635"
+    },
+    "runtime/pyodide/314.0.7/pyodide.asm.wasm": {
+      "bytes": 9598218,
+      "sha256": "cc36e3cab04fdfc9a63ff13eb52eae2b911bf46c025cc7b281f394bd3de1d5e6"
+    },
+    "runtime/pyodide/314.0.7/pyodide.mjs": {
+      "bytes": 17931,
+      "sha256": "6f1d60f7bf529beb300f0f47983c921d3982363640ba20af0e38efdddbc66109"
+    },
+    "runtime/pyodide/314.0.7/python_stdlib.zip": {
+      "bytes": 2545637,
+      "sha256": "fa1957e5777068fc4f7437f96d860ae2fbe9c19732ba06c84e004ec16dd7dd7a"
+    },
+    "runtime/pyodide/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/package.json": {
+      "bytes": 2999,
+      "sha256": "40ca48e43ce4ddc68412d5b7a7ca9e2477cd4f0e672277ae468ac2245717079b"
+    },
+    "runtime/pyodide/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide-lock.json": {
+      "bytes": 133,
+      "sha256": "a0633ad7cfcc9f711ebbca4fe4569e70c55487fde05416cc4051d9ddbb73c74b"
+    },
+    "runtime/pyodide/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide.asm.mjs": {
+      "bytes": 1251268,
+      "sha256": "234a4f30c6537e565b0be41abc1de10eaf6327c8965b657f2c481faf0d40005c"
+    },
+    "runtime/pyodide/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide.asm.wasm": {
+      "bytes": 9646738,
+      "sha256": "11d79a24dde350e7b55489b814792035be096f222c46fbe55c28dd057de65697"
+    },
+    "runtime/pyodide/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide.js": {
+      "bytes": 18912,
+      "sha256": "f1dee443c3b9d03a5e47e985741cbda965fbfa7cac45a6b937ef2cc3022abb92"
+    },
+    "runtime/pyodide/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide.js.map": {
+      "bytes": 85289,
+      "sha256": "0f7afa220641c481c78c7d32c63d00ba5cd75b1250c410aad275c1e4d17f077f"
+    },
+    "runtime/pyodide/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide.mjs": {
+      "bytes": 17931,
+      "sha256": "3780a5f1f30d0b2c3b1f45a254ebb00da3e0fdec68d229392b1410f914abc821"
+    },
+    "runtime/pyodide/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/pyodide.mjs.map": {
+      "bytes": 84911,
+      "sha256": "0d97147b5f205398c614021ca450d1d95b87cdf8abd1b9ab4fc86c4169f88c36"
+    },
+    "runtime/pyodide/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/python_stdlib.zip": {
+      "bytes": 2568652,
+      "sha256": "b008a808e2a2a719c60c3e2ce8a6fa6129e7194a591c42d6395f685729dffdeb"
+    },
+    "schedule-view.mjs": {
+      "bytes": 8250,
+      "sha256": "b639dc350ed13ef3df9c21f8c816ac786afb21ada1d5ad3098b04e914580f507"
+    },
+    "segmented-time-input.mjs": {
+      "bytes": 18870,
+      "sha256": "1d900e1953a7c1be8024047c101a9364932063a362684cedc32f0b76a9404a53"
+    },
+    "service-stop-drafts.mjs": {
+      "bytes": 14066,
+      "sha256": "46fe71ba07f791175d4f7a685a4ef9ec2f9531e538e56345e6109e76516c56a2"
+    },
+    "service-stop-ui.mjs": {
+      "bytes": 15194,
+      "sha256": "f2d6eccddb62f22d20caa9efb187044a479e4a327d447562c0cee0048998cb6c"
+    },
+    "source-endpoints.js": {
+      "bytes": 1424,
+      "sha256": "065323b2c89bd717dd59fa43e07c9ffc8b3c94f3f66bd04fa642ecffd26bc362"
+    },
+    "station-clock-comparison.mjs": {
+      "bytes": 17651,
+      "sha256": "a1cdf6c5f3f0c30221e4142bc95b41a07b8536047ae215286e678b29fef3a027"
+    },
+    "station-clock-ui.mjs": {
+      "bytes": 40992,
+      "sha256": "6a9e3132f54bfa5c6f9421face554c68a3ea0f451ca088e337a88c1461bc46b6"
+    },
+    "station-clock-workout-source.mjs": {
+      "bytes": 2185,
+      "sha256": "f5a97ded119fa0f5e3b88539317d061d15f7147b1609c36f9ec63410606c52a0"
+    },
+    "station-service-requirements.mjs": {
+      "bytes": 3304,
+      "sha256": "3a33ba0d2dfdf773418652a5e1ba5cfc317c232babaf8d8f63396cd37d8d46f9"
+    },
+    "status-disclosure.js": {
+      "bytes": 7589,
+      "sha256": "10964ca39ae6f8cea7c527e468ee7594af33cc3ba3471677fb57ca41bc220f85"
+    },
+    "style.css": {
+      "bytes": 25373,
+      "sha256": "e4b28ed85e92a73118a00683e66ba5042d3bd0b851dea8c48ccd34f9fe46c09d"
+    },
+    "terrain-guidance.mjs": {
+      "bytes": 4306,
+      "sha256": "580d79348aeb3b17356e7c58ceb1b3a8171236e7713f448427976301b40bfa32"
+    },
+    "terrain-reference/NOTICE.txt": {
+      "bytes": 2812,
+      "sha256": "79013028061335b4424d71c849e6072e7b59dad9bd492f64192216884fc03b77"
+    },
+    "terrain-reference/copernicus-license.pdf": {
+      "bytes": 117522,
+      "sha256": "32049914c37f14e7d53b48d13d74a49e77c030236e2acc7a0df426f9344feba2"
+    },
+    "terrain-reference/shards/N21E120-2765-0-2908-57.bin": {
+      "bytes": 89693,
+      "sha256": "865951ece5f103c6ae57e3a88a83161e0b5db3688cc708504d6a05638b65b9c2"
+    },
+    "terrain-reference/shards/N21E120-2765-114-2908-171.bin": {
+      "bytes": 89693,
+      "sha256": "13f5fdc94d4c0b6da34c8eb6c39376542494718b9488fd2f117785a87eb8c8d5"
+    },
+    "terrain-reference/shards/N21E120-2765-171-2908-201.bin": {
+      "bytes": 47222,
+      "sha256": "1c7fbf4d6f22093d195db49c00da8ae5b12fd74338efe0e800d8a6961f2abf8d"
+    },
+    "terrain-reference/shards/N21E120-2765-201-2931-211.bin": {
+      "bytes": 18292,
+      "sha256": "1aeee2f99138631f04683f0fc41857e9a7fbf865cf1875dd3ee5aaed3c2c696d"
+    },
+    "terrain-reference/shards/N21E120-2765-57-2908-114.bin": {
+      "bytes": 89693,
+      "sha256": "687f8688690483682ee2fa9d111c68b3b3f20c962e0cbed71501c264aeb8d9fe"
+    },
+    "terrain-reference/shards/N21E120-2902-211-2931-216.bin": {
+      "bytes": 1627,
+      "sha256": "4081bedb20d752add9e85be4f0f0ca5937e4cb16cacd12ccbbad60d9c606a389"
+    },
+    "terrain-reference/shards/N22E120-2801-3576-2904-3600.bin": {
+      "bytes": 27224,
+      "sha256": "3705d2d8e6c54da59fd3ec99f11e59193b7c01e564b1cbc551d68e2c4d03ce14"
+    },
+    "terrain-reference/shards/N23E120-3562-75-3600-184.bin": {
+      "bytes": 45594,
+      "sha256": "0f26bb7223101417153246a95c106115730cd5bfd827ca4de3b0b7541e4f9dbb"
+    },
+    "terrain-reference/shards/N23E121-0-108-253-140.bin": {
+      "bytes": 89088,
+      "sha256": "3a289328c3dd0865c75eb5dc8d6c4e3783501d18e74e6bf25f8d14c4f85155e1"
+    },
+    "terrain-reference/shards/N23E121-0-140-253-172.bin": {
+      "bytes": 89088,
+      "sha256": "7081256b0a419cae32c304c1ae70030394647eb809208ac1a3ac0acf4fe79876"
+    },
+    "terrain-reference/shards/N23E121-0-172-253-204.bin": {
+      "bytes": 89088,
+      "sha256": "02aef2e443587ee1ad456dee5cca2077281a01a03011a46d282f337f183b180e"
+    },
+    "terrain-reference/shards/N23E121-0-204-253-236.bin": {
+      "bytes": 89088,
+      "sha256": "66ed6a4ab014de6415f830b620e33c1d88c3cc1922331109473520854305c9d5"
+    },
+    "terrain-reference/shards/N23E121-0-236-253-268.bin": {
+      "bytes": 89088,
+      "sha256": "fae9d11bed2f3fc4dd785bb697f3ca7415e2f884a45b380e6cba4ab05641a182"
+    },
+    "terrain-reference/shards/N23E121-0-76-253-108.bin": {
+      "bytes": 89088,
+      "sha256": "a0423d7f12e3ae917f02131eb3fbfef3ee0514070e6218af82dbfccef7871ba2"
+    },
+    "terrain-reference/shards/N24E120-1986-3034-2046-3087.bin": {
+      "bytes": 35012,
+      "sha256": "fc7a4dba7dcb53b41addba2d1fc6add0d8688045a40edc5aede2d09d2654eabc"
+    },
+    "terrain-reference/shards/N24E121-1120-0-1216-32.bin": {
+      "bytes": 33824,
+      "sha256": "9a8be5a98549d4ce30b63e77ddafe8ae6dc216b9ea625b0acc52057f45d55253"
+    },
+    "terrain-reference/shards/N24E121-1472-128-1632-179.bin": {
+      "bytes": 89792,
+      "sha256": "811183df0a9f083a19bbec0edbae044451b4188c581e220c875c5692340d3051"
+    },
+    "terrain-reference/shards/N24E121-1472-179-1632-230.bin": {
+      "bytes": 89792,
+      "sha256": "71e2bd40161c70bf90b3dba02e141129ca837f425e0e2739dbefa042d180af2a"
+    },
+    "terrain-reference/shards/N24E121-1472-230-1632-256.bin": {
+      "bytes": 45792,
+      "sha256": "bd78566f4bdb1bbd126c4666c0c5a89c47f5634b5cb38d7d7a6317a3fae292f9"
+    },
+    "terrain-reference/shards/N24E121-2086-141-2236-146.bin": {
+      "bytes": 8282,
+      "sha256": "168be82dc43b8fe105154cdcb77aa05ace81e327242a49c37cdef4fd9ff7a1f9"
+    },
+    "terrain-reference/shards/N24E121-2086-33-2236-87.bin": {
+      "bytes": 89132,
+      "sha256": "1dfa4a809d934181c6bbf41c6e919c60e7d8dbdd7d44003d57cac1c6758893fd"
+    },
+    "terrain-reference/shards/N24E121-2086-87-2236-141.bin": {
+      "bytes": 89132,
+      "sha256": "3ce7bd9dc6e60acc7a9ab27c03bae4ba6671a895355b6f09266567b7f6fd9301"
+    },
+    "terrain-reference/shards/N24E121-816-512-1167-535.bin": {
+      "bytes": 88835,
+      "sha256": "4683437c95e79eee8ccb8115e530712c4bc9f0899e255c4f4bf7af2ae24aadf4"
+    },
+    "terrain-reference/shards/N24E121-816-535-1167-558.bin": {
+      "bytes": 88835,
+      "sha256": "459650aefdf4a35158e039047871deb768c777476d899898842571d0c5596ab7"
+    },
+    "terrain-reference/shards/N24E121-816-558-1167-581.bin": {
+      "bytes": 88835,
+      "sha256": "b559cb72f734eef6ea0702f432250d680fff652f1d5f041dc2636e05eefa226a"
+    },
+    "terrain-reference/shards/N24E121-816-581-1167-604.bin": {
+      "bytes": 88835,
+      "sha256": "70ad05017ca3c1d1da162f3a4dbafbbe1509e0245dc8c550cfc5c428de12cd71"
+    },
+    "terrain-reference/shards/N24E121-816-604-1167-627.bin": {
+      "bytes": 88835,
+      "sha256": "f80c722405dbce07e86570d25c47f4755fa69e130802cc830ce2cc1720a3b414"
+    },
+    "terrain-reference/shards/N24E121-816-627-1167-650.bin": {
+      "bytes": 88835,
+      "sha256": "613c873c76bff0085ec118db0f1eaa41b6fd45444e9923214ab3e0dad412669f"
+    },
+    "terrain-reference/shards/N24E121-816-650-1167-673.bin": {
+      "bytes": 88835,
+      "sha256": "5e4c129c48f2f4e6fd2e8c4e253e6ca92cb6e5d27cb9b2b1f4ae6a414cf73f02"
+    },
+    "terrain-reference/shards/N24E121-816-673-1167-696.bin": {
+      "bytes": 88835,
+      "sha256": "009d3c6f4b31262919af9d55fcb8a03d229092c9323bc748394392cacd124fc9"
+    },
+    "terrain-reference/shards/N24E121-816-696-1167-703.bin": {
+      "bytes": 27059,
+      "sha256": "07860e354802d5337d91f8c38abbc868b1ec74571fe21851efc7476091e1ebac"
+    },
+    "terrain-reference/shards/N25E121-1120-3456-1280-3507.bin": {
+      "bytes": 89792,
+      "sha256": "20f38281028dc399c0bc3f652e55a8e4f096e882fc73aed0410065b04006f0b8"
+    },
+    "terrain-reference/shards/N25E121-1120-3507-1280-3558.bin": {
+      "bytes": 89792,
+      "sha256": "bf9566d4168aba24eb903206a08894898a0e720667e513f5d0f70844a10f422f"
+    },
+    "terrain-reference/shards/N25E121-1120-3558-1280-3600.bin": {
+      "bytes": 73952,
+      "sha256": "e9427c2217b82164948eb440c1e87a1e0a573e8f806e5b3fccbb5a84439b31d0"
+    },
+    "terrain-reference/shards/N25E121-1792-3072-2016-3096.bin": {
+      "bytes": 59168,
+      "sha256": "9ef32fad972f09e052acbd35632299f28c9dcf5b71eabf938d7871831ac29ab8"
+    },
+    "terrain-reference/shards/N25E121-1792-3096-2314-3111.bin": {
+      "bytes": 86162,
+      "sha256": "71b330d542f11ede7ce6dae6fba9a642e9dc157f2ac55872ae895641867e90d9"
+    },
+    "terrain-reference/shards/N25E121-1792-3111-2314-3126.bin": {
+      "bytes": 86162,
+      "sha256": "1477eefb35370173532a6533e3dd80f158cc74d1b27404031a95765e72b8b6a4"
+    },
+    "terrain-reference/shards/N25E121-1792-3126-2314-3141.bin": {
+      "bytes": 86162,
+      "sha256": "bdcb5740b5270c2ba81a864b348c840eab48268caef5747d669c925912ea429e"
+    },
+    "terrain-reference/shards/N25E121-1792-3141-2314-3156.bin": {
+      "bytes": 86162,
+      "sha256": "bff72a8a2793fcd5d017583ca02dad52d5b902c723c3129fdafc8e9412a373b5"
+    },
+    "terrain-reference/shards/N25E121-1792-3156-2314-3171.bin": {
+      "bytes": 86162,
+      "sha256": "7fceeae9678eee846611268f4038b9bfbf5be17d40bf53c7103111e5f10f63fc"
+    },
+    "terrain-reference/shards/N25E121-1792-3171-2314-3186.bin": {
+      "bytes": 86162,
+      "sha256": "dfa311d05cf0afee49e55db04d54009915e188b748bdda2902831ce6c7eca2fb"
+    },
+    "terrain-reference/shards/N25E121-1792-3186-2314-3201.bin": {
+      "bytes": 86162,
+      "sha256": "bb27ddc78709d8627bc68052646978fe862e9fc22d41b3bd90a2e4655dba093e"
+    },
+    "terrain-reference/shards/N25E121-1792-3201-2314-3216.bin": {
+      "bytes": 86162,
+      "sha256": "4fb219b0bc8c12f82be683b3223379a93ed2347c7cdbcf8db5873a28ec0598b4"
+    },
+    "terrain-reference/shards/N25E121-1792-3216-2314-3231.bin": {
+      "bytes": 86162,
+      "sha256": "87c38450375a83ec674098013eb1dc8398f3fb4eba6ec2d767ff723e81b85914"
+    },
+    "terrain-reference/shards/N25E121-1792-3231-2314-3246.bin": {
+      "bytes": 86162,
+      "sha256": "bc9ee3287f1fa46cf0a0fad6a30d6ef43416c064ac13cbed311f00794e566e3c"
+    },
+    "terrain-reference/shards/N25E121-1792-3246-2314-3261.bin": {
+      "bytes": 86162,
+      "sha256": "24479dc7e9fcbbd67c860f438a99270306195ae9046c91e6bcf05648f965f160"
+    },
+    "terrain-reference/shards/N25E121-1792-3261-2314-3276.bin": {
+      "bytes": 86162,
+      "sha256": "2137e073ed379b9dcc6195b1dc94dc96979209f08dd7dd828c9945c7b3657ce1"
+    },
+    "terrain-reference/shards/N25E121-1792-3276-2314-3291.bin": {
+      "bytes": 86162,
+      "sha256": "72d6affe249e3c022e038190420e8cd5b6aeb5f385e8cba8c35bcf263cdf69ce"
+    },
+    "terrain-reference/shards/N25E121-1792-3291-2314-3296.bin": {
+      "bytes": 28742,
+      "sha256": "b3565f757bff6624532dffa413e4117d4a5cb1cb80e76d9b3c8e1df8abd25472"
+    },
+    "terrain-reference/shards/N25E121-1917-3296-2314-3316.bin": {
+      "bytes": 87372,
+      "sha256": "730b6080a51cb9b7f1de8363ec8fe2534d0fd67f08da75028693fa7e7277ecb5"
+    },
+    "terrain-reference/shards/N25E121-1917-3316-2314-3325.bin": {
+      "bytes": 39335,
+      "sha256": "09152afd2f8d8e2051a3126e6f738bb7d57f023c7db98452b56adf58c5c8f022"
+    },
+    "terrain-reference/shards/N25E121-2931-3204-3126-3246.bin": {
+      "bytes": 90122,
+      "sha256": "64bf94a152b2614e2e9ffc49a657c5f0e451d3c67571de4dc209ad0c7108b8bf"
+    },
+    "terrain-reference/shards/N25E121-2931-3246-3126-3288.bin": {
+      "bytes": 90122,
+      "sha256": "a144b7da91816d06cf9bb8d7630f9a2c91d2f5f641a9dc6304c2edf7850550af"
+    },
+    "terrain-reference/shards/N25E121-2931-3288-3126-3309.bin": {
+      "bytes": 45077,
+      "sha256": "a43a3676b4af603ef296432b6d8dfcbe8da4d3688db7f274cfe653010c15286e"
+    },
+    "terrain-reference/shards/N25E121-3010-3195-3113-3204.bin": {
+      "bytes": 10229,
+      "sha256": "ba48efdb5ca0d3617a9272db79c4baeadc30f1ed13e60353a7983d5a707c7a63"
+    },
+    "terrain-reference/terrain-bundle.json": {
+      "bytes": 56291,
+      "sha256": "5fecaedb28c61d17dbde37f4c4200ccec209092375347b88e57053e7035aa5e9"
+    },
+    "terrain-segments.mjs": {
+      "bytes": 8296,
+      "sha256": "3b3c6c311af10cb5865cd98aa62fdddc72daa324ccd6b2159fc03793e4029708"
+    },
+    "terrain-summary.mjs": {
+      "bytes": 11105,
+      "sha256": "e7f30c71e98b8a3ce37334884224acb04666668a0222c57bad9afa2543b0fb30"
+    },
+    "timed-history-ui.mjs": {
+      "bytes": 15140,
+      "sha256": "ecc61d999035e84c39236df3a1f324caff123e6e0e87c941c73be3b06558eaff"
+    },
+    "transport.js": {
+      "bytes": 8330,
+      "sha256": "1d7fb42e52a95d14526903b7b6b0c1f25bb588f24ff003b39261d6ad52d275ee"
+    },
+    "upload-course-context.mjs": {
+      "bytes": 10966,
+      "sha256": "efc75c8bff6fdeb9f98c1f23fe013ead0809494350fccdab6e94e6930630c5e2"
+    },
+    "upload-course-facts.mjs": {
+      "bytes": 5190,
+      "sha256": "b374ca72b016df35422a2a23ad4ac250e3bd8b1f0daf86489d9828bf9c99a1c5"
+    },
+    "upload-course-fingerprints.mjs": {
+      "bytes": 13045,
+      "sha256": "8ac667208830a2b60f07edcae7bcd4bd38b9a9fcecd733aa234dbe51cb9e2a90"
+    },
+    "upload-course-mapping.mjs": {
+      "bytes": 9290,
+      "sha256": "0d10605adfaaf119afd15eceb4f09dff3b453a079d8a01c375ae7f0cc6fe787a"
+    },
+    "upload-only-source-data.mjs": {
+      "bytes": 27354,
+      "sha256": "04c25161e81efcd2174c2f4f9c315f3aee496e4c900fc328ed2faa6e8b8eaeab"
+    },
+    "upload-source-identity.mjs": {
+      "bytes": 4102,
+      "sha256": "fe8c91b8d6e13d1efe57b931bde953ed5a3ea70f44ca836c68512e61fd414a84"
+    },
+    "workout-ui.js": {
+      "bytes": 19932,
+      "sha256": "682f9d34930beb2bcaa69fe525a56921430d633e1bc2fe69d2a91a2a0a85204e"
+    },
+    "workspace.css": {
+      "bytes": 75635,
+      "sha256": "df2bb8f9ad4e9b706bea5380acc54789f329793e77a59363f160644017ea6dff"
+    }
+  },
+  "python_graph_members": 65,
+  "python_source_files": 49,
+  "schema": "ridgegeo-public-release-integrity/1",
+  "selected_app_sha256": "d6e8c018e668c8599eaf6d22da9cb9840a766a79b2a7b2d67650488ee7369a74",
+  "source_exclusions": [
+    "checks/public-release/integrity.json",
+    "scripts/verify-runtime-assets.mjs",
+    "scripts/verify-built-runtime-assets.mjs"
+  ],
+  "source_root_files": [
+    ".openai/hosting.json",
+    "package.json",
+    "package-lock.json",
+    "vite.config.ts",
+    "next.config.ts",
+    "postcss.config.mjs",
+    "tsconfig.json",
+    "cloudflare-env.d.ts",
+    ".npmrc"
+  ],
+  "source_roots": [
+    "app",
+    "build",
+    "lib",
+    "server",
+    "scripts",
+    "checks"
+  ]
+}

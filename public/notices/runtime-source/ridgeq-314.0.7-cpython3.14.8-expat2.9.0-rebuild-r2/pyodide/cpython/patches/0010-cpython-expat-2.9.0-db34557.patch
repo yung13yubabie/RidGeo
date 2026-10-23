@@ -1,0 +1,2082 @@
+From db34557ea0c00ab309db9c64f0f33aea6d429868 Mon Sep 17 00:00:00 2001
+From: "Miss Islington (bot)"
+ <31488909+miss-islington@users.noreply.github.com>
+Date: Tue, 20 Oct 2026 11:39:19 -0700
+Subject: [PATCH] [3.14] gh-158876: Update bundled Expat to 2.9.0 (GH-158881)
+ (#159920)
+
+(cherry picked from commit 0071fb511110a03d8766a9061f8813c9a1a9a4de)
+
+Co-authored-by: Stan Ulbrych <stan@python.org>
+Co-authored-by: Petr Viktorin <encukou@gmail.com>
+---
+ Makefile.pre.in                               |   6 +-
+ ...-08-31-16-47-33.gh-issue-157953.KxCFSN.rst |   1 +
+ Misc/sbom.spdx.json                           |  61 +-
+ Modules/expat/expat.h                         |  99 +++-
+ Modules/expat/expat_external.h                |   3 +
+ Modules/expat/internal.h                      |  12 +-
+ Modules/expat/pyexpatns.h                     |  11 +
+ Modules/expat/refresh.sh                      |   9 +-
+ Modules/expat/xcs.c                           |  90 +++
+ Modules/expat/{xcsinc.c => xcs.h}             |  36 +-
+ Modules/expat/xmlparse.c                      | 549 +++++++++++++-----
+ Modules/expat/xmltok.c                        | 280 ++-------
+ Modules/expat/xmltok_impl.c                   |   2 +-
+ Modules/pyexpat.c                             |  58 +-
+ PCbuild/_elementtree.vcxproj                  |   2 +
+ PCbuild/_elementtree.vcxproj.filters          |   6 +
+ PCbuild/pyexpat.vcxproj                       |   2 +
+ PCbuild/pyexpat.vcxproj.filters               |   6 +
+ 18 files changed, 765 insertions(+), 468 deletions(-)
+ create mode 100644 Misc/NEWS.d/next/Security/2026-08-31-16-47-33.gh-issue-157953.KxCFSN.rst
+ create mode 100644 Modules/expat/xcs.c
+ rename Modules/expat/{xcsinc.c => xcs.h} (76%)
+
+diff --git a/Makefile.pre.in b/Makefile.pre.in
+index b619ac86f976923..7b3e508d819459a 100644
+--- a/Makefile.pre.in
++++ b/Makefile.pre.in
+@@ -635,6 +635,7 @@ LIBMPDEC_HEADERS= \
+ # pyexpat's expat library
+ 
+ LIBEXPAT_OBJS= \
++		Modules/expat/xcs.o \
+ 		Modules/expat/xmlparse.o \
+ 		Modules/expat/xmlrole.o \
+ 		Modules/expat/xmltok.o
+@@ -655,7 +656,7 @@ LIBEXPAT_HEADERS= \
+ 		Modules/expat/pyexpatns.h \
+ 		Modules/expat/siphash.h \
+ 		Modules/expat/utf8tab.h \
+-		Modules/expat/xcsinc.c \
++		Modules/expat/xcs.h \
+ 		Modules/expat/xmlrole.h \
+ 		Modules/expat/xmltok.h \
+ 		Modules/expat/xmltok_impl.h \
+@@ -1509,6 +1510,9 @@ $(LIBMPDEC_A): $(LIBMPDEC_OBJS)
+ # Build static libexpat.a
+ LIBEXPAT_CFLAGS=@LIBEXPAT_CFLAGS@ $(PY_STDMODULE_CFLAGS) $(CCSHARED)
+ 
++Modules/expat/xcs.o: $(srcdir)/Modules/expat/xcs.c $(LIBEXPAT_HEADERS) $(PYTHON_HEADERS)
++	$(CC) -c $(LIBEXPAT_CFLAGS) -o $@ $(srcdir)/Modules/expat/xcs.c
++
+ Modules/expat/xmlparse.o: $(srcdir)/Modules/expat/xmlparse.c $(LIBEXPAT_HEADERS) $(PYTHON_HEADERS)
+ 	$(CC) -c $(LIBEXPAT_CFLAGS) -o $@ $(srcdir)/Modules/expat/xmlparse.c
+ 
+diff --git a/Misc/NEWS.d/next/Security/2026-08-31-16-47-33.gh-issue-157953.KxCFSN.rst b/Misc/NEWS.d/next/Security/2026-08-31-16-47-33.gh-issue-157953.KxCFSN.rst
+new file mode 100644
+index 000000000000000..3220f4613a91af6
+--- /dev/null
++++ b/Misc/NEWS.d/next/Security/2026-08-31-16-47-33.gh-issue-157953.KxCFSN.rst
+@@ -0,0 +1 @@
++Update bundled `libexpat <https://libexpat.github.io/>`_ to version 2.9.0.
+diff --git a/Misc/sbom.spdx.json b/Misc/sbom.spdx.json
+index 227cc85816e3d30..bcb4f5c1c95b13b 100644
+--- a/Misc/sbom.spdx.json
++++ b/Misc/sbom.spdx.json
+@@ -48,11 +48,11 @@
+       "checksums": [
+         {
+           "algorithm": "SHA1",
+-          "checksumValue": "107e54c825529a59b79db8347be6fd9147acbbcd"
++          "checksumValue": "6bb4cc0b942c84d120fabf76299572ee8078f59c"
+         },
+         {
+           "algorithm": "SHA256",
+-          "checksumValue": "17cd1fc3b4c61d00de96091ceed0a3721d5bac9755c6d04e89d9f8a79d037c12"
++          "checksumValue": "805f17ae5f597eeb9f058f60428a1a62268de242a096af17cbcc2e17af111bad"
+         }
+       ],
+       "fileName": "Modules/expat/expat.h"
+@@ -62,11 +62,11 @@
+       "checksums": [
+         {
+           "algorithm": "SHA1",
+-          "checksumValue": "bf25c623b9b0961f49d489b998a7cdf03b035614"
++          "checksumValue": "4857095da1f3fac0c52db3fbfa455898d90ac321"
+         },
+         {
+           "algorithm": "SHA256",
+-          "checksumValue": "ec35498736485b2321610a750e5b2534399fed87dc44bc4ace529eeb5a280a53"
++          "checksumValue": "a02fba65fcf68652fc24619d673ee32969c1dca46c7a0fd1f15906722babff6d"
+         }
+       ],
+       "fileName": "Modules/expat/expat_external.h"
+@@ -118,11 +118,11 @@
+       "checksums": [
+         {
+           "algorithm": "SHA1",
+-          "checksumValue": "ffa2c09f2e6d9d5d26be280dbada3c37a103340f"
++          "checksumValue": "14f839bca5a88c8020ba4e3b0650b03b7c05b829"
+         },
+         {
+           "algorithm": "SHA256",
+-          "checksumValue": "0123d00963768b5779544cc54dcccad311824b192a38d3489c4fb1fbbfa33b17"
++          "checksumValue": "9dd01acd513ff6143781e1c01f5738126a512b20f42600f9523ec95e2dd4dcf1"
+         }
+       ],
+       "fileName": "Modules/expat/internal.h"
+@@ -212,29 +212,43 @@
+       "fileName": "Modules/expat/winconfig.h"
+     },
+     {
+-      "SPDXID": "SPDXRef-FILE-Modules-expat-xcsinc.c",
++      "SPDXID": "SPDXRef-FILE-Modules-expat-xcs.c",
+       "checksums": [
+         {
+           "algorithm": "SHA1",
+-          "checksumValue": "ecac5a698350e3c9e6c899bbcbfb62875ecf326e"
++          "checksumValue": "e5ba4185088e0217eb7be7bf90c426b33cebb524"
+         },
+         {
+           "algorithm": "SHA256",
+-          "checksumValue": "1210979a688301412f46e058d0497fa3c1c63c296c2e015834cda0f0b314875d"
++          "checksumValue": "15759b35a51a35c59b2b8f5b07057578e3505dbbce57a5adaae9f2d113b4b852"
+         }
+       ],
+-      "fileName": "Modules/expat/xcsinc.c"
++      "fileName": "Modules/expat/xcs.c"
++    },
++    {
++      "SPDXID": "SPDXRef-FILE-Modules-expat-xcs.h",
++      "checksums": [
++        {
++          "algorithm": "SHA1",
++          "checksumValue": "b7b265932c21cb554f3a520f754271c5af51db97"
++        },
++        {
++          "algorithm": "SHA256",
++          "checksumValue": "866a6cadbb9eaaaebefe08ee4f3de72a00ffdf77a6da3408605dfc16803f0bd3"
++        }
++      ],
++      "fileName": "Modules/expat/xcs.h"
+     },
+     {
+       "SPDXID": "SPDXRef-FILE-Modules-expat-xmlparse.c",
+       "checksums": [
+         {
+           "algorithm": "SHA1",
+-          "checksumValue": "c49f8f2f9b694175daffd870b86a767f4359f0a5"
++          "checksumValue": "b56b7fd9a13af5719738bf142fef0beb936139d5"
+         },
+         {
+           "algorithm": "SHA256",
+-          "checksumValue": "9a4969bb0ac497803866705f3fa233cc4b487e7685800d9222bd0ab38d1b8a20"
++          "checksumValue": "533c0f387350f49c3e5cd392d87b8cc0268d9b49d414c10095e2143eaf8b3774"
+         }
+       ],
+       "fileName": "Modules/expat/xmlparse.c"
+@@ -272,11 +286,11 @@
+       "checksums": [
+         {
+           "algorithm": "SHA1",
+-          "checksumValue": "93a949a8b224b9ea56fa22f081f2378352ca6637"
++          "checksumValue": "1a98bb41885c1795b5d66da1cd8ab4babc645670"
+         },
+         {
+           "algorithm": "SHA256",
+-          "checksumValue": "47ffd58f56f61284fd84cecd94ddad4c79cde922f57994c1525f8df1eb9272eb"
++          "checksumValue": "44baab2a4970749f6f29992bbbc1b3c62239ef9ec2a20de96332ef4659b9e32d"
+         }
+       ],
+       "fileName": "Modules/expat/xmltok.c"
+@@ -300,11 +314,11 @@
+       "checksums": [
+         {
+           "algorithm": "SHA1",
+-          "checksumValue": "a27d1f15e18b9d7f91e4e2efd9cd88f6e9e1cd0e"
++          "checksumValue": "1d1aabfb8dd3e9d89841d1b3f385d1def9ab46a3"
+         },
+         {
+           "algorithm": "SHA256",
+-          "checksumValue": "4dcd7ae88dd90bbc89d0e41ba6affb46a107ee28df3b49cb84cdf228b7cc7981"
++          "checksumValue": "857d4d0984aaaca0ff6c907f0e9abf26c476fd80f6cb85896c2aa1d78eb66ae1"
+         }
+       ],
+       "fileName": "Modules/expat/xmltok_impl.c"
+@@ -1786,14 +1800,14 @@
+       "checksums": [
+         {
+           "algorithm": "SHA256",
+-          "checksumValue": "920dde485e15eda0cce8d2310b41d492c534e5e3d89ad407a0b4176dd2ff88fe"
++          "checksumValue": "16afbb9cefead2aa278105cf27d9f597bde7fbf3dbb85015857ca7ca6a4e89ba"
+         }
+       ],
+-      "downloadLocation": "https://github.com/libexpat/libexpat/releases/download/R_2_8_5/expat-2.8.5.tar.gz",
++      "downloadLocation": "https://github.com/libexpat/libexpat/releases/download/R_2_9_0/expat-2.9.0.tar.gz",
+       "externalRefs": [
+         {
+           "referenceCategory": "SECURITY",
+-          "referenceLocator": "cpe:2.3:a:libexpat_project:libexpat:2.8.5:*:*:*:*:*:*:*",
++          "referenceLocator": "cpe:2.3:a:libexpat_project:libexpat:2.9.0:*:*:*:*:*:*:*",
+           "referenceType": "cpe23Type"
+         }
+       ],
+@@ -1801,7 +1815,7 @@
+       "name": "expat",
+       "originator": "Organization: Expat development team",
+       "primaryPackagePurpose": "SOURCE",
+-      "versionInfo": "2.8.5"
++      "versionInfo": "2.9.0"
+     },
+     {
+       "SPDXID": "SPDXRef-PACKAGE-hacl-star",
+@@ -1947,7 +1961,12 @@
+       "spdxElementId": "SPDXRef-PACKAGE-expat"
+     },
+     {
+-      "relatedSpdxElement": "SPDXRef-FILE-Modules-expat-xcsinc.c",
++      "relatedSpdxElement": "SPDXRef-FILE-Modules-expat-xcs.c",
++      "relationshipType": "CONTAINS",
++      "spdxElementId": "SPDXRef-PACKAGE-expat"
++    },
++    {
++      "relatedSpdxElement": "SPDXRef-FILE-Modules-expat-xcs.h",
+       "relationshipType": "CONTAINS",
+       "spdxElementId": "SPDXRef-PACKAGE-expat"
+     },
+diff --git a/Modules/expat/expat.h b/Modules/expat/expat.h
+index 4c3851d50a5fdf3..1b2852dd76cb487 100644
+--- a/Modules/expat/expat.h
++++ b/Modules/expat/expat.h
+@@ -48,7 +48,7 @@
+ #ifndef Expat_INCLUDED
+ #  define Expat_INCLUDED 1
+ 
+-#  include <stdint.h> // for uint8_t
++#  include <stdint.h> // for int64_t, uint8_t, uint64_t
+ #  include <stdlib.h>
+ #  include "expat_external.h"
+ 
+@@ -140,6 +140,26 @@ enum XML_Error {
+   XML_ERROR_NOT_STARTED,
+ };
+ 
++/* Added in 2.9.0. */
++enum XML_Prop_Error {
++  XML_PROP_ERROR_NONE = 0, // i.e. success
++
++  XML_PROP_ERROR_INVALID_KEY = 1,   // i.e. the property is not known at all
++  XML_PROP_ERROR_INVALID_TYPE = 2,  // i.e. the property is known but expects a
++                                    // different type (so a different
++                                    // getter/setter would need to be called)
++  XML_PROP_ERROR_INVALID_VALUE = 3, // i.e. the value is invalid (with a setter
++                                    // function) or a NULL-pointer (with a
++                                    // getter function)
++
++  XML_PROP_ERROR_PARSER_NULL = 4,     // i.e. the parser argument is NULL
++  XML_PROP_ERROR_PARSER_NOT_ROOT = 5, // i.e. the parser is not a root parser
++                                      // but a subparser (and a root parser is
++                                      // needed)
++
++  /* potentially more error codes upcoming here */
++};
++
+ enum XML_Content_Type {
+   XML_CTYPE_EMPTY = 1,
+   XML_CTYPE_ANY,
+@@ -757,29 +777,6 @@ XML_GetSpecifiedAttributeCount(XML_Parser parser);
+ XMLPARSEAPI(int)
+ XML_GetIdAttributeIndex(XML_Parser parser);
+ 
+-#  ifdef XML_ATTR_INFO
+-/* Source file byte offsets for the start and end of attribute names and values.
+-   The value indices are exclusive of surrounding quotes; thus in a UTF-8 source
+-   file an attribute value of "blah" will yield:
+-   info->valueEnd - info->valueStart = 4 bytes.
+-*/
+-typedef struct {
+-  XML_Index nameStart;  /* Offset to beginning of the attribute name. */
+-  XML_Index nameEnd;    /* Offset after the attribute name's last byte. */
+-  XML_Index valueStart; /* Offset to beginning of the attribute value. */
+-  XML_Index valueEnd;   /* Offset after the attribute value's last byte. */
+-} XML_AttrInfo;
+-
+-/* Returns an array of XML_AttrInfo structures for the attribute/value pairs
+-   passed in last call to the XML_StartElementHandler that were specified
+-   in the start-tag rather than defaulted. Each attribute/value pair counts
+-   as 1; thus the number of entries in the array is
+-   XML_GetSpecifiedAttributeCount(parser) / 2.
+-*/
+-XMLPARSEAPI(const XML_AttrInfo *)
+-XML_GetAttributeInfo(XML_Parser parser);
+-#  endif
+-
+ /* Parses some input. Returns XML_STATUS_ERROR if a fatal error is
+    detected.  The last call to XML_Parse must have isFinal true; len
+    may be zero for this call (or any other).
+@@ -964,15 +961,24 @@ XML_GetErrorCode(XML_Parser parser);
+    return 0 to indicate an error.
+    Note: XML_GetCurrentByteIndex returns -1 to indicate an error.
+ */
++XML_ATTR_DEPRECATED("please use XML_GetCurrentLineNumber64 instead")
+ XMLPARSEAPI(XML_Size) XML_GetCurrentLineNumber(XML_Parser parser);
++XMLPARSEAPI(uint64_t) XML_GetCurrentLineNumber64(XML_Parser parser);
++XML_ATTR_DEPRECATED("please use XML_GetCurrentColumnNumber64 instead")
+ XMLPARSEAPI(XML_Size) XML_GetCurrentColumnNumber(XML_Parser parser);
++XMLPARSEAPI(uint64_t) XML_GetCurrentColumnNumber64(XML_Parser parser);
++XML_ATTR_DEPRECATED("please use XML_GetCurrentByteIndex64 instead")
+ XMLPARSEAPI(XML_Index) XML_GetCurrentByteIndex(XML_Parser parser);
++XMLPARSEAPI(int64_t) XML_GetCurrentByteIndex64(XML_Parser parser);
+ 
+ /* Return the number of bytes in the current event.
+    Returns 0 if the event is in an internal entity.
+ */
++XML_ATTR_DEPRECATED("please use XML_GetCurrentByteCount64 instead")
+ XMLPARSEAPI(int)
+ XML_GetCurrentByteCount(XML_Parser parser);
++XMLPARSEAPI(uint64_t)
++XML_GetCurrentByteCount64(XML_Parser parser);
+ 
+ /* If XML_CONTEXT_BYTES is >=1, returns the input buffer, sets
+    the integer pointed to by offset to the offset within this buffer
+@@ -984,8 +990,11 @@ XML_GetCurrentByteCount(XML_Parser parser);
+    NOTE: The character pointer returned should not be used outside
+    the handler that makes the call.
+ */
++XML_ATTR_DEPRECATED("please use XML_GetInputContext64 instead")
+ XMLPARSEAPI(const char *)
+ XML_GetInputContext(XML_Parser parser, int *offset, int *size);
++XMLPARSEAPI(const char *)
++XML_GetInputContext64(XML_Parser parser, int64_t *offset, uint64_t *size);
+ 
+ /* For backwards compatibility with previous versions. */
+ #  define XML_GetErrorLineNumber XML_GetCurrentLineNumber
+@@ -1040,6 +1049,7 @@ enum XML_FeatureEnum {
+   XML_FEATURE_UNICODE_WCHAR_T,
+   XML_FEATURE_DTD,
+   XML_FEATURE_CONTEXT_BYTES,
++  /* Added in Expat 1.95.5, removed in Expat 2.9.0. */
+   XML_FEATURE_MIN_SIZE,
+   XML_FEATURE_SIZEOF_XML_CHAR,
+   XML_FEATURE_SIZEOF_XML_LCHAR,
+@@ -1047,7 +1057,7 @@ enum XML_FeatureEnum {
+   XML_FEATURE_NS,
+   /* Added in Expat 2.0.1. */
+   XML_FEATURE_LARGE_SIZE,
+-  /* Added in Expat 2.1.0. */
++  /* Added in Expat 2.1.0, removed in Expat 2.9.0. */
+   XML_FEATURE_ATTR_INFO,
+   /* Added in Expat 2.4.0. */
+   XML_FEATURE_BILLION_LAUGHS_ATTACK_PROTECTION_MAXIMUM_AMPLIFICATION_DEFAULT,
+@@ -1069,6 +1079,41 @@ typedef struct {
+ XMLPARSEAPI(const XML_Feature *)
+ XML_GetFeatureList(void);
+ 
++/* Added in Expat 2.9.0. */
++enum XML_Parser_Property {
++#  if defined(XML_TESTING)
++  XML_PROP_INVALID = 0,
++#  endif
++#  if XML_GE == 1
++  XML_PROP_ALLOC_TRACKER_ACTIVATION_THRESHOLD = 1,   // of type `uint64_t`
++  XML_PROP_ALLOC_TRACKER_MAXIMUM_AMPLIFICATION = 2,  // of type `double`
++  XML_PROP_BILLION_LAUGHS_ACTIVATION_THRESHOLD = 3,  // of type `uint64_t`
++  XML_PROP_BILLION_LAUGHS_MAXIMUM_AMPLIFICATION = 4, // of type `double`
++#  endif
++  XML_PROP_REPARSE_DEFERRAL_ENABLED = 5, // of type `XML_Bool`
++  /* more properties upcoming here */
++};
++
++/* Added in Expat 2.9.0. */
++XMLPARSEAPI(enum XML_Prop_Error)
++XML_GetPropertyBool(XML_Parser parser, enum XML_Parser_Property property,
++                    XML_Bool *value);
++XMLPARSEAPI(enum XML_Prop_Error)
++XML_GetPropertyDouble(XML_Parser parser, enum XML_Parser_Property property,
++                      double *value);
++XMLPARSEAPI(enum XML_Prop_Error)
++XML_GetPropertyUInt64(XML_Parser parser, enum XML_Parser_Property property,
++                      uint64_t *value);
++XMLPARSEAPI(enum XML_Prop_Error)
++XML_SetPropertyBool(XML_Parser parser, enum XML_Parser_Property property,
++                    XML_Bool value);
++XMLPARSEAPI(enum XML_Prop_Error)
++XML_SetPropertyDouble(XML_Parser parser, enum XML_Parser_Property property,
++                      double value);
++XMLPARSEAPI(enum XML_Prop_Error)
++XML_SetPropertyUInt64(XML_Parser parser, enum XML_Parser_Property property,
++                      uint64_t value);
++
+ #  if defined(XML_DTD) || (defined(XML_GE) && XML_GE == 1)
+ /* Added in Expat 2.4.0 for XML_DTD defined and
+  * added in Expat 2.6.0 for XML_GE == 1. */
+@@ -1101,8 +1146,8 @@ XML_SetReparseDeferralEnabled(XML_Parser parser, XML_Bool enabled);
+    See https://semver.org
+ */
+ #  define XML_MAJOR_VERSION 2
+-#  define XML_MINOR_VERSION 8
+-#  define XML_MICRO_VERSION 5
++#  define XML_MINOR_VERSION 9
++#  define XML_MICRO_VERSION 0
+ 
+ #  ifdef __cplusplus
+ }
+diff --git a/Modules/expat/expat_external.h b/Modules/expat/expat_external.h
+index a6c8a97881795e5..120a30e7ef3e498 100644
+--- a/Modules/expat/expat_external.h
++++ b/Modules/expat/expat_external.h
+@@ -169,6 +169,9 @@ typedef char XML_LChar;
+ #  endif   /* XML_UNICODE */
+ 
+ #  ifdef XML_LARGE_SIZE /* Use large integers for file/stream positions. */
++#    if defined(__clang__) || defined(__GNUC__)
++#      warning Macro XML_LARGE_SIZE is deprecated, please use the 64bit location API functions instead.
++#    endif
+ typedef long long XML_Index;
+ typedef unsigned long long XML_Size;
+ #  else
+diff --git a/Modules/expat/internal.h b/Modules/expat/internal.h
+index 86655371d29033e..de34cd7dfc55c58 100644
+--- a/Modules/expat/internal.h
++++ b/Modules/expat/internal.h
+@@ -56,13 +56,11 @@
+ #if ! defined(INTERNAL_H)
+ #  define INTERNAL_H 1
+ 
+-#  ifndef XML_MIN_SIZE
+-#    if ! defined(inline)
+-#      ifdef __GNUC__
+-#        define inline __inline
+-#      endif /* __GNUC__ */
+-#    endif
+-#  endif /* XML_MIN_SIZE */
++#  if ! defined(inline)
++#    ifdef __GNUC__
++#      define inline __inline
++#    endif /* __GNUC__ */
++#  endif
+ 
+ #  ifndef inline
+ #    define inline
+diff --git a/Modules/expat/pyexpatns.h b/Modules/expat/pyexpatns.h
+index fc6b482d587e0d6..4c550b7d0131819 100644
+--- a/Modules/expat/pyexpatns.h
++++ b/Modules/expat/pyexpatns.h
+@@ -50,14 +50,22 @@
+ #define XML_GetBase                     PyExpat_XML_GetBase
+ #define XML_GetBuffer                   PyExpat_XML_GetBuffer
+ #define XML_GetCurrentByteCount         PyExpat_XML_GetCurrentByteCount
++#define XML_GetCurrentByteCount64       PyExpat_XML_GetCurrentByteCount64
+ #define XML_GetCurrentByteIndex         PyExpat_XML_GetCurrentByteIndex
++#define XML_GetCurrentByteIndex64       PyExpat_XML_GetCurrentByteIndex64
+ #define XML_GetCurrentColumnNumber      PyExpat_XML_GetCurrentColumnNumber
++#define XML_GetCurrentColumnNumber64    PyExpat_XML_GetCurrentColumnNumber64
+ #define XML_GetCurrentLineNumber        PyExpat_XML_GetCurrentLineNumber
++#define XML_GetCurrentLineNumber64      PyExpat_XML_GetCurrentLineNumber64
+ #define XML_GetErrorCode                PyExpat_XML_GetErrorCode
+ #define XML_GetFeatureList              PyExpat_XML_GetFeatureList
+ #define XML_GetIdAttributeIndex         PyExpat_XML_GetIdAttributeIndex
+ #define XML_GetInputContext             PyExpat_XML_GetInputContext
++#define XML_GetInputContext64           PyExpat_XML_GetInputContext64
+ #define XML_GetParsingStatus            PyExpat_XML_GetParsingStatus
++#define XML_GetPropertyBool             PyExpat_XML_GetPropertyBool
++#define XML_GetPropertyDouble           PyExpat_XML_GetPropertyDouble
++#define XML_GetPropertyUInt64           PyExpat_XML_GetPropertyUInt64
+ #define XML_GetSpecifiedAttributeCount  PyExpat_XML_GetSpecifiedAttributeCount
+ #define XmlGetUtf16InternalEncoding     PyExpat_XmlGetUtf16InternalEncoding
+ #define XmlGetUtf16InternalEncodingNS   PyExpat_XmlGetUtf16InternalEncodingNS
+@@ -110,6 +118,9 @@
+ #define XML_SetNotStandaloneHandler     PyExpat_XML_SetNotStandaloneHandler
+ #define XML_SetParamEntityParsing       PyExpat_XML_SetParamEntityParsing
+ #define XML_SetProcessingInstructionHandler PyExpat_XML_SetProcessingInstructionHandler
++#define XML_SetPropertyBool             PyExpat_XML_SetPropertyBool
++#define XML_SetPropertyDouble           PyExpat_XML_SetPropertyDouble
++#define XML_SetPropertyUInt64           PyExpat_XML_SetPropertyUInt64
+ #define XML_SetReparseDeferralEnabled   PyExpat_XML_SetReparseDeferralEnabled
+ #define XML_SetReturnNSTriplet          PyExpat_XML_SetReturnNSTriplet
+ #define XML_SetSkippedEntityHandler     PyExpat_XML_SetSkippedEntityHandler
+diff --git a/Modules/expat/refresh.sh b/Modules/expat/refresh.sh
+index 86fe488c406da23..1c7094abec7b747 100755
+--- a/Modules/expat/refresh.sh
++++ b/Modules/expat/refresh.sh
+@@ -12,9 +12,9 @@ fi
+ 
+ # Update this when updating to a new version after verifying that the changes
+ # the update brings in are good. These values are used for verifying the SBOM, too.
+-expected_libexpat_tag="R_2_8_5"
+-expected_libexpat_version="2.8.5"
+-expected_libexpat_sha256="920dde485e15eda0cce8d2310b41d492c534e5e3d89ad407a0b4176dd2ff88fe"
++expected_libexpat_tag="R_2_9_0"
++expected_libexpat_version="2.9.0"
++expected_libexpat_sha256="16afbb9cefead2aa278105cf27d9f597bde7fbf3dbb85015857ca7ca6a4e89ba"
+ 
+ expat_dir="$(realpath "$(dirname -- "${BASH_SOURCE[0]}")")"
+ cd ${expat_dir}
+@@ -43,7 +43,8 @@ lib_files=(
+   siphash.h
+   utf8tab.h
+   winconfig.h
+-  xcsinc.c
++  xcs.c
++  xcs.h
+   xmlparse.c
+   xmlrole.c
+   xmlrole.h
+diff --git a/Modules/expat/xcs.c b/Modules/expat/xcs.c
+new file mode 100644
+index 000000000000000..ae5e042d778fffa
+--- /dev/null
++++ b/Modules/expat/xcs.c
+@@ -0,0 +1,90 @@
++/*
++                            __  __            _
++                         ___\ \/ /_ __   __ _| |_
++                        / _ \\  /| '_ \ / _` | __|
++                       |  __//  \| |_) | (_| | |_
++                        \___/_/\_\ .__/ \__,_|\__|
++                                 |_| XML parser
++
++   Copyright (c) 2022-2026 Sebastian Pipping <sebastian@pipping.org>
++   Licensed under the MIT license:
++
++   Permission is  hereby granted,  free of charge,  to any  person obtaining
++   a  copy  of  this  software   and  associated  documentation  files  (the
++   "Software"),  to  deal in  the  Software  without restriction,  including
++   without  limitation the  rights  to use,  copy,  modify, merge,  publish,
++   distribute, sublicense, and/or sell copies of the Software, and to permit
++   persons  to whom  the Software  is  furnished to  do so,  subject to  the
++   following conditions:
++
++   The above copyright  notice and this permission notice  shall be included
++   in all copies or substantial portions of the Software.
++
++   THE  SOFTWARE  IS  PROVIDED  "AS  IS",  WITHOUT  WARRANTY  OF  ANY  KIND,
++   EXPRESS  OR IMPLIED,  INCLUDING  BUT  NOT LIMITED  TO  THE WARRANTIES  OF
++   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
++   NO EVENT SHALL THE AUTHORS OR  COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
++   DAMAGES OR  OTHER LIABILITY, WHETHER  IN AN  ACTION OF CONTRACT,  TORT OR
++   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
++   USE OR OTHER DEALINGS IN THE SOFTWARE.
++
++   SPDX-License-Identifier: MIT
++*/
++
++#include "xcs.h"
++
++#if defined(XML_UNICODE)
++#  if defined(XML_UNICODE_WCHAR_T)
++#    include <wchar.h> // for wcscmp, wcslen, wcsncmp
++#  endif
++#else
++#  include <string.h> // for strcmp, strlen, strncmp
++#endif
++
++size_t
++xcslen(const XML_Char *s) {
++#ifdef XML_UNICODE
++#  ifdef XML_UNICODE_WCHAR_T
++  return wcslen(s);
++#  else
++  // XML_Char is unsigned short
++  size_t len = 0;
++  while (s[len]) {
++    len++;
++  }
++  return len;
++#  endif
++#else
++  return strlen(s);
++#endif
++}
++
++int
++xcscmp(const XML_Char *a, const XML_Char *b) {
++#if defined(XML_UNICODE)
++#  if defined(XML_UNICODE_WCHAR_T)
++  return wcscmp(a, b);
++#  else
++  for (; a[0] && b[0] && a[0] == b[0]; a++, b++)
++    ;
++  return a[0] - b[0];
++#  endif
++#else
++  return strcmp(a, b);
++#endif
++}
++
++int
++xcsncmp(const XML_Char *a, const XML_Char *b, size_t len) {
++#if defined(XML_UNICODE)
++#  if defined(XML_UNICODE_WCHAR_T)
++  return wcsncmp(a, b, len);
++#  else
++  for (; len > 0 && a[0] && b[0] && a[0] == b[0]; len--, a++, b++) {
++  }
++  return (len == 0) ? 0 : (a[0] - b[0]);
++#  endif
++#else
++  return strncmp(a, b, len);
++#endif
++}
+diff --git a/Modules/expat/xcsinc.c b/Modules/expat/xcs.h
+similarity index 76%
+rename from Modules/expat/xcsinc.c
+rename to Modules/expat/xcs.h
+index 675b2844c708d6a..1b942647d333093 100644
+--- a/Modules/expat/xcsinc.c
++++ b/Modules/expat/xcs.h
+@@ -1,4 +1,4 @@
+-/* This file is included from other .c files!
++/*
+                             __  __            _
+                          ___\ \/ /_ __   __ _| |_
+                         / _ \\  /| '_ \ / _` | __|
+@@ -6,7 +6,7 @@
+                         \___/_/\_\ .__/ \__,_|\__|
+                                  |_| XML parser
+ 
+-   Copyright (c) 2022-2026 Sebastian Pipping <sebastian@pipping.org>
++   Copyright (c) 2026 Sebastian Pipping <sebastian@pipping.org>
+    Licensed under the MIT license:
+ 
+    Permission is  hereby granted,  free of charge,  to any  person obtaining
+@@ -31,24 +31,14 @@
+    SPDX-License-Identifier: MIT
+ */
+ 
+-#if defined(XML_UNICODE) && defined(XML_UNICODE_WCHAR_T)
+-#  include <wchar.h>
+-#endif
+-
+-static size_t
+-xcslen(const XML_Char *s) {
+-#ifdef XML_UNICODE
+-#  ifdef XML_UNICODE_WCHAR_T
+-  return wcslen(s);
+-#  else
+-  // XML_Char is unsigned short
+-  size_t len = 0;
+-  while (s[len]) {
+-    len++;
+-  }
+-  return len;
+-#  endif
+-#else
+-  return strlen(s);
+-#endif
+-}
++#if ! defined(EXPAT_XCS_H)
++
++#  include <stddef.h>         // size_t
++#  include "expat_external.h" // for  XML_Char
++
++extern size_t xcslen(const XML_Char *s);
++
++extern int xcscmp(const XML_Char *a, const XML_Char *b);
++extern int xcsncmp(const XML_Char *a, const XML_Char *b, size_t len);
++
++#endif // ! defined(EXPAT_XCS_H)
+diff --git a/Modules/expat/xmlparse.c b/Modules/expat/xmlparse.c
+index 9fb4f9d480a2e3a..eefc74599cbe839 100644
+--- a/Modules/expat/xmlparse.c
++++ b/Modules/expat/xmlparse.c
+@@ -1,4 +1,4 @@
+-/* 0864fe2d216f47b742263b698bc051c865b342e8b820e42c234717098ea507e3 (2.8.5+)
++/* e3ca845466942140c9af531ac57808c4650116df5d6dbeda3b6546d2548a586e (2.9.0+)
+                             __  __            _
+                          ___\ \/ /_ __   __ _| |_
+                         / _ \\  /| '_ \ / _` | __|
+@@ -56,6 +56,8 @@
+    Copyright (c) 2026      Zeyou Liu <zeyouliu@tencent.com>
+    Copyright (c) 2026      Stan Ulbrych <stan@python.org>
+    Copyright (c) 2026      Braian Plaku <braianplaku@gmail.com>
++   Copyright (c) 2026      Filippo Tedeschi <filippotedeschi98@gmail.com>
++   Copyright (c) 2026      Junki Lee <junkilee80@gmail.com>
+    Licensed under the MIT license:
+ 
+    Permission is  hereby granted,  free of charge,  to any  person obtaining
+@@ -107,6 +109,7 @@
+ #include <stdint.h> /* SIZE_MAX, UINT64_MAX, uint64_t, uintptr_t */
+ #include <math.h>   /* isnan */
+ #include <errno.h>
++#include <wchar.h> /* wcsncmp */
+ 
+ #ifdef _WIN32
+ #  define getpid GetCurrentProcessId
+@@ -125,7 +128,7 @@
+ #include "ascii.h"
+ #include "expat.h"
+ #include "siphash.h"
+-#include "xcsinc.c"
++#include "xcs.h"
+ 
+ #if defined(HAVE_ARC4RANDOM)
+ #  include "random_arc4random.h"
+@@ -462,8 +465,8 @@ typedef struct accounting {
+ } ACCOUNTING;
+ 
+ typedef struct MALLOC_TRACKER {
+-  XmlBigCount bytesAllocated;
+-  XmlBigCount peakBytesAllocated; // updated live only for debug level >=2
++  size_t bytesAllocated;
++  size_t peakBytesAllocated; // updated live only for debug level >=2
+   unsigned long debugLevel;
+   float maximumAmplificationFactor; // >=1.0
+   XmlBigCount activationThresholdBytes;
+@@ -646,6 +649,25 @@ static bool poolAppendChar(STRING_POOL *pool, XML_Char c);
+ 
+ static bool poolAppendChars(STRING_POOL *pool, const XML_Char *s, size_t len);
+ 
++#if XML_GE == 1
++static enum XML_Prop_Error setBillionLaughsAttackProtectionMaximumAmplification(
++    XML_Parser parser, float maximumAmplificationFactor);
++
++static enum XML_Prop_Error setBillionLaughsAttackProtectionActivationThreshold(
++    XML_Parser parser, unsigned long long activationThresholdBytes);
++
++static enum XML_Prop_Error
++setAllocTrackerMaximumAmplification(XML_Parser parser,
++                                    float maximumAmplificationFactor);
++
++static enum XML_Prop_Error
++setAllocTrackerActivationThreshold(XML_Parser parser,
++                                   unsigned long long activationThresholdBytes);
++#endif /* XML_GE == 1 */
++
++static enum XML_Prop_Error setReparseDeferralEnabled(XML_Parser parser,
++                                                     XML_Bool enabled);
++
+ #define poolStart(pool) ((pool)->start)
+ #define poolLength(pool) ((pool)->ptr - (pool)->start)
+ #define poolChop(pool) ((void)--(pool->ptr))
+@@ -785,9 +807,6 @@ struct XML_ParserStruct {
+   NS_ATT *m_nsAtts;
+   unsigned long m_nsAttsVersion;
+   unsigned char m_nsAttsPower;
+-#ifdef XML_ATTR_INFO
+-  XML_AttrInfo *m_attInfo;
+-#endif
+   POSITION m_position;
+   STRING_POOL m_tempPool;
+   STRING_POOL m_temp2Pool;
+@@ -824,30 +843,30 @@ struct XML_ParserStruct {
+ 
+ #if XML_GE == 1
+ static void
+-expat_heap_stat(XML_Parser rootParser, char operator, XmlBigCount absDiff,
+-                XmlBigCount newTotal, XmlBigCount peakTotal, int sourceLine) {
++expat_heap_stat(XML_Parser rootParser, char operator, size_t absDiff,
++                size_t newTotal, size_t peakTotal, int sourceLine) {
+   // NOTE: This can be +infinity or -nan
+   const float amplification
+       = (float)newTotal / (float)rootParser->m_accounting.countBytesDirect;
+   fprintf(
+       stderr,
+-      "expat: Allocations(%p): Direct " EXPAT_FMT_ULL("10") ", allocated %c" EXPAT_FMT_ULL(
+-          "10") " to " EXPAT_FMT_ULL("10") " (" EXPAT_FMT_ULL("10") " peak), amplification %8.2f (xmlparse.c:%d)\n",
++      "expat: Allocations(%p): Direct " EXPAT_FMT_ULL("10") ", allocated %c" EXPAT_FMT_SIZE_T(
++          "10") " to " EXPAT_FMT_SIZE_T("10") " (" EXPAT_FMT_SIZE_T("10") " peak), amplification %8.2f (xmlparse.c:%d)\n",
+       (void *)rootParser, rootParser->m_accounting.countBytesDirect, operator,
+       absDiff, newTotal, peakTotal, (double)amplification, sourceLine);
+ }
+ 
+ static bool
+-expat_heap_increase_tolerable(XML_Parser rootParser, XmlBigCount increase,
++expat_heap_increase_tolerable(XML_Parser rootParser, size_t increase,
+                               int sourceLine) {
+   assert(rootParser != NULL);
+   assert(increase > 0);
+ 
+-  XmlBigCount newTotal = 0;
++  size_t newTotal = 0;
+   bool tolerable = true;
+ 
+   // Detect integer overflow
+-  if ((XmlBigCount)-1 - rootParser->m_alloc_tracker.bytesAllocated < increase) {
++  if (SIZE_MAX - rootParser->m_alloc_tracker.bytesAllocated < increase) {
+     tolerable = false;
+   } else {
+     newTotal = rootParser->m_alloc_tracker.bytesAllocated + increase;
+@@ -887,8 +906,7 @@ expat_malloc(XML_Parser parser, size_t size, int sourceLine) {
+ 
+   const size_t bytesToAllocate = sizeof(size_t) + EXPAT_MALLOC_PADDING + size;
+ 
+-  if ((XmlBigCount)-1 - rootParser->m_alloc_tracker.bytesAllocated
+-      < bytesToAllocate) {
++  if (SIZE_MAX - rootParser->m_alloc_tracker.bytesAllocated < bytesToAllocate) {
+     return NULL; // i.e. signal integer overflow as out-of-memory
+   }
+ 
+@@ -998,9 +1016,10 @@ expat_realloc(XML_Parser parser, void *ptr, size_t size, int sourceLine) {
+     }
+   }
+ 
+-  // NOTE: Integer overflow detection has already been done for us
+-  //       by expat_heap_increase_tolerable(..) above
+-  assert(SIZE_MAX - sizeof(size_t) - EXPAT_MALLOC_PADDING >= size);
++  // Detect and prevent integer overflow
++  if (size > SIZE_MAX - sizeof(size_t) - EXPAT_MALLOC_PADDING) {
++    return NULL;
++  }
+ 
+   // Actually allocate
+   mallocedPtr = parser->m_mem.realloc_fcn(
+@@ -1012,8 +1031,7 @@ expat_realloc(XML_Parser parser, void *ptr, size_t size, int sourceLine) {
+ 
+   // Update accounting
+   if (isIncrease) {
+-    assert((XmlBigCount)-1 - rootParser->m_alloc_tracker.bytesAllocated
+-           >= absDiff);
++    assert(SIZE_MAX - rootParser->m_alloc_tracker.bytesAllocated >= absDiff);
+     rootParser->m_alloc_tracker.bytesAllocated += absDiff;
+   } else { // i.e. decrease
+     assert(rootParser->m_alloc_tracker.bytesAllocated >= absDiff);
+@@ -1389,20 +1407,9 @@ parserCreate(const XML_Char *encodingName,
+     FREE(parser, parser);
+     return NULL;
+   }
+-#ifdef XML_ATTR_INFO
+-  parser->m_attInfo = MALLOC(parser, parser->m_attsSize * sizeof(XML_AttrInfo));
+-  if (parser->m_attInfo == NULL) {
+-    FREE(parser, parser->m_atts);
+-    FREE(parser, parser);
+-    return NULL;
+-  }
+-#endif
+   parser->m_dataBuf = MALLOC(parser, INIT_DATA_BUF_SIZE * sizeof(XML_Char));
+   if (parser->m_dataBuf == NULL) {
+     FREE(parser, parser->m_atts);
+-#ifdef XML_ATTR_INFO
+-    FREE(parser, parser->m_attInfo);
+-#endif
+     FREE(parser, parser);
+     return NULL;
+   }
+@@ -1415,9 +1422,6 @@ parserCreate(const XML_Char *encodingName,
+     if (parser->m_dtd == NULL) {
+       FREE(parser, parser->m_dataBuf);
+       FREE(parser, parser->m_atts);
+-#ifdef XML_ATTR_INFO
+-      FREE(parser, parser->m_attInfo);
+-#endif
+       FREE(parser, parser);
+       return NULL;
+     }
+@@ -1596,6 +1600,10 @@ XML_ParserReset(XML_Parser parser, const XML_Char *encodingName) {
+ 
+   if (parser->m_parentParser)
+     return XML_FALSE;
++  // The application-defined release callback may access the parser, so it
++  // must run before any parser state is freed.
++  if (parser->m_unknownEncodingRelease)
++    callUnknownEncodingRelease(parser);
+   /* move m_tagStack to m_freeTagList */
+   tStk = parser->m_tagStack;
+   while (tStk) {
+@@ -1616,14 +1624,16 @@ XML_ParserReset(XML_Parser parser, const XML_Char *encodingName) {
+   moveEntityList(&parser->m_freeEntities, &parser->m_openValueEntities);
+   moveToFreeBindingList(parser, parser->m_inheritedBindings);
+   FREE(parser, parser->m_unknownEncodingMem);
+-  if (parser->m_unknownEncodingRelease)
+-    callUnknownEncodingRelease(parser);
+   poolClear(&parser->m_tempPool);
+   poolClear(&parser->m_temp2Pool);
+   FREE(parser, (void *)parser->m_protocolEncodingName);
+   parser->m_protocolEncodingName = NULL;
+   parserInit(parser, encodingName);
+   dtdReset(parser->m_dtd, parser);
++  if (encodingName && ! parser->m_protocolEncodingName) {
++    parser->m_errorCode = XML_ERROR_NO_MEMORY;
++    return XML_FALSE;
++  }
+   return XML_TRUE;
+ }
+ 
+@@ -1856,6 +1866,10 @@ XML_ParserFree(XML_Parser parser) {
+   TAG *tagList;
+   if ((parser == NULL) || isCalledFromInsideHandler(parser))
+     return;
++  // The application-defined release callback may access the parser, so it
++  // must run before any parser state is freed.
++  if (parser->m_unknownEncodingRelease)
++    callUnknownEncodingRelease(parser);
+   /* free m_tagStack and m_freeTagList */
+   tagList = parser->m_tagStack;
+   for (;;) {
+@@ -1916,9 +1930,6 @@ XML_ParserFree(XML_Parser parser) {
+ #endif /* XML_DTD */
+     dtdDestroy(parser->m_dtd, (XML_Bool)! parser->m_parentParser, parser);
+   FREE(parser, parser->m_atts);
+-#ifdef XML_ATTR_INFO
+-  FREE(parser, parser->m_attInfo);
+-#endif
+   FREE(parser, parser->m_groupConnector);
+   // NOTE: We are avoiding FREE(..) here because parser->m_buffer
+   //       is not being allocated with MALLOC(..) but with plain
+@@ -1927,8 +1938,6 @@ XML_ParserFree(XML_Parser parser) {
+   FREE(parser, parser->m_dataBuf);
+   FREE(parser, parser->m_nsAtts);
+   FREE(parser, parser->m_unknownEncodingMem);
+-  if (parser->m_unknownEncodingRelease)
+-    callUnknownEncodingRelease(parser);
+   FREE(parser, parser);
+ }
+ 
+@@ -2009,15 +2018,6 @@ XML_GetIdAttributeIndex(XML_Parser parser) {
+   return parser->m_idAttIndex;
+ }
+ 
+-#ifdef XML_ATTR_INFO
+-const XML_AttrInfo *XMLCALL
+-XML_GetAttributeInfo(XML_Parser parser) {
+-  if (parser == NULL)
+-    return NULL;
+-  return parser->m_attInfo;
+-}
+-#endif
+-
+ void XMLCALL
+ XML_SetElementHandler(XML_Parser parser, XML_StartElementHandler start,
+                       XML_EndElementHandler end) {
+@@ -2446,6 +2446,11 @@ XML_ParseBuffer(XML_Parser parser, int len, int isFinal) {
+     parser->m_parsingStatus.parsing = XML_PARSING;
+   }
+ 
++  if (len > EXPAT_SAFE_PTR_DIFF(parser->m_bufferLim, parser->m_bufferEnd)) {
++    parser->m_errorCode = XML_ERROR_INVALID_ARGUMENT;
++    return XML_STATUS_ERROR;
++  }
++
+   // Detect and avoid integer overflow
+   if ((uint64_t)len > UINT64_MAX - parser->m_parseEndByteIndex) {
+     parser->m_errorCode = XML_ERROR_NO_MEMORY;
+@@ -2705,41 +2710,57 @@ XML_GetErrorCode(XML_Parser parser) {
+   return parser->m_errorCode;
+ }
+ 
+-XML_Index XMLCALL
+-XML_GetCurrentByteIndex(XML_Parser parser) {
++int64_t XMLCALL
++XML_GetCurrentByteIndex64(XML_Parser parser) {
+   if (parser == NULL)
+     return -1;
+   if (parser->m_eventPtr) {
+-    // NOTE: XML_Index is known to wrap around for >2 GiB content
+-    //       on 32bit machines and 64bit Windows, unless (non-default and
+-    //       uncommon) XML_LARGE_SIZE is defined.
+-    //       That's a bug and it only lives on because we cannot break
+-    //       ABI compatibility of public API.
+-    return (XML_Index)(parser->m_parseEndByteIndex
+-                       - (parser->m_parseEndPtr - parser->m_eventPtr));
++    return (int64_t)(parser->m_parseEndByteIndex
++                     - (parser->m_parseEndPtr - parser->m_eventPtr));
+   }
+   return -1;
+ }
+ 
+-int XMLCALL
+-XML_GetCurrentByteCount(XML_Parser parser) {
++// DEPRECATED since Expat 2.9.0.
++XML_Index XMLCALL
++XML_GetCurrentByteIndex(XML_Parser parser) {
++  // NOTE: XML_Index is known to wrap around for >2 GiB content
++  //       on 32bit machines and 64bit Windows, unless (non-default and
++  //       uncommon) XML_LARGE_SIZE is defined.
++  //       That's a bug and it only lives on because we cannot break
++  //       ABI compatibility of public API.
++  return (XML_Index)XML_GetCurrentByteIndex64(parser);
++}
++
++uint64_t XMLCALL
++XML_GetCurrentByteCount64(XML_Parser parser) {
+   if (parser == NULL)
+     return 0;
+-  if (parser->m_eventEndPtr && parser->m_eventPtr)
+-    return (int)(parser->m_eventEndPtr - parser->m_eventPtr);
++  if (parser->m_eventEndPtr && parser->m_eventPtr) {
++    return parser->m_eventEndPtr - parser->m_eventPtr;
++  }
+   return 0;
+ }
+ 
++// DEPRECATED since Expat 2.9.0.
++int XMLCALL
++XML_GetCurrentByteCount(XML_Parser parser) {
++  // NOTE: int is known to wrap around for >2 GiB content.
++  //       That's a bug and it only lives on because we cannot break
++  //       ABI compatibility of public API.
++  return (int)XML_GetCurrentByteCount64(parser);
++}
++
+ const char *XMLCALL
+-XML_GetInputContext(XML_Parser parser, int *offset, int *size) {
++XML_GetInputContext64(XML_Parser parser, int64_t *offset, uint64_t *size) {
+ #if XML_CONTEXT_BYTES > 0
+   if (parser == NULL)
+     return NULL;
+   if (parser->m_eventPtr && parser->m_buffer) {
+     if (offset != NULL)
+-      *offset = (int)(parser->m_eventPtr - parser->m_buffer);
++      *offset = parser->m_eventPtr - parser->m_buffer;
+     if (size != NULL)
+-      *size = (int)(parser->m_bufferEnd - parser->m_buffer);
++      *size = parser->m_bufferEnd - parser->m_buffer;
+     return parser->m_buffer;
+   }
+ #else
+@@ -2750,8 +2771,41 @@ XML_GetInputContext(XML_Parser parser, int *offset, int *size) {
+   return NULL;
+ }
+ 
+-XML_Size XMLCALL
+-XML_GetCurrentLineNumber(XML_Parser parser) {
++// DEPRECATED since Expat 2.9.0.
++const char *XMLCALL
++XML_GetInputContext(XML_Parser parser, int *offset, int *size) {
++#if XML_CONTEXT_BYTES > 0
++  if (parser == NULL)
++    return NULL;
++
++  int64_t offset64;
++  uint64_t size64;
++
++  const char *const buffer = XML_GetInputContext64(parser, &offset64, &size64);
++
++  if (buffer == NULL)
++    return NULL;
++
++  // NOTE: int is known to wrap around for >2 GiB content.
++  //       That's a bug and it only lives on because we cannot break
++  //       ABI compatibility of public API.
++  if (offset != NULL)
++    *offset = (int)offset64;
++
++  if (size != NULL)
++    *size = (int)size64;
++
++  return buffer;
++#else
++  (void)parser;
++  (void)offset;
++  (void)size;
++#endif /* XML_CONTEXT_BYTES > 0 */
++  return NULL;
++}
++
++uint64_t XMLCALL
++XML_GetCurrentLineNumber64(XML_Parser parser) {
+   if (parser == NULL)
+     return 0;
+   if (parser->m_eventPtr && parser->m_eventPtr >= parser->m_positionPtr) {
+@@ -2759,16 +2813,22 @@ XML_GetCurrentLineNumber(XML_Parser parser) {
+                       parser->m_eventPtr, &parser->m_position);
+     parser->m_positionPtr = parser->m_eventPtr;
+   }
++  return parser->m_position.lineNumber + 1;
++}
++
++// DEPRECATED since Expat 2.9.0.
++XML_Size XMLCALL
++XML_GetCurrentLineNumber(XML_Parser parser) {
+   // NOTE: XML_Size is known to wrap around for >4 GiB content
+   //       on 32bit machines and 64bit Windows, unless (non-default and
+   //       uncommon) XML_LARGE_SIZE is defined.
+   //       That's a bug and it only lives on because we cannot break
+   //       ABI compatibility of public API.
+-  return (XML_Size)(parser->m_position.lineNumber + 1);
++  return (XML_Size)XML_GetCurrentLineNumber64(parser);
+ }
+ 
+-XML_Size XMLCALL
+-XML_GetCurrentColumnNumber(XML_Parser parser) {
++uint64_t XMLCALL
++XML_GetCurrentColumnNumber64(XML_Parser parser) {
+   if (parser == NULL)
+     return 0;
+   if (parser->m_eventPtr && parser->m_eventPtr >= parser->m_positionPtr) {
+@@ -2776,12 +2836,18 @@ XML_GetCurrentColumnNumber(XML_Parser parser) {
+                       parser->m_eventPtr, &parser->m_position);
+     parser->m_positionPtr = parser->m_eventPtr;
+   }
++  return parser->m_position.columnNumber;
++}
++
++// DEPRECATED since Expat 2.9.0.
++XML_Size XMLCALL
++XML_GetCurrentColumnNumber(XML_Parser parser) {
+   // NOTE: XML_Size is known to wrap around for >4 GiB content
+   //       on 32bit machines and 64bit Windows, unless (non-default and
+   //       uncommon) XML_LARGE_SIZE is defined.
+   //       That's a bug and it only lives on because we cannot break
+   //       ABI compatibility of public API.
+-  return (XML_Size)parser->m_position.columnNumber;
++  return (XML_Size)XML_GetCurrentColumnNumber64(parser);
+ }
+ 
+ void XMLCALL
+@@ -2827,7 +2893,7 @@ XML_MemFree(XML_Parser parser, void *ptr) {
+ 
+ void XMLCALL
+ XML_DefaultCurrent(XML_Parser parser) {
+-  if (parser == NULL)
++  if (parser == NULL || ! isCalledFromInsideHandler(parser))
+     return;
+   if (parser->m_defaultHandler) {
+     if (parser->m_openInternalEntities)
+@@ -2998,18 +3064,12 @@ XML_GetFeatureList(void) {
+       {XML_FEATURE_CONTEXT_BYTES, XML_L("XML_CONTEXT_BYTES"),
+        XML_CONTEXT_BYTES},
+ #endif
+-#ifdef XML_MIN_SIZE
+-      {XML_FEATURE_MIN_SIZE, XML_L("XML_MIN_SIZE"), 0},
+-#endif
+ #ifdef XML_NS
+       {XML_FEATURE_NS, XML_L("XML_NS"), 0},
+ #endif
+ #ifdef XML_LARGE_SIZE
+       {XML_FEATURE_LARGE_SIZE, XML_L("XML_LARGE_SIZE"), 0},
+ #endif
+-#ifdef XML_ATTR_INFO
+-      {XML_FEATURE_ATTR_INFO, XML_L("XML_ATTR_INFO"), 0},
+-#endif
+ #if XML_GE == 1
+       /* Added in Expat 2.4.0 for XML_DTD defined and
+        * added in Expat 2.6.0 for XML_GE == 1. */
+@@ -3036,59 +3096,294 @@ XML_GetFeatureList(void) {
+ }
+ 
+ #if XML_GE == 1
++static enum XML_Prop_Error
++setBillionLaughsAttackProtectionMaximumAmplification(
++    XML_Parser parser, float maximumAmplificationFactor) {
++  if (parser == NULL)
++    return XML_PROP_ERROR_PARSER_NULL;
++
++  if (parser->m_parentParser != NULL)
++    return XML_PROP_ERROR_PARSER_NOT_ROOT;
++
++  if (isnan(maximumAmplificationFactor) || (maximumAmplificationFactor < 1.0f))
++    return XML_PROP_ERROR_INVALID_VALUE;
++
++  parser->m_accounting.maximumAmplificationFactor = maximumAmplificationFactor;
++
++  return XML_PROP_ERROR_NONE;
++}
++
+ XML_Bool XMLCALL
+ XML_SetBillionLaughsAttackProtectionMaximumAmplification(
+     XML_Parser parser, float maximumAmplificationFactor) {
+-  if ((parser == NULL) || (parser->m_parentParser != NULL)
+-      || isnan(maximumAmplificationFactor)
+-      || (maximumAmplificationFactor < 1.0f)) {
+-    return XML_FALSE;
+-  }
+-  parser->m_accounting.maximumAmplificationFactor = maximumAmplificationFactor;
+-  return XML_TRUE;
++  return (setBillionLaughsAttackProtectionMaximumAmplification(
++              parser, maximumAmplificationFactor)
++          == XML_PROP_ERROR_NONE)
++             ? XML_TRUE
++             : XML_FALSE;
++}
++
++static enum XML_Prop_Error
++setBillionLaughsAttackProtectionActivationThreshold(
++    XML_Parser parser, unsigned long long activationThresholdBytes) {
++  if (parser == NULL)
++    return XML_PROP_ERROR_PARSER_NULL;
++
++  if (parser->m_parentParser != NULL)
++    return XML_PROP_ERROR_PARSER_NOT_ROOT;
++
++  parser->m_accounting.activationThresholdBytes = activationThresholdBytes;
++
++  return XML_PROP_ERROR_NONE;
+ }
+ 
+ XML_Bool XMLCALL
+ XML_SetBillionLaughsAttackProtectionActivationThreshold(
+     XML_Parser parser, unsigned long long activationThresholdBytes) {
+-  if ((parser == NULL) || (parser->m_parentParser != NULL)) {
+-    return XML_FALSE;
+-  }
+-  parser->m_accounting.activationThresholdBytes = activationThresholdBytes;
+-  return XML_TRUE;
++  return (setBillionLaughsAttackProtectionActivationThreshold(
++              parser, activationThresholdBytes)
++          == XML_PROP_ERROR_NONE)
++             ? XML_TRUE
++             : XML_FALSE;
++}
++
++static enum XML_Prop_Error
++setAllocTrackerMaximumAmplification(XML_Parser parser,
++                                    float maximumAmplificationFactor) {
++  if (parser == NULL)
++    return XML_PROP_ERROR_PARSER_NULL;
++
++  if (parser->m_parentParser != NULL)
++    return XML_PROP_ERROR_PARSER_NOT_ROOT;
++
++  if (isnan(maximumAmplificationFactor) || (maximumAmplificationFactor < 1.0f))
++    return XML_PROP_ERROR_INVALID_VALUE;
++
++  parser->m_alloc_tracker.maximumAmplificationFactor
++      = maximumAmplificationFactor;
++
++  return XML_PROP_ERROR_NONE;
+ }
+ 
+ XML_Bool XMLCALL
+ XML_SetAllocTrackerMaximumAmplification(XML_Parser parser,
+                                         float maximumAmplificationFactor) {
+-  if ((parser == NULL) || (parser->m_parentParser != NULL)
+-      || isnan(maximumAmplificationFactor)
+-      || (maximumAmplificationFactor < 1.0f)) {
+-    return XML_FALSE;
+-  }
+-  parser->m_alloc_tracker.maximumAmplificationFactor
+-      = maximumAmplificationFactor;
+-  return XML_TRUE;
++  return (setAllocTrackerMaximumAmplification(parser,
++                                              maximumAmplificationFactor)
++          == XML_PROP_ERROR_NONE)
++             ? XML_TRUE
++             : XML_FALSE;
++}
++
++static enum XML_Prop_Error
++setAllocTrackerActivationThreshold(
++    XML_Parser parser, unsigned long long activationThresholdBytes) {
++  if (parser == NULL)
++    return XML_PROP_ERROR_PARSER_NULL;
++
++  if (parser->m_parentParser != NULL)
++    return XML_PROP_ERROR_PARSER_NOT_ROOT;
++
++  parser->m_alloc_tracker.activationThresholdBytes = activationThresholdBytes;
++
++  return XML_PROP_ERROR_NONE;
+ }
+ 
+ XML_Bool XMLCALL
+ XML_SetAllocTrackerActivationThreshold(
+     XML_Parser parser, unsigned long long activationThresholdBytes) {
+-  if ((parser == NULL) || (parser->m_parentParser != NULL)) {
+-    return XML_FALSE;
+-  }
+-  parser->m_alloc_tracker.activationThresholdBytes = activationThresholdBytes;
+-  return XML_TRUE;
++  return (setAllocTrackerActivationThreshold(parser, activationThresholdBytes)
++          == XML_PROP_ERROR_NONE)
++             ? XML_TRUE
++             : XML_FALSE;
+ }
+ #endif /* XML_GE == 1 */
+ 
++static enum XML_Prop_Error
++setReparseDeferralEnabled(XML_Parser parser, XML_Bool enabled) {
++  if (parser == NULL)
++    return XML_PROP_ERROR_PARSER_NULL;
++
++  if (enabled != XML_TRUE && enabled != XML_FALSE)
++    return XML_PROP_ERROR_INVALID_VALUE;
++
++  parser->m_reparseDeferralEnabled = enabled;
++
++  return XML_PROP_ERROR_NONE;
++}
++
+ XML_Bool XMLCALL
+ XML_SetReparseDeferralEnabled(XML_Parser parser, XML_Bool enabled) {
+-  if (parser != NULL && (enabled == XML_TRUE || enabled == XML_FALSE)) {
+-    parser->m_reparseDeferralEnabled = enabled;
+-    return XML_TRUE;
++  return (setReparseDeferralEnabled(parser, enabled) == XML_PROP_ERROR_NONE)
++             ? XML_TRUE
++             : XML_FALSE;
++}
++
++enum XML_Prop_Error XMLCALL
++XML_SetPropertyBool(XML_Parser parser, enum XML_Parser_Property property,
++                    XML_Bool value) {
++  if (parser == NULL)
++    return XML_PROP_ERROR_PARSER_NULL;
++
++  switch (property) {
++#if XML_GE == 1
++  case XML_PROP_ALLOC_TRACKER_ACTIVATION_THRESHOLD:
++  case XML_PROP_ALLOC_TRACKER_MAXIMUM_AMPLIFICATION:
++  case XML_PROP_BILLION_LAUGHS_ACTIVATION_THRESHOLD:
++  case XML_PROP_BILLION_LAUGHS_MAXIMUM_AMPLIFICATION:
++    return XML_PROP_ERROR_INVALID_TYPE;
++#endif /* XML_GE == 1 */
++  case XML_PROP_REPARSE_DEFERRAL_ENABLED:
++    return setReparseDeferralEnabled(parser, value);
++  default:
++    return XML_PROP_ERROR_INVALID_KEY;
++  }
++
++  assert(0 && "considered unreachable");
++}
++
++enum XML_Prop_Error XMLCALL
++XML_SetPropertyDouble(XML_Parser parser, enum XML_Parser_Property property,
++                      double value) {
++  if (parser == NULL)
++    return XML_PROP_ERROR_PARSER_NULL;
++
++#if XML_GE == 0
++  UNUSED_P(value);
++#endif
++
++  switch (property) {
++#if XML_GE == 1
++  case XML_PROP_ALLOC_TRACKER_MAXIMUM_AMPLIFICATION:
++    return setAllocTrackerMaximumAmplification(parser, (float)value);
++  case XML_PROP_BILLION_LAUGHS_MAXIMUM_AMPLIFICATION:
++    return setBillionLaughsAttackProtectionMaximumAmplification(parser,
++                                                                (float)value);
++  case XML_PROP_ALLOC_TRACKER_ACTIVATION_THRESHOLD:
++  case XML_PROP_BILLION_LAUGHS_ACTIVATION_THRESHOLD:
++#endif /* XML_GE == 1 */
++  case XML_PROP_REPARSE_DEFERRAL_ENABLED:
++    return XML_PROP_ERROR_INVALID_TYPE;
++  default:
++    return XML_PROP_ERROR_INVALID_KEY;
++  }
++
++  assert(0 && "considered unreachable");
++}
++
++enum XML_Prop_Error XMLCALL
++XML_SetPropertyUInt64(XML_Parser parser, enum XML_Parser_Property property,
++                      uint64_t value) {
++  if (parser == NULL)
++    return XML_PROP_ERROR_PARSER_NULL;
++
++#if XML_GE == 0
++  UNUSED_P(value);
++#endif
++
++  switch (property) {
++#if XML_GE == 1
++  case XML_PROP_ALLOC_TRACKER_ACTIVATION_THRESHOLD:
++    return setAllocTrackerActivationThreshold(parser,
++                                              (unsigned long long)value);
++  case XML_PROP_BILLION_LAUGHS_ACTIVATION_THRESHOLD:
++    return setBillionLaughsAttackProtectionActivationThreshold(
++        parser, (unsigned long long)value);
++  case XML_PROP_ALLOC_TRACKER_MAXIMUM_AMPLIFICATION:
++  case XML_PROP_BILLION_LAUGHS_MAXIMUM_AMPLIFICATION:
++#endif /* XML_GE == 1 */
++  case XML_PROP_REPARSE_DEFERRAL_ENABLED:
++    return XML_PROP_ERROR_INVALID_TYPE;
++  default:
++    return XML_PROP_ERROR_INVALID_KEY;
++  }
++
++  assert(0 && "considered unreachable");
++}
++
++enum XML_Prop_Error XMLCALL
++XML_GetPropertyBool(XML_Parser parser, enum XML_Parser_Property property,
++                    XML_Bool *value) {
++  if (parser == NULL)
++    return XML_PROP_ERROR_PARSER_NULL;
++
++  if (value == NULL)
++    return XML_PROP_ERROR_INVALID_VALUE;
++
++  switch (property) {
++#if XML_GE == 1
++  case XML_PROP_ALLOC_TRACKER_ACTIVATION_THRESHOLD:
++  case XML_PROP_ALLOC_TRACKER_MAXIMUM_AMPLIFICATION:
++  case XML_PROP_BILLION_LAUGHS_ACTIVATION_THRESHOLD:
++  case XML_PROP_BILLION_LAUGHS_MAXIMUM_AMPLIFICATION:
++    return XML_PROP_ERROR_INVALID_TYPE;
++#endif /* XML_GE == 1 */
++  case XML_PROP_REPARSE_DEFERRAL_ENABLED:
++    *value = parser->m_reparseDeferralEnabled;
++    break;
++  default:
++    return XML_PROP_ERROR_INVALID_KEY;
++  }
++
++  return XML_PROP_ERROR_NONE;
++}
++
++enum XML_Prop_Error XMLCALL
++XML_GetPropertyDouble(XML_Parser parser, enum XML_Parser_Property property,
++                      double *value) {
++  if (parser == NULL)
++    return XML_PROP_ERROR_PARSER_NULL;
++
++  if (value == NULL)
++    return XML_PROP_ERROR_INVALID_VALUE;
++
++  switch (property) {
++#if XML_GE == 1
++  case XML_PROP_BILLION_LAUGHS_MAXIMUM_AMPLIFICATION:
++    *value = (double)parser->m_accounting.maximumAmplificationFactor;
++    break;
++  case XML_PROP_ALLOC_TRACKER_MAXIMUM_AMPLIFICATION:
++    *value = (double)parser->m_alloc_tracker.maximumAmplificationFactor;
++    break;
++  case XML_PROP_ALLOC_TRACKER_ACTIVATION_THRESHOLD:
++  case XML_PROP_BILLION_LAUGHS_ACTIVATION_THRESHOLD:
++#endif /* XML_GE == 1 */
++  case XML_PROP_REPARSE_DEFERRAL_ENABLED:
++    return XML_PROP_ERROR_INVALID_TYPE;
++  default:
++    return XML_PROP_ERROR_INVALID_KEY;
+   }
+-  return XML_FALSE;
++
++  return XML_PROP_ERROR_NONE;
++}
++
++enum XML_Prop_Error XMLCALL
++XML_GetPropertyUInt64(XML_Parser parser, enum XML_Parser_Property property,
++                      uint64_t *value) {
++  if (parser == NULL)
++    return XML_PROP_ERROR_PARSER_NULL;
++
++  if (value == NULL)
++    return XML_PROP_ERROR_INVALID_VALUE;
++
++  switch (property) {
++#if XML_GE == 1
++  case XML_PROP_BILLION_LAUGHS_ACTIVATION_THRESHOLD:
++    *value = parser->m_accounting.activationThresholdBytes;
++    break;
++  case XML_PROP_ALLOC_TRACKER_ACTIVATION_THRESHOLD:
++    *value = parser->m_alloc_tracker.activationThresholdBytes;
++    break;
++  case XML_PROP_ALLOC_TRACKER_MAXIMUM_AMPLIFICATION:
++  case XML_PROP_BILLION_LAUGHS_MAXIMUM_AMPLIFICATION:
++#endif /* XML_GE == 1 */
++  case XML_PROP_REPARSE_DEFERRAL_ENABLED:
++    return XML_PROP_ERROR_INVALID_TYPE;
++  default:
++    return XML_PROP_ERROR_INVALID_KEY;
++  }
++
++  return XML_PROP_ERROR_NONE;
+ }
+ 
+ /* Initially tag->rawName always points into the parse buffer;
+@@ -3901,21 +4196,6 @@ storeAtts(XML_Parser parser, const ENCODING *enc, const char *attStr,
+       return XML_ERROR_NO_MEMORY;
+     }
+     parser->m_atts = temp;
+-#ifdef XML_ATTR_INFO
+-    /* Detect and prevent integer overflow. */
+-    if (parser->m_attsSize > SIZE_MAX / sizeof(XML_AttrInfo)) {
+-      parser->m_attsSize = oldAttsSize;
+-      return XML_ERROR_NO_MEMORY;
+-    }
+-
+-    XML_AttrInfo *const temp2 = REALLOC(
+-        parser, parser->m_attInfo, parser->m_attsSize * sizeof(XML_AttrInfo));
+-    if (temp2 == NULL) {
+-      parser->m_attsSize = oldAttsSize;
+-      return XML_ERROR_NO_MEMORY;
+-    }
+-    parser->m_attInfo = temp2;
+-#endif
+     if (n > oldAttsSize) {
+       /* Detect and prevent integer overflow. */
+       if (n > (size_t)INT_MAX)
+@@ -3928,33 +4208,12 @@ storeAtts(XML_Parser parser, const ENCODING *enc, const char *attStr,
+   const XML_Char **const appAtts = (const XML_Char **)parser->m_atts;
+   for (size_t i = 0; i < n; i++) {
+     ATTRIBUTE *currAtt = &parser->m_atts[i];
+-#ifdef XML_ATTR_INFO
+-    XML_AttrInfo *currAttInfo = &parser->m_attInfo[i];
+-#endif
+     /* add the name and value to the attribute list */
+     ATTRIBUTE_ID *attId
+         = getAttributeId(parser, enc, currAtt->name,
+                          currAtt->name + XmlNameLength(enc, currAtt->name));
+     if (! attId)
+       return XML_ERROR_NO_MEMORY;
+-#ifdef XML_ATTR_INFO
+-    // NOTE: XML_Index is known to wrap around for >2 GiB content
+-    //       on 32bit machines and 64bit Windows, unless (non-default and
+-    //       uncommon) XML_LARGE_SIZE is defined.
+-    //       That's a bug and it only lives on because we cannot break
+-    //       ABI compatibility of public API.
+-    currAttInfo->nameStart
+-        = (XML_Index)(parser->m_parseEndByteIndex
+-                      - (parser->m_parseEndPtr - currAtt->name));
+-    currAttInfo->nameEnd
+-        = currAttInfo->nameStart + XmlNameLength(enc, currAtt->name);
+-    currAttInfo->valueStart
+-        = (XML_Index)(parser->m_parseEndByteIndex
+-                      - (parser->m_parseEndPtr - currAtt->valuePtr));
+-    currAttInfo->valueEnd
+-        = (XML_Index)(parser->m_parseEndByteIndex
+-                      - (parser->m_parseEndPtr - currAtt->valueEnd));
+-#endif
+     /* Detect duplicate attributes by their QNames. This does not work when
+        namespace processing is turned on and different prefixes for the same
+        namespace are used. For this case we have a check further down.
+diff --git a/Modules/expat/xmltok.c b/Modules/expat/xmltok.c
+index a3bf5e0e95b0e03..2f837acc4cbf72a 100644
+--- a/Modules/expat/xmltok.c
++++ b/Modules/expat/xmltok.c
+@@ -193,13 +193,6 @@ utf8_isInvalid4(const ENCODING *enc, const char *p) {
+ struct normal_encoding {
+   ENCODING enc;
+   unsigned char type[256];
+-#ifdef XML_MIN_SIZE
+-  int (*byteType)(const ENCODING *, const char *);
+-  int (*isNameMin)(const ENCODING *, const char *);
+-  int (*isNmstrtMin)(const ENCODING *, const char *);
+-  int (*byteToAscii)(const ENCODING *, const char *);
+-  int (*charMatches)(const ENCODING *, const char *, int);
+-#endif /* XML_MIN_SIZE */
+   int (*isName2)(const ENCODING *, const char *);
+   int (*isName3)(const ENCODING *, const char *);
+   int (*isName4)(const ENCODING *, const char *);
+@@ -213,16 +206,7 @@ struct normal_encoding {
+ 
+ #define AS_NORMAL_ENCODING(enc) ((const struct normal_encoding *)(enc))
+ 
+-#ifdef XML_MIN_SIZE
+-
+-#  define STANDARD_VTABLE(E)                                                   \
+-    E##byteType, E##isNameMin, E##isNmstrtMin, E##byteToAscii, E##charMatches,
+-
+-#else
+-
+-#  define STANDARD_VTABLE(E) /* as nothing */
+-
+-#endif
++#define STANDARD_VTABLE(E) /* as nothing */
+ 
+ #define NORMAL_VTABLE(E)                                                       \
+   E##isName2, E##isName3, E##isName4, E##isNmstrt2, E##isNmstrt3,              \
+@@ -233,93 +217,33 @@ struct normal_encoding {
+       /* isNmstrt2 */ NULL, /* isNmstrt3 */ NULL, /* isNmstrt4 */ NULL,        \
+       /* isInvalid2 */ NULL, /* isInvalid3 */ NULL, /* isInvalid4 */ NULL
+ 
+-/* Like NULL_VTABLE but with a real isInvalid4 so the UTF-16 encodings reject a
+-   high surrogate that is not followed by a low surrogate.  Only needed for the
+-   XML_MIN_SIZE build, where the shared tokenizer dispatches through the vtable;
+-   the regular build inlines the same check via IS_INVALID_CHAR. */
+-#ifdef XML_MIN_SIZE
+-#  define UTF16_NULL_VTABLE(E)                                                 \
+-    /* isName2 */ NULL, /* isName3 */ NULL, /* isName4 */ NULL,                \
+-        /* isNmstrt2 */ NULL, /* isNmstrt3 */ NULL, /* isNmstrt4 */ NULL,      \
+-        /* isInvalid2 */ NULL, /* isInvalid3 */ NULL, E##isInvalid4
+-#else
+-#  define UTF16_NULL_VTABLE(E) NULL_VTABLE
+-#endif
++#define UTF16_NULL_VTABLE(E) NULL_VTABLE
+ 
+ static int checkCharRefNumber(int result);
+ 
+ #include "xmltok_impl.h"
+ #include "ascii.h"
+ 
+-#ifdef XML_MIN_SIZE
+-#  define sb_isNameMin isNever
+-#  define sb_isNmstrtMin isNever
+-#endif
+-
+-#ifdef XML_MIN_SIZE
+-#  define MINBPC(enc) ((enc)->minBytesPerChar)
+-#else
+ /* minimum bytes per character */
+-#  define MINBPC(enc) 1
+-#endif
++#define MINBPC(enc) 1
+ 
+ #define SB_BYTE_TYPE(enc, p)                                                   \
+   (((const struct normal_encoding *)(enc))->type[(unsigned char)*(p)])
+ 
+-#ifdef XML_MIN_SIZE
+-static int
+-sb_byteType(const ENCODING *enc, const char *p) {
+-  return SB_BYTE_TYPE(enc, p);
+-}
+-#  define BYTE_TYPE(enc, p) (AS_NORMAL_ENCODING(enc)->byteType(enc, p))
+-#else
+-#  define BYTE_TYPE(enc, p) SB_BYTE_TYPE(enc, p)
+-#endif
++#define BYTE_TYPE(enc, p) SB_BYTE_TYPE(enc, p)
+ 
+-#ifdef XML_MIN_SIZE
+-#  define BYTE_TO_ASCII(enc, p) (AS_NORMAL_ENCODING(enc)->byteToAscii(enc, p))
+-static int
+-sb_byteToAscii(const ENCODING *enc, const char *p) {
+-  UNUSED_P(enc);
+-  return *p;
+-}
+-#else
+-#  define BYTE_TO_ASCII(enc, p) (*(p))
+-#endif
++#define BYTE_TO_ASCII(enc, p) (*(p))
+ 
+ #define IS_NAME_CHAR(enc, p, n) (AS_NORMAL_ENCODING(enc)->isName##n(enc, p))
+ #define IS_NMSTRT_CHAR(enc, p, n) (AS_NORMAL_ENCODING(enc)->isNmstrt##n(enc, p))
+-#ifdef XML_MIN_SIZE
+-#  define IS_INVALID_CHAR(enc, p, n)                                           \
+-    (AS_NORMAL_ENCODING(enc)->isInvalid##n                                     \
+-     && AS_NORMAL_ENCODING(enc)->isInvalid##n(enc, p))
+-#else
+-#  define IS_INVALID_CHAR(enc, p, n)                                           \
+-    (AS_NORMAL_ENCODING(enc)->isInvalid##n(enc, p))
+-#endif
++#define IS_INVALID_CHAR(enc, p, n)                                             \
++  (AS_NORMAL_ENCODING(enc)->isInvalid##n(enc, p))
+ 
+-#ifdef XML_MIN_SIZE
+-#  define IS_NAME_CHAR_MINBPC(enc, p)                                          \
+-    (AS_NORMAL_ENCODING(enc)->isNameMin(enc, p))
+-#  define IS_NMSTRT_CHAR_MINBPC(enc, p)                                        \
+-    (AS_NORMAL_ENCODING(enc)->isNmstrtMin(enc, p))
+-#else
+-#  define IS_NAME_CHAR_MINBPC(enc, p) (0)
+-#  define IS_NMSTRT_CHAR_MINBPC(enc, p) (0)
+-#endif
++#define IS_NAME_CHAR_MINBPC(enc, p) (0)
++#define IS_NMSTRT_CHAR_MINBPC(enc, p) (0)
+ 
+-#ifdef XML_MIN_SIZE
+-#  define CHAR_MATCHES(enc, p, c)                                              \
+-    (AS_NORMAL_ENCODING(enc)->charMatches(enc, p, c))
+-static int
+-sb_charMatches(const ENCODING *enc, const char *p, int c) {
+-  UNUSED_P(enc);
+-  return *p == c;
+-}
+-#else
+ /* c is an ASCII character */
+-#  define CHAR_MATCHES(enc, p, c) (*(p) == (c))
+-#endif
++#define CHAR_MATCHES(enc, p, c) (*(p) == (c))
+ 
+ #define PREFIX(ident) normal_##ident
+ #define XML_TOK_IMPL_C
+@@ -769,76 +693,32 @@ DEFINE_UTF16_TO_UTF16(big2_)
+ #define LITTLE2_IS_INVALID_CHAR(p, n)                                          \
+   ((n) == 4 && ((unsigned char)(p)[3] & 0xFC) != 0xDC)
+ 
+-#ifdef XML_MIN_SIZE
+-
+-static int
+-little2_byteType(const ENCODING *enc, const char *p) {
+-  return LITTLE2_BYTE_TYPE(enc, p);
+-}
+-
+-static int
+-little2_byteToAscii(const ENCODING *enc, const char *p) {
+-  UNUSED_P(enc);
+-  return LITTLE2_BYTE_TO_ASCII(p);
+-}
+-
+-static int
+-little2_charMatches(const ENCODING *enc, const char *p, int c) {
+-  UNUSED_P(enc);
+-  return LITTLE2_CHAR_MATCHES(p, c);
+-}
+-
+-static int
+-little2_isNameMin(const ENCODING *enc, const char *p) {
+-  UNUSED_P(enc);
+-  return LITTLE2_IS_NAME_CHAR_MINBPC(p);
+-}
+-
+-static int
+-little2_isNmstrtMin(const ENCODING *enc, const char *p) {
+-  UNUSED_P(enc);
+-  return LITTLE2_IS_NMSTRT_CHAR_MINBPC(p);
+-}
+-
+-static int
+-little2_isInvalid4(const ENCODING *enc, const char *p) {
+-  UNUSED_P(enc);
+-  return LITTLE2_IS_INVALID_CHAR(p, 4);
+-}
+-
+-#  undef VTABLE
+-#  define VTABLE VTABLE1, little2_toUtf8, little2_toUtf16
++#undef PREFIX
++#define PREFIX(ident) little2_##ident
++#define MINBPC(enc) 2
++/* CHAR_MATCHES is guaranteed to have MINBPC bytes available. */
++#define BYTE_TYPE(enc, p) LITTLE2_BYTE_TYPE(enc, p)
++#define BYTE_TO_ASCII(enc, p) LITTLE2_BYTE_TO_ASCII(p)
++#define CHAR_MATCHES(enc, p, c) LITTLE2_CHAR_MATCHES(p, c)
++#define IS_NAME_CHAR(enc, p, n) 0
++#define IS_NAME_CHAR_MINBPC(enc, p) LITTLE2_IS_NAME_CHAR_MINBPC(p)
++#define IS_NMSTRT_CHAR(enc, p, n) (0)
++#define IS_NMSTRT_CHAR_MINBPC(enc, p) LITTLE2_IS_NMSTRT_CHAR_MINBPC(p)
++#define IS_INVALID_CHAR(enc, p, n) LITTLE2_IS_INVALID_CHAR(p, n)
+ 
+-#else /* not XML_MIN_SIZE */
++#define XML_TOK_IMPL_C
++#include "xmltok_impl.c"
++#undef XML_TOK_IMPL_C
+ 
+-#  undef PREFIX
+-#  define PREFIX(ident) little2_##ident
+-#  define MINBPC(enc) 2
+-/* CHAR_MATCHES is guaranteed to have MINBPC bytes available. */
+-#  define BYTE_TYPE(enc, p) LITTLE2_BYTE_TYPE(enc, p)
+-#  define BYTE_TO_ASCII(enc, p) LITTLE2_BYTE_TO_ASCII(p)
+-#  define CHAR_MATCHES(enc, p, c) LITTLE2_CHAR_MATCHES(p, c)
+-#  define IS_NAME_CHAR(enc, p, n) 0
+-#  define IS_NAME_CHAR_MINBPC(enc, p) LITTLE2_IS_NAME_CHAR_MINBPC(p)
+-#  define IS_NMSTRT_CHAR(enc, p, n) (0)
+-#  define IS_NMSTRT_CHAR_MINBPC(enc, p) LITTLE2_IS_NMSTRT_CHAR_MINBPC(p)
+-#  define IS_INVALID_CHAR(enc, p, n) LITTLE2_IS_INVALID_CHAR(p, n)
+-
+-#  define XML_TOK_IMPL_C
+-#  include "xmltok_impl.c"
+-#  undef XML_TOK_IMPL_C
+-
+-#  undef MINBPC
+-#  undef BYTE_TYPE
+-#  undef BYTE_TO_ASCII
+-#  undef CHAR_MATCHES
+-#  undef IS_NAME_CHAR
+-#  undef IS_NAME_CHAR_MINBPC
+-#  undef IS_NMSTRT_CHAR
+-#  undef IS_NMSTRT_CHAR_MINBPC
+-#  undef IS_INVALID_CHAR
+-
+-#endif /* not XML_MIN_SIZE */
++#undef MINBPC
++#undef BYTE_TYPE
++#undef BYTE_TO_ASCII
++#undef CHAR_MATCHES
++#undef IS_NAME_CHAR
++#undef IS_NAME_CHAR_MINBPC
++#undef IS_NMSTRT_CHAR
++#undef IS_NMSTRT_CHAR_MINBPC
++#undef IS_INVALID_CHAR
+ 
+ #ifdef XML_NS
+ 
+@@ -914,76 +794,32 @@ static const struct normal_encoding internal_little2_encoding
+ #define BIG2_IS_INVALID_CHAR(p, n)                                             \
+   ((n) == 4 && ((unsigned char)(p)[2] & 0xFC) != 0xDC)
+ 
+-#ifdef XML_MIN_SIZE
+-
+-static int
+-big2_byteType(const ENCODING *enc, const char *p) {
+-  return BIG2_BYTE_TYPE(enc, p);
+-}
+-
+-static int
+-big2_byteToAscii(const ENCODING *enc, const char *p) {
+-  UNUSED_P(enc);
+-  return BIG2_BYTE_TO_ASCII(p);
+-}
+-
+-static int
+-big2_charMatches(const ENCODING *enc, const char *p, int c) {
+-  UNUSED_P(enc);
+-  return BIG2_CHAR_MATCHES(p, c);
+-}
+-
+-static int
+-big2_isNameMin(const ENCODING *enc, const char *p) {
+-  UNUSED_P(enc);
+-  return BIG2_IS_NAME_CHAR_MINBPC(p);
+-}
+-
+-static int
+-big2_isNmstrtMin(const ENCODING *enc, const char *p) {
+-  UNUSED_P(enc);
+-  return BIG2_IS_NMSTRT_CHAR_MINBPC(p);
+-}
+-
+-static int
+-big2_isInvalid4(const ENCODING *enc, const char *p) {
+-  UNUSED_P(enc);
+-  return BIG2_IS_INVALID_CHAR(p, 4);
+-}
+-
+-#  undef VTABLE
+-#  define VTABLE VTABLE1, big2_toUtf8, big2_toUtf16
++#undef PREFIX
++#define PREFIX(ident) big2_##ident
++#define MINBPC(enc) 2
++/* CHAR_MATCHES is guaranteed to have MINBPC bytes available. */
++#define BYTE_TYPE(enc, p) BIG2_BYTE_TYPE(enc, p)
++#define BYTE_TO_ASCII(enc, p) BIG2_BYTE_TO_ASCII(p)
++#define CHAR_MATCHES(enc, p, c) BIG2_CHAR_MATCHES(p, c)
++#define IS_NAME_CHAR(enc, p, n) 0
++#define IS_NAME_CHAR_MINBPC(enc, p) BIG2_IS_NAME_CHAR_MINBPC(p)
++#define IS_NMSTRT_CHAR(enc, p, n) (0)
++#define IS_NMSTRT_CHAR_MINBPC(enc, p) BIG2_IS_NMSTRT_CHAR_MINBPC(p)
++#define IS_INVALID_CHAR(enc, p, n) BIG2_IS_INVALID_CHAR(p, n)
+ 
+-#else /* not XML_MIN_SIZE */
++#define XML_TOK_IMPL_C
++#include "xmltok_impl.c"
++#undef XML_TOK_IMPL_C
+ 
+-#  undef PREFIX
+-#  define PREFIX(ident) big2_##ident
+-#  define MINBPC(enc) 2
+-/* CHAR_MATCHES is guaranteed to have MINBPC bytes available. */
+-#  define BYTE_TYPE(enc, p) BIG2_BYTE_TYPE(enc, p)
+-#  define BYTE_TO_ASCII(enc, p) BIG2_BYTE_TO_ASCII(p)
+-#  define CHAR_MATCHES(enc, p, c) BIG2_CHAR_MATCHES(p, c)
+-#  define IS_NAME_CHAR(enc, p, n) 0
+-#  define IS_NAME_CHAR_MINBPC(enc, p) BIG2_IS_NAME_CHAR_MINBPC(p)
+-#  define IS_NMSTRT_CHAR(enc, p, n) (0)
+-#  define IS_NMSTRT_CHAR_MINBPC(enc, p) BIG2_IS_NMSTRT_CHAR_MINBPC(p)
+-#  define IS_INVALID_CHAR(enc, p, n) BIG2_IS_INVALID_CHAR(p, n)
+-
+-#  define XML_TOK_IMPL_C
+-#  include "xmltok_impl.c"
+-#  undef XML_TOK_IMPL_C
+-
+-#  undef MINBPC
+-#  undef BYTE_TYPE
+-#  undef BYTE_TO_ASCII
+-#  undef CHAR_MATCHES
+-#  undef IS_NAME_CHAR
+-#  undef IS_NAME_CHAR_MINBPC
+-#  undef IS_NMSTRT_CHAR
+-#  undef IS_NMSTRT_CHAR_MINBPC
+-#  undef IS_INVALID_CHAR
+-
+-#endif /* not XML_MIN_SIZE */
++#undef MINBPC
++#undef BYTE_TYPE
++#undef BYTE_TO_ASCII
++#undef CHAR_MATCHES
++#undef IS_NAME_CHAR
++#undef IS_NAME_CHAR_MINBPC
++#undef IS_NMSTRT_CHAR
++#undef IS_NMSTRT_CHAR_MINBPC
++#undef IS_INVALID_CHAR
+ 
+ #ifdef XML_NS
+ 
+diff --git a/Modules/expat/xmltok_impl.c b/Modules/expat/xmltok_impl.c
+index a71a2fd88c704b6..7900e94701e2768 100644
+--- a/Modules/expat/xmltok_impl.c
++++ b/Modules/expat/xmltok_impl.c
+@@ -1,4 +1,4 @@
+-/* This file is included (from xmltok.c, 1-3 times depending on XML_MIN_SIZE)!
++/* This file is included (from xmltok.c, 3 times)!
+                             __  __            _
+                          ___\ \/ /_ __   __ _| |_
+                         / _ \\  /| '_ \ / _` | __|
+diff --git a/Modules/pyexpat.c b/Modules/pyexpat.c
+index 0e43202c427e5c1..18068f526c53144 100644
+--- a/Modules/pyexpat.c
++++ b/Modules/pyexpat.c
+@@ -24,6 +24,16 @@ module pyexpat
+ 
+ #define XML_COMBINED_VERSION (10000*XML_MAJOR_VERSION+100*XML_MINOR_VERSION+XML_MICRO_VERSION)
+ 
++#if XML_COMBINED_VERSION >= 20900
++#  define EXPAT_GetCurrentLineNumber XML_GetCurrentLineNumber64
++#  define EXPAT_GetCurrentColumnNumber XML_GetCurrentColumnNumber64
++#  define EXPAT_GetCurrentByteIndex XML_GetCurrentByteIndex64
++#else
++#  define EXPAT_GetCurrentLineNumber XML_GetCurrentLineNumber
++#  define EXPAT_GetCurrentColumnNumber XML_GetCurrentColumnNumber
++#  define EXPAT_GetCurrentByteIndex XML_GetCurrentByteIndex
++#endif
++
+ static XML_Memory_Handling_Suite ExpatMemoryHandler = {
+     PyMem_Malloc, PyMem_Realloc, PyMem_Free};
+ 
+@@ -145,9 +155,10 @@ set_xml_error_attr_code(PyObject *err, enum XML_Error code)
+  * false on an exception.
+  */
+ static int
+-set_xml_error_attr_location(PyObject *err, const char *name, XML_Size value)
++set_xml_error_attr_location(PyObject *err, const char *name,
++                            unsigned long long value)
+ {
+-    PyObject *v = PyLong_FromSize_t((size_t)value);
++    PyObject *v = PyLong_FromUnsignedLongLong(value);
+     int ok = v != NULL && PyObject_SetAttrString(err, name, v) != -1;
+     Py_XDECREF(v);
+     return ok;
+@@ -156,15 +167,16 @@ set_xml_error_attr_location(PyObject *err, const char *name, XML_Size value)
+ 
+ static PyObject *
+ set_xml_error(pyexpat_state *state,
+-              enum XML_Error code, XML_Size lineno, XML_Size column,
++              enum XML_Error code,
++              unsigned long long lineno, unsigned long long column,
+               const char *errmsg)
+ {
+     PyObject *arg;
+     if (errmsg == NULL) {
+         arg = PyUnicode_FromFormat(
+-            "%s: line %zu, column %zu",
++            "%s: line %llu, column %llu",
+             XML_ErrorString(code),
+-            (size_t)lineno, (size_t)column
++            lineno, column
+         );
+     }
+     else {
+@@ -191,8 +203,10 @@ set_xml_error(pyexpat_state *state,
+     do {                                                            \
+         XML_Parser parser = SELF->itself;                           \
+         assert(parser != NULL);                                     \
+-        XML_Size lineno = XML_GetCurrentLineNumber(parser);         \
+-        XML_Size column = XML_GetCurrentColumnNumber(parser);       \
++        unsigned long long lineno                                   \
++            = EXPAT_GetCurrentLineNumber(parser);                   \
++        unsigned long long column                                   \
++            = EXPAT_GetCurrentColumnNumber(parser);                 \
+         (void)set_xml_error(state, CODE, lineno, column, ERRMSG);   \
+     } while (0)
+ 
+@@ -1043,13 +1057,20 @@ pyexpat_xmlparser_GetInputContext_impl(xmlparseobject *self)
+ /*[clinic end generated code: output=a88026d683fc22cc input=2d605aaa9edbb415]*/
+ {
+     if (self->in_callback) {
++#if XML_COMBINED_VERSION >= 20900
++        int64_t offset;
++        uint64_t size;
++        const char *buffer
++            = XML_GetInputContext64(self->itself, &offset, &size);
++#else
+         int offset, size;
+         const char *buffer
+             = XML_GetInputContext(self->itself, &offset, &size);
++#endif
+ 
+         if (buffer != NULL)
+             return PyBytes_FromStringAndSize(buffer + offset,
+-                                              size - offset);
++                                              (Py_ssize_t)(size - offset));
+         else
+             Py_RETURN_NONE;
+     }
+@@ -1639,20 +1660,20 @@ xmlparse_handler_setter(PyObject *op, PyObject *v, void *closure)
+     return 0;
+ }
+ 
+-#define INT_GETTER(name)                                                \
++#define INT_GETTER(name, func)                                          \
+     static PyObject *                                                   \
+     xmlparse_##name##_getter(PyObject *op, void *Py_UNUSED(closure))    \
+     {                                                                   \
+         xmlparseobject *self = xmlparseobject_CAST(op);                 \
+-        return PyLong_FromLong((long)XML_Get##name(self->itself));      \
++        return PyLong_FromLongLong((long long)func(self->itself));      \
+     }
+-INT_GETTER(ErrorCode)
+-INT_GETTER(ErrorLineNumber)
+-INT_GETTER(ErrorColumnNumber)
+-INT_GETTER(ErrorByteIndex)
+-INT_GETTER(CurrentLineNumber)
+-INT_GETTER(CurrentColumnNumber)
+-INT_GETTER(CurrentByteIndex)
++INT_GETTER(ErrorCode, XML_GetErrorCode)
++INT_GETTER(ErrorLineNumber, EXPAT_GetCurrentLineNumber)
++INT_GETTER(ErrorColumnNumber, EXPAT_GetCurrentColumnNumber)
++INT_GETTER(ErrorByteIndex, EXPAT_GetCurrentByteIndex)
++INT_GETTER(CurrentLineNumber, EXPAT_GetCurrentLineNumber)
++INT_GETTER(CurrentColumnNumber, EXPAT_GetCurrentColumnNumber)
++INT_GETTER(CurrentByteIndex, EXPAT_GetCurrentByteIndex)
+ 
+ #undef INT_GETTER
+ 
+@@ -2376,8 +2397,11 @@ pyexpat_exec(PyObject *mod)
+     capi->MICRO_VERSION = XML_MICRO_VERSION;
+     capi->ErrorString = XML_ErrorString;
+     capi->GetErrorCode = XML_GetErrorCode;
++_Py_COMP_DIAG_PUSH
++_Py_COMP_DIAG_IGNORE_DEPR_DECLS
+     capi->GetErrorColumnNumber = XML_GetErrorColumnNumber;
+     capi->GetErrorLineNumber = XML_GetErrorLineNumber;
++_Py_COMP_DIAG_POP
+     capi->Parse = XML_Parse;
+     capi->ParserCreate_MM = XML_ParserCreate_MM;
+     capi->ParserFree = XML_ParserFree;
+diff --git a/PCbuild/_elementtree.vcxproj b/PCbuild/_elementtree.vcxproj
+index c102da85e9c5169..cd8c1ff1731dfb1 100644
+--- a/PCbuild/_elementtree.vcxproj
++++ b/PCbuild/_elementtree.vcxproj
+@@ -113,11 +113,13 @@
+     <ClInclude Include="..\Modules\expat\pyexpatns.h" />
+     <ClInclude Include="..\Modules\expat\utf8tab.h" />
+     <ClInclude Include="..\Modules\expat\winconfig.h" />
++    <ClInclude Include="..\Modules\expat\xcs.h" />
+     <ClInclude Include="..\Modules\expat\xmlrole.h" />
+     <ClInclude Include="..\Modules\expat\xmltok.h" />
+   </ItemGroup>
+   <ItemGroup>
+     <ClCompile Include="..\Modules\_elementtree.c" />
++    <ClCompile Include="..\Modules\expat\xcs.c" />
+     <ClCompile Include="..\Modules\expat\xmlparse.c" />
+     <ClCompile Include="..\Modules\expat\xmlrole.c" />
+     <ClCompile Include="..\Modules\expat\xmltok.c" />
+diff --git a/PCbuild/_elementtree.vcxproj.filters b/PCbuild/_elementtree.vcxproj.filters
+index 9e2e062af3f3877..2ce694e1b5390fe 100644
+--- a/PCbuild/_elementtree.vcxproj.filters
++++ b/PCbuild/_elementtree.vcxproj.filters
+@@ -63,6 +63,9 @@
+     <ClInclude Include="..\Modules\expat\winconfig.h">
+       <Filter>Header Files\expat</Filter>
+     </ClInclude>
++    <ClInclude Include="..\Modules\expat\xcs.h">
++      <Filter>Header Files\expat</Filter>
++    </ClInclude>
+     <ClInclude Include="..\Modules\expat\xmlrole.h">
+       <Filter>Header Files\expat</Filter>
+     </ClInclude>
+@@ -74,6 +77,9 @@
+     <ClCompile Include="..\Modules\_elementtree.c">
+       <Filter>Source Files</Filter>
+     </ClCompile>
++    <ClCompile Include="..\Modules\expat\xcs.c">
++      <Filter>Source Files\expat</Filter>
++    </ClCompile>
+     <ClCompile Include="..\Modules\expat\xmlparse.c">
+       <Filter>Source Files\expat</Filter>
+     </ClCompile>
+diff --git a/PCbuild/pyexpat.vcxproj b/PCbuild/pyexpat.vcxproj
+index 92ecac2f7a22552..57d565fa289fe7e 100644
+--- a/PCbuild/pyexpat.vcxproj
++++ b/PCbuild/pyexpat.vcxproj
+@@ -98,11 +98,13 @@
+     <ClInclude Include="..\Modules\expat\fallthrough.h" />
+     <ClInclude Include="..\Modules\expat\hash_table.h" />
+     <ClInclude Include="..\Modules\expat\memory_sanitizer.h" />
++    <ClInclude Include="..\Modules\expat\xcs.h" />
+     <ClInclude Include="..\Modules\expat\xmlrole.h" />
+     <ClInclude Include="..\Modules\expat\xmltok.h" />
+   </ItemGroup>
+   <ItemGroup>
+     <ClCompile Include="..\Modules\pyexpat.c" />
++    <ClCompile Include="..\Modules\expat\xcs.c" />
+     <ClCompile Include="..\Modules\expat\xmlparse.c" />
+     <ClCompile Include="..\Modules\expat\xmlrole.c" />
+     <ClCompile Include="..\Modules\expat\xmltok.c" />
+diff --git a/PCbuild/pyexpat.vcxproj.filters b/PCbuild/pyexpat.vcxproj.filters
+index e63cb9c63063aca..baa06e4491f6850 100644
+--- a/PCbuild/pyexpat.vcxproj.filters
++++ b/PCbuild/pyexpat.vcxproj.filters
+@@ -21,6 +21,9 @@
+     <ClInclude Include="..\Modules\expat\memory_sanitizer.h">
+       <Filter>Header Files</Filter>
+     </ClInclude>
++    <ClInclude Include="..\Modules\expat\xcs.h">
++      <Filter>Header Files</Filter>
++    </ClInclude>
+     <ClInclude Include="..\Modules\expat\xmlrole.h">
+       <Filter>Header Files</Filter>
+     </ClInclude>
+@@ -32,6 +35,9 @@
+     <ClCompile Include="..\Modules\pyexpat.c">
+       <Filter>Source Files</Filter>
+     </ClCompile>
++    <ClCompile Include="..\Modules\expat\xcs.c">
++      <Filter>Source Files</Filter>
++    </ClCompile>
+     <ClCompile Include="..\Modules\expat\xmlparse.c">
+       <Filter>Source Files</Filter>
+     </ClCompile>

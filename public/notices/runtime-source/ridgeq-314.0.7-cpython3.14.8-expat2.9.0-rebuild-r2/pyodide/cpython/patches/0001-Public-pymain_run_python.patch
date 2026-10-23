@@ -1,0 +1,16 @@
+Subject: [RidGEQ rebuild-r2] Rebase Pyodide public pymain_run_python onto CPython 3.14.8
+
+New derived patch; same one-keyword visibility change as upstream Pyodide 0001.
+Context includes CPython 3.14.8 set_running_main; not recovered r1 bytes.
+
+--- a/Modules/main.c
++++ b/Modules/main.c
+@@ -656,7 +656,7 @@
+ }
+ 
+ 
+-static void
++void
+ pymain_run_python(int *exitcode)
+ {
+     int set_running_main = 0;

@@ -1,0 +1,368 @@
+/** Locally derived ordered numeric course pins; no GPX bytes, edition or authenticity inference. */
+export const COURSE_FINGERPRINTS=Object.freeze([
+  {
+    "id": "skyhunter-shilin-2026-3k",
+    "sourceSha256": "b8f25e442ac037d657a72010ad13fd0bfb8ae85705779e01f3b4f6741867cbbc",
+    "sourceBytes": 15696,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 175,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "5963c91cf98fe2132398d597596acfb1cacccf81a8bfd5be201157232f918cca"
+  },
+  {
+    "id": "skyhunter-shilin-2026-8k",
+    "sourceSha256": "868b9938af8ca589f4180399eddfb4f8ca754a2a047e44f3c402eceacf703634",
+    "sourceBytes": 39758,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 457,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "f7dffa35daf7cb7bcc8421f78543e44402e6df1223f2bf530a72c509a571b869"
+  },
+  {
+    "id": "skyhunter-shilin-2026-50k",
+    "sourceSha256": "3c1418187ef8b59df5ae7af72a9e551dbe1c6c7504a0e83d87202ea0feca4e05",
+    "sourceBytes": 261289,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 3068,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "2bd807ec383a34e65a29e8cab18fa5b0ecbd38ea165ff9d766b259bb4a29a02c"
+  },
+  {
+    "id": "skyhunter-shilin-2026-24k",
+    "sourceSha256": "9fd013b6a0b26dc135056e0f785444c2d8500b66d7c51b034d870dd26bbac6a1",
+    "sourceBytes": 131014,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 1532,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "b67bc6e71572699c8c90b0e337629b7b0e0bfb797ebd9edb76804a2251a68736"
+  },
+  {
+    "id": "formosa-trail-2026-10k",
+    "sourceSha256": "0549cefe00a1ea25a34308f1a7011dbb1739e5290cec4b7783422cfca2bf1e61",
+    "sourceBytes": 105364,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 1069,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "7d2deea782b8825d9f01d407e80f4ba1d156d35eb2d73ce00e70518a1fc602d8"
+  },
+  {
+    "id": "formosa-trail-2026-18k",
+    "sourceSha256": "ee20f1397ff78d355d581f5657498f437d15efab6ed4e4f1ea35c95283c7d106",
+    "sourceBytes": 188375,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 1919,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "9d83aa058ba6e5f343f00e929956cf3db7b44c70f234beef18cf080b799ad1fe"
+  },
+  {
+    "id": "formosa-trail-2026-40k",
+    "sourceSha256": "e8883da6487a4f095fdf625bf1cb9f7f9a3d32c8c9a194cf411729ec2914bf4d",
+    "sourceBytes": 313657,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 3211,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "5565fa9f37f9cd2f1cf93c81bec7e5d257e4ed9bb9e6a9816c256518b690eefc"
+  },
+  {
+    "id": "formosa-trail-2026-54k",
+    "sourceSha256": "202bcdcbafca7d9b2a66b22a97a1f3b0634b88fff20b38f4eca62ef71ef7dd79",
+    "sourceBytes": 520680,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 3986,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "15d59eb7f85e2223b56eb617e8dc78315bb354d98267c8135253207dbcbae3db"
+  },
+  {
+    "id": "formosa-trail-2026-75k",
+    "sourceSha256": "376bda98fd3da357c7710ac4cdc1f3ee7b75a3177a0ec0b972e06ee6a2a28988",
+    "sourceBytes": 590500,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 6048,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "72e9db136e80e12dbf56dc08e2174f6875899648407665f374bda054f888cf4f"
+  },
+  {
+    "id": "formosa-trail-2026-104k",
+    "sourceSha256": "b8ce9b9e109a4d914f6fbd2e047640f45a0cb62cf74187d00033704eda2ed04d",
+    "sourceBytes": 903828,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 8096,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "283f73398096cf68672da3f6e401ceebd71a6fb41b73febeab533a813d6191c5"
+  },
+  {
+    "id": "taiwan-action-asia-2026-26km",
+    "sourceSha256": "cc1b1d611b720ec964acfe9b5390c7a83209505c4630463911b5b8563a2dacb2",
+    "sourceBytes": 85282,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 905,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "05959905aa570c59d5925014bedc124164e821ecc6f6ceb271689216fa35c9a5"
+  },
+  {
+    "id": "taiwan-action-asia-2026-12km",
+    "sourceSha256": "dec270e17cc0c2528af01e212c8429fc895384482573e1baa792bf5f9b265592",
+    "sourceBytes": 42392,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 445,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "2c49fad079ac5b5c28ab93b3f498288c0582495e892add67f7a4b3b6e31b0664"
+  },
+  {
+    "id": "mountain-antelope-hutoushan-2026-5k",
+    "sourceSha256": "e8d63dbababe801f4873fad66f94295c9e7f98c66f5b40ead7f347a96a4f14fe",
+    "sourceBytes": 26781,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 339,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "ce38b3f70a1289d0a3278280b03a4094417acd02e58b8358960089883fd7fa89"
+  },
+  {
+    "id": "explore-your-backyard-2026-13k",
+    "sourceSha256": "8efb3134ba7ee83f1c6cc5a58e2e34fa5b49028c6430d10ec8e942e35e8c652a",
+    "sourceBytes": 142529,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 1094,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "8dd368ba38566a21796ffdaff6daafedb85acef72d9ed751ce334563c7f8060e"
+  },
+  {
+    "id": "skyhunter-qiyan-2026-4k",
+    "sourceSha256": "493290d157a33df69090106b32f4b8ac1df75497b88f205079e7133bb65ce874",
+    "sourceBytes": 34143,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 393,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "9306d6ad88ffae03df451b77373f2d6243d5b0e7b665a01ef921a395a6ccceb2"
+  },
+  {
+    "id": "skyhunter-qiyan-2026-13k",
+    "sourceSha256": "5c82c53c8f761f827cb6a6d1d8efb02ff492856115b20fc39c4349e4d7cbf255",
+    "sourceBytes": 88053,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 1030,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "4137260c498c2f7ec7e50a6156222798ee057191115f304e79903d24c2ba96ba"
+  },
+  {
+    "id": "mountain-antelope-hutoushan-2026-10k",
+    "sourceSha256": "7d4def26b7ca8db5f11318e2a4e57ef481fa4679e6f459ca6cc95ce308ec9622",
+    "sourceBytes": 1492025,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 5388,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "137c2cc4b54052d2ba394cce02db3896e5e97cdab28b96fe01f29444f01c8f18"
+  },
+  {
+    "id": "mountain-antelope-hutoushan-2026-25k",
+    "sourceSha256": "1562c1f0128d1a13aa0f330fcd6fad3195adb67c992285269bf9bcbcbcd9b1c0",
+    "sourceBytes": 872541,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 11040,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "bcbe5f2c51cfcb732c8ad1ad20d5b3cf9f0e4c72870c164b5ebaa18346b3a729"
+  },
+  {
+    "id": "skyhunter-qiyan-2026-6k",
+    "sourceSha256": "4dcee2cedee883cb0e72911863eac4df4a39b4bd0e2c1835ef0f53a77cee6676",
+    "sourceBytes": 46422,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 537,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "b20f16abab4e69a8c54e9d208b2dab2a6080085982939e8a2ac0f81bbf9ae13b"
+  },
+  {
+    "id": "skyhunter-qiyan-2026-30k",
+    "sourceSha256": "28b83bdac9366635958ec031f237bc30a41784e503cd7d353ebe9383baf6e44b",
+    "sourceBytes": 5145297,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 16528,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "dbabdedf1cb47dbc7b80f342a50ec40ffb505e32c20382be8f3b19210ba8e39b"
+  },
+  {
+    "id": "xtrail-2027-top-100k",
+    "sourceSha256": "6d045d90b008f28e5bac7741020a322fa28800d1df874552d1e9119ca551d946",
+    "sourceBytes": 2404723,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 14788,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "7fe089048ec302ca34d9c7d969fb9161636589404fe8a7ccbf6880fd8fd9d398"
+  },
+  {
+    "id": "xtrail-2027-top-50k",
+    "sourceSha256": "1f0c9f431d25553f1ce5e04aecaf68fcd8a7029812d37b4139e0aae17fe4a6e2",
+    "sourceBytes": 943742,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 5807,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "ec8a40a66015f22aecfbd1a1c0a773912f3f1106884ff10146a665c6108fca1d"
+  },
+  {
+    "id": "xtrail-2027-top-25k",
+    "sourceSha256": "cc9475f372e0324d8fb4aecf3b54f44e0f8af9b26e4d87682611281a98d0ef20",
+    "sourceBytes": 510022,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 3140,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "93739c21501c9ddeb1a936cc020fb7175ecf04867b499772e991b64aeecec38b"
+  },
+  {
+    "id": "xtrail-2027-top-10k",
+    "sourceSha256": "a29ffcaf50edebd1e849b58494d3de601a6d63c9cef043014fb98aa63e23e271",
+    "sourceBytes": 113846,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 696,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "404953c31087458d8d33926e59b4fd234f47bb12f2c2ca6703c68ed55f87f833"
+  },
+  {
+    "id": "xtrail-2027-top-2k",
+    "sourceSha256": "966434f5922832796adeaaf646361863fe7d6b4f19952ae6c0f183552a2839e7",
+    "sourceBytes": 19610,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 224,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "a19fef48fd609646d115966f07cc07de98a4173428847084df0a6b60f81f812e"
+  },
+  {
+    "id": "taiwan-action-asia-2026-50km",
+    "sourceSha256": "13662c94c91da42580d0cfb7c8e0a70781cb9e67c2265180e33eaaee2a6d700c",
+    "sourceBytes": 194612,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 1675,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "42f7b59ad0a725b5a3244e268a91400a9a29bd0a6567f407b64701b1c46d9d3a"
+  },
+  {
+    "id": "runningstream-dadu-2026-12k",
+    "sourceSha256": "5d8eb4265ca601da9240ccc65b1d71f05b1f797b43c0200ef87b0fc095a8aa6e",
+    "sourceBytes": 716808,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 8285,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "0d2e50b0fe7728ad3732fff5f6e42d0fb51bd2ec8ad6437e8cb47fd1f747a06e"
+  },
+  {
+    "id": "formosa-xtri-2026-run-42k",
+    "sourceSha256": "83ab5c4a139c1a1bfa0c3a08393f922e2847d9f43583aa2706a2592348a52cda",
+    "sourceBytes": 137874,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 1468,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "dfef8cf1d68bec5fb52bd953852936a7551536519e1f49baea194de52f479bc7"
+  },
+  {
+    "id": "aa-maokong-2027-25k",
+    "sourceSha256": "ac78b0fbea5814dc1f4a6ed353a8682f0a483be9419ea1228b4459c5472c401b",
+    "sourceBytes": 113962,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 1225,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "617d4af8b68373514c60810dbc12744795c21a5c569d2a9069c00b5b53da860c"
+  },
+  {
+    "id": "aa-maokong-2027-18k",
+    "sourceSha256": "52f795d42116f980165aaeb70930745da7264c65780eefe6b129c0f08a13b452",
+    "sourceBytes": 90461,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 964,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "d637c7620646f71d516a44f026864656b6543bc279cc274abaa4cee3f2b8cfbd"
+  },
+  {
+    "id": "aa-maokong-2027-10k",
+    "sourceSha256": "e57423702bef8a97d18892d96216592e5cbbd1e52b8e7233d6dffcdd4bd8a412",
+    "sourceBytes": 53627,
+    "version": "ridgeq-upload-point-stream/1",
+    "pointCount": 565,
+    "segmentCount": 1,
+    "trackCount": 1,
+    "routeCount": 0,
+    "fingerprintSha256": "1a1b96867d4f3f895bbd19a6380a6ca32d91cac92b943f7777ead5aa3d066e5a"
+  }
+,
+  {
+    "id": "galerdo-trail-carnival-2025-7p6k",
+    "sourceSha256": "5a8752665feffe95940b9d637cb7bfa22ed67e1c0c2799122a6cded1e6f2e0f0",
+    "sourceBytes": 51895,
+    "version": "ridgeq-upload-point-stream/1",
+    "fingerprintSha256": "b7634d482fee05ccd4ce370072ee1bdccad420955b9004f92cef273efc46e0b9",
+    "pointCount": 496,
+    "segmentCount": 1,
+    "trackCount": 0,
+    "routeCount": 1
+  },
+  {
+    "id": "galerdo-trail-carnival-2025-18k",
+    "sourceSha256": "2307e754c835f93915187886221b3ddc3549a931e3790d952b79f9ebf318c339",
+    "sourceBytes": 93189,
+    "version": "ridgeq-upload-point-stream/1",
+    "fingerprintSha256": "8f67e97568a7087ac28b1e9a5c46e3d501dc1ef7dc5d2bcbd3ae61db823e3e25",
+    "pointCount": 898,
+    "segmentCount": 1,
+    "trackCount": 0,
+    "routeCount": 1
+  }
+
+].map(Object.freeze));

@@ -1,0 +1,14 @@
+{
+  "schema_version": "route-geometry-repair/1.0",
+  "model_version": "local-gap-then-small-exact-xy-median-v1",
+  "files": {
+    "local_elevation_gap.py": "c6d643b05eb3e1abe4bb74ef81fd088819d309960c30919a506c10e29b6dc944",
+    "route_geometry_repair.py": "e25bd39608e91e5dc8151688845a4f3fb9b182630bf75075afafdf8cd2aef2ab"
+  },
+  "requires_existing_core": {
+    "__init__.py": "06096ad97f2c6ce19894e9686fe836cd438309522d0781bf9a9bf263c41b15f3",
+    "gpx.py": "734e1aae59de0b4775d74257c767de9e5f4648b69247988b1087ec27fa18fe6f",
+    "geometry.py": "8a527265f1f890f913c4cc33e513afb7cb61cd14150e6155e9d9fcfe2d37bd25",
+    "planning.py": "219bdcc59fea3d2ec581bd45adad0d8162e789d367437f1bec79d2066d276080"
+  }
+}

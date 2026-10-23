@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <title>RidGEQ 徑序</title>
+  <rect width="256" height="256" fill="#f7f8f3"/>
+  <g transform="translate(9.5 24.5)">
+    <path fill="#004738" d="M0 0H147C181 0 208 27 208 62C208 84 198 104 181 117C174 123 166 127 157 130L237 206H173L70 118H55V194H0Z"/>
+    <path fill="#f7f8f3" d="M16 119C32 104 49 99 68 92C88 85 93 81 74 78C61 76 54 73 62 67C76 57 108 51 140 45L142 54C121 59 108 63 103 67C96 72 106 74 114 78C137 88 122 101 70 119Z"/>
+    <path fill="#f7f8f3" d="M164 57L172 65L178 64L201 96L195 108L159 64Z"/>
+    <circle cx="151" cy="49" r="13" fill="#f7f8f3"/>
+    <circle cx="151" cy="49" r="8.5" fill="#004738"/>
+  </g>
+</svg>

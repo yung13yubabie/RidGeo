@@ -1,0 +1,15 @@
+{
+  "schema_version": "route-quality-diagnostics/1.0",
+  "file": "route_quality_diagnostics.py",
+  "sha256": "f83d0aa634c7c3e08ff70adbc5e8a029aee6c58ff6bde028b36f792403a8b519",
+  "requires_existing_core": {
+    "__init__.py": "06096ad97f2c6ce19894e9686fe836cd438309522d0781bf9a9bf263c41b15f3",
+    "gpx.py": "734e1aae59de0b4775d74257c767de9e5f4648b69247988b1087ec27fa18fe6f",
+    "geometry.py": "8a527265f1f890f913c4cc33e513afb7cb61cd14150e6155e9d9fcfe2d37bd25",
+    "planning.py": "219bdcc59fea3d2ec581bd45adad0d8162e789d367437f1bec79d2066d276080"
+  },
+  "requires_gpx_admission_sha256": "3b66d3b9334cb80a85e6f3c2bbd1154cbdaed4e455076a50cc169ef83aa94912",
+  "requires_cross_trail_predictor_sha256": "2f91c50c176c626acd2665f1d229f4baeb394e01d7ed1e1f37ad52bca74c0be3",
+  "requires_hybrid_trail_scenario_sha256": "02010a8b177d2c83ea68ab0a206f60c0ee5d3242bb8248f4c08a608580ceac66",
+  "scope": "readonly_source_index_evidence_no_repair_or_prediction"
+}

@@ -1,0 +1,116 @@
+/* RidGEQ interaction layer. Load after workspace.css and drawing/workspace.css.
+   Native controls own state. Motion never delays state, focus, cancel or errors. */
+:root {
+  --rq-motion-fast: 120ms;
+  --rq-motion-enter: 160ms;
+  --rq-motion-ease: cubic-bezier(.2,.8,.2,1);
+  --rq-focus: #006b8b;
+}
+/* One operation message and the original cancel/retry controls, outside busy forms. */
+.operation-row {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px 12px;
+  min-width:0;
+}
+.operation-row:has(> :not([hidden])) { margin-block:12px 18px; }
+.operation-row > #feedback { flex:1 1 24rem; min-width:0; margin:0; }
+.operation-row > .error-navigation { flex-basis:100%; order:1; min-width:0; }
+.operation-row > button { flex:0 0 auto; margin:0; min-height:44px; }
+.feedback { line-height:1.55; overflow-wrap:anywhere; }
+#feedback.busy { position:relative; padding-inline-start:38px; }
+#feedback.busy::before {
+  content:"";
+  position:absolute;
+  inset-inline-start:14px;
+  top:calc(50% - 7px);
+  width:14px;
+  height:14px;
+  box-sizing:border-box;
+  border:2px solid currentColor;
+  border-inline-end-color:transparent;
+  border-radius:50%;
+}
+/* Required warnings stay outside a disclosure; no clipping, line clamp or timeout. */
+.notices .diagnostic-essential {
+  flex:1 0 100%;
+  border:1px solid #c99c53;
+  border-inline-start-width:3px;
+  border-radius:8px;
+  background:#fff9ec;
+  padding:10px 12px;
+}
+.notices .diagnostic-essential[data-tone="error"] {
+  border-color:#c98465;
+  background:#fff5f1;
+}
+.diagnostic-callout > .status-tag {
+  padding:0;
+  border:0;
+  border-radius:0;
+  color:#6d4611;
+  background:transparent;
+  font-size:13px;
+  font-weight:650;
+}
+.diagnostic-essential[data-tone="error"] .diagnostic-callout > .status-tag { color:#8b3218; }
+.diagnostic-message { max-width:none; padding:0; }
+.diagnostic-message p { max-width:75ch; margin:5px 0; }
+.diagnostic-message .text-button { min-height:44px; margin-inline-end:14px; }
+/* Both keyboard focus and invalid reasons remain visible in dense panels. */
+:where(button,a,input,select,textarea,summary,[tabindex]):focus-visible {
+  outline:3px solid var(--rq-focus);
+  outline-offset:3px;
+}
+:where(input,select,textarea)[aria-invalid="true"] {
+  border-color:#a7472e;
+  box-shadow:0 0 0 1px #a7472e;
+}
+.field-error { display:block; color:#8b3218; font-size:12px; line-height:1.5; margin-top:5px; }
+.error-navigation { display:flex; flex-wrap:wrap; align-items:center; gap:4px 12px; }
+.error-navigation[hidden] { display:none; }
+.error-navigation > p,.error-navigation > .time-format-suggestion { flex-basis:100%; }
+.error-navigation button { min-height:44px; }
+/* Touch targets gain space without changing input types or native keyboard behavior. */
+@media (pointer:coarse) {
+  :where(button,.secondary,.text-button,.event-original-gpx,summary) { min-height:44px!important; }
+  input:not([type="checkbox"]):not([type="radio"]):not([data-time-segment]),select,textarea { font-size:max(16px,1em)!important; }
+  input[type="checkbox"],input[type="radio"] { min-width:20px; min-height:20px; }
+  :where(.terrain-levels label,.check-option) { min-height:44px; align-items:center; }
+}
+@media (max-width:480px) {
+  .operation-row > #feedback { flex-basis:100%; }
+  .operation-row > button { flex:1 1 10rem; }
+}
+/* Deliberate, bounded motion. Never animate numbers, warning messages or layout height. */
+@media (prefers-reduced-motion:no-preference) {
+  :where(button,.secondary,.text-button,summary,input,select,textarea) {
+    transition:background-color var(--rq-motion-fast) var(--rq-motion-ease),
+      border-color var(--rq-motion-fast) var(--rq-motion-ease),
+      color var(--rq-motion-fast) var(--rq-motion-ease);
+  }
+  #feedback.busy::before { animation:rq-busy-spin 900ms linear infinite; }
+  :where(.compact-disclosure,.status-disclosure,.route-details,.settings-section)[open] > :not(summary) {
+    animation:rq-content-enter var(--rq-motion-enter) var(--rq-motion-ease) both;
+  }
+  :where(.workout-dialog,.tour-dialog)[open] {
+    animation:rq-content-enter var(--rq-motion-enter) var(--rq-motion-ease) both;
+  }
+}
+@keyframes rq-content-enter { from { opacity:0; transform:translateY(3px); } to { opacity:1; transform:translateY(0); } }
+@keyframes rq-busy-spin { to { transform:rotate(1turn); } }
+/* Reduced-motion users see the same status and controls immediately, with a static ring. */
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto!important; }
+  *,*::before,*::after {
+    animation:none!important;
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+}
+@media (forced-colors:active) {
+  :where(button,a,input,select,textarea,summary,[tabindex]):focus-visible { outline-color:Highlight; }
+  :where(input,select,textarea)[aria-invalid="true"] { border:2px solid CanvasText; box-shadow:none; }
+  .notices .diagnostic-essential { border-color:CanvasText; }
+}

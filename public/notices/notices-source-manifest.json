@@ -1,0 +1,354 @@
+{
+  "build_id": "ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2",
+  "checkpoint_notice_count": 500,
+  "developer_only_notice_count": 467,
+  "named_cpython_expat_copies": 3,
+  "new_notice_files": [
+    {
+      "bytes": 60039,
+      "origin_notice": "cpython/Doc/license.rst",
+      "sha256": "cd6f471c0bfdb099efefc25ddff9b3df8bf62e10428987f1f05e6f2f9e35d563",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/cpython/Doc/license.rst"
+    },
+    {
+      "bytes": 13804,
+      "origin_notice": "cpython/LICENSE",
+      "sha256": "b0e25a78cffb43f4d92de8b61ccfa1f1f98ecbc22330b54b5251e7b6ba010231",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/cpython/LICENSE"
+    },
+    {
+      "bytes": 1031,
+      "origin_notice": "emscripten-system/include/SDL/COPYING",
+      "sha256": "c0340bf02391530fb13cf4170c31253ecd09868fa483553652699584eb4db6ae",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/emscripten-system/include/SDL/COPYING"
+    },
+    {
+      "bytes": 16708,
+      "origin_notice": "emscripten-system/lib/compiler-rt/LICENSE.TXT",
+      "sha256": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/emscripten-system/lib/compiler-rt/LICENSE.TXT"
+    },
+    {
+      "bytes": 16703,
+      "origin_notice": "emscripten-system/lib/libcxx/LICENSE.TXT",
+      "sha256": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/emscripten-system/lib/libcxx/LICENSE.TXT"
+    },
+    {
+      "bytes": 16706,
+      "origin_notice": "emscripten-system/lib/libcxxabi/LICENSE.TXT",
+      "sha256": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/emscripten-system/lib/libcxxabi/LICENSE.TXT"
+    },
+    {
+      "bytes": 16706,
+      "origin_notice": "emscripten-system/lib/libunwind/LICENSE.TXT",
+      "sha256": "b5efebcaca80879234098e52d1725e6d9eb8fb96a19fce625d39184b705f7b6d",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/emscripten-system/lib/libunwind/LICENSE.TXT"
+    },
+    {
+      "bytes": 15140,
+      "origin_notice": "emscripten-system/lib/llvm-libc/LICENSE.TXT",
+      "sha256": "ebcd9bbf783a73d05c53ba4d586b8d5813dcdf3bbec50265860ccc885e606f47",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/emscripten-system/lib/llvm-libc/LICENSE.TXT"
+    },
+    {
+      "bytes": 1096,
+      "origin_notice": "emscripten-system/lib/mimalloc/LICENSE",
+      "sha256": "19c99805e7a44a34b297a75d1edea9985e300066dfc024d5c99d4236d4573b5d",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/emscripten-system/lib/mimalloc/LICENSE"
+    },
+    {
+      "bytes": 5093,
+      "origin_notice": "emscripten/LICENSE",
+      "sha256": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/emscripten/LICENSE"
+    },
+    {
+      "bytes": 1144,
+      "origin_notice": "expat/COPYING",
+      "sha256": "31b15de82aa19a845156169a17a5488bf597e561b2c318d159ed583139b25e87",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/expat/COPYING"
+    },
+    {
+      "bytes": 16725,
+      "origin_notice": "hiwire/LICENSE",
+      "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/hiwire/LICENSE"
+    },
+    {
+      "bytes": 1080,
+      "origin_notice": "js-vendor/stackframe/LICENSE",
+      "sha256": "899da9d991cb211a3642b84e82a9ae0b4b4e44546fd207e34d7d4ec2eb40f420",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/js-vendor/stackframe/LICENSE"
+    },
+    {
+      "bytes": 1132,
+      "origin_notice": "libffi/LICENSE",
+      "sha256": "2c9c2acb9743e6b007b91350475308aee44691d96aa20eacef8e199988c8c388",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/libffi/LICENSE"
+    },
+    {
+      "bytes": 18698,
+      "origin_notice": "libffi/LICENSE-BUILDTOOLS",
+      "sha256": "e67978cd18816c0cb7d29aaaacde7b7447402c2fb321a051698890a8eaedda94",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/libffi/LICENSE-BUILDTOOLS"
+    },
+    {
+      "bytes": 1901,
+      "origin_notice": "ports/bzip2/bzip2-1.0.6/LICENSE",
+      "sha256": "4919cfb14a73cd64fcef67b107613970cf1659a09aa675dba31314f373bc7204",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/bzip2/bzip2-1.0.6/LICENSE"
+    },
+    {
+      "bytes": 7582,
+      "origin_notice": "ports/bzip2/bzip2-1.0.6/README",
+      "sha256": "52ba29d974c085ac7f33603b30aea9d5aed09c6eef0e4a5f6f53747cba22b079",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/bzip2/bzip2-1.0.6/README"
+    },
+    {
+      "bytes": 1002,
+      "origin_notice": "ports/zlib/zlib-1.3.1/LICENSE",
+      "sha256": "845efc77857d485d91fb3e0b884aaa929368c717ae8186b66fe1ed2495753243",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/zlib/zlib-1.3.1/LICENSE"
+    },
+    {
+      "bytes": 5317,
+      "origin_notice": "ports/zlib/zlib-1.3.1/README",
+      "sha256": "d106dcdb2a0b3087cb3a2380b9f00a0bbadc7eb835cd80408f94a2d78d69727d",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/zlib/zlib-1.3.1/README"
+    },
+    {
+      "bytes": 74,
+      "origin_notice": "ports/zlib/zlib-1.3.1/contrib/blast/README",
+      "sha256": "baa763ae03d88ef7ece6eb80d9a099b43d0b57639d6d281e1c7c6ca79d81daba",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/zlib/zlib-1.3.1/contrib/blast/README"
+    },
+    {
+      "bytes": 51,
+      "origin_notice": "ports/zlib/zlib-1.3.1/contrib/infback9/README",
+      "sha256": "890288f02bb3b1f9cc654b87a07fcea695f90f6b9bd672d25bf6be1da2ec1688",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/zlib/zlib-1.3.1/contrib/infback9/README"
+    },
+    {
+      "bytes": 1490,
+      "origin_notice": "ports/zlib/zlib-1.3.1/contrib/iostream3/README",
+      "sha256": "43ec48ecbd95a8c45db20b107fac73b740bb11595a4737329188f06b713972cc",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/zlib/zlib-1.3.1/contrib/iostream3/README"
+    },
+    {
+      "bytes": 3077,
+      "origin_notice": "ports/zlib/zlib-1.3.1/contrib/puff/README",
+      "sha256": "c5b9852fb11e0d6b6e916e5134cf034524d901b95368972133e0381e480eb479",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/zlib/zlib-1.3.1/contrib/puff/README"
+    },
+    {
+      "bytes": 209,
+      "origin_notice": "ports/zlib/zlib-1.3.1/nintendods/README",
+      "sha256": "e362426c47b39ff6a7d6c75c6660b20abf076cdfa5e1e421716dc629a71aef95",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/zlib/zlib-1.3.1/nintendods/README"
+    },
+    {
+      "bytes": 133,
+      "origin_notice": "ports/zlib/zlib-1.3.1/old/README",
+      "sha256": "551a0f4d91fe0f827a31cbdfbb4a71d1f3dc4d06564d80a3f526b749dd104d11",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/ports/zlib/zlib-1.3.1/old/README"
+    },
+    {
+      "bytes": 16725,
+      "origin_notice": "pyodide/LICENSE",
+      "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/pyodide/LICENSE"
+    },
+    {
+      "bytes": 613415,
+      "origin_notice": "sqlite/sqlite3.h-with-public-domain-notice",
+      "sha256": "abe0057c5506263d399da1f3d577f957b1f4fdbb3f340481f8cd4da7dc9f1ae5",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/sqlite/sqlite3.h-with-public-domain-notice"
+    },
+    {
+      "bytes": 2774,
+      "origin_notice": "xz/COPYING",
+      "sha256": "c4f8e14fafe458d84808a4cd8b69f94673ebe2bf8fc992291629a69ac12218f8",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/xz/COPYING"
+    },
+    {
+      "bytes": 18092,
+      "origin_notice": "xz/COPYING.GPLv2",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/xz/COPYING.GPLv2"
+    },
+    {
+      "bytes": 35147,
+      "origin_notice": "xz/COPYING.GPLv3",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/xz/COPYING.GPLv3"
+    },
+    {
+      "bytes": 26530,
+      "origin_notice": "xz/COPYING.LGPLv2.1",
+      "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/xz/COPYING.LGPLv2.1"
+    },
+    {
+      "bytes": 18091,
+      "origin_notice": "zstd/COPYING",
+      "sha256": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/zstd/COPYING"
+    },
+    {
+      "bytes": 1549,
+      "origin_notice": "zstd/LICENSE",
+      "sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8",
+      "url": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/notices/zstd/LICENSE"
+    },
+    {
+      "bytes": 13804,
+      "origin_notice": "cpython/LICENSE",
+      "sha256": "b0e25a78cffb43f4d92de8b61ccfa1f1f98ecbc22330b54b5251e7b6ba010231",
+      "url": "/notices/CPYTHON-3.14.8-LICENSE.txt"
+    },
+    {
+      "bytes": 60039,
+      "origin_notice": "cpython/Doc/license.rst",
+      "sha256": "cd6f471c0bfdb099efefc25ddff9b3df8bf62e10428987f1f05e6f2f9e35d563",
+      "url": "/notices/CPYTHON-3.14.8-THIRD-PARTY.rst"
+    },
+    {
+      "bytes": 1144,
+      "origin_notice": "expat/COPYING",
+      "sha256": "31b15de82aa19a845156169a17a5488bf597e561b2c318d159ed583139b25e87",
+      "url": "/notices/CPYTHON-EXPAT-2.9.0-COPYING.txt"
+    }
+  ],
+  "public_versioned_non_npm_notices": 33,
+  "retained_legacy_notice_records": {
+    "note": "Upstream notices preserved unmodified. Runtime build provenance from pinned Pyodide Makefile.envs/cpython Makefile. Complete published notice pack requires all fetched, review selected runtime components, no attribution claim for unlinked scientific wheels.",
+    "sources": [
+      {
+        "bytes": 16725,
+        "file": "PYODIDE-MPL-2.0.txt",
+        "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+        "source": "https://raw.githubusercontent.com/pyodide/pyodide/314.0.7/LICENSE",
+        "status": "fetched"
+      },
+      {
+        "bytes": 13804,
+        "file": "CPYTHON-3.14.2-LICENSE.txt",
+        "sha256": "b0e25a78cffb43f4d92de8b61ccfa1f1f98ecbc22330b54b5251e7b6ba010231",
+        "source": "https://raw.githubusercontent.com/python/cpython/v3.14.2/LICENSE",
+        "status": "fetched"
+      },
+      {
+        "bytes": 57595,
+        "file": "CPYTHON-3.14.2-THIRD-PARTY.rst",
+        "sha256": "c695d550b135e53e38807e76496d1db17d22c40e461d1f3f354c86188d3305dd",
+        "source": "https://raw.githubusercontent.com/python/cpython/v3.14.2/Doc/license.rst",
+        "status": "fetched"
+      },
+      {
+        "bytes": 5093,
+        "file": "EMSCRIPTEN-5.0.3-LICENSE.txt",
+        "sha256": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86",
+        "source": "https://raw.githubusercontent.com/emscripten-core/emscripten/5.0.3/LICENSE",
+        "status": "fetched"
+      },
+      {
+        "bytes": 1132,
+        "file": "LIBFFI-COPYING.txt",
+        "sha256": "2c9c2acb9743e6b007b91350475308aee44691d96aa20eacef8e199988c8c388",
+        "source": "https://raw.githubusercontent.com/libffi/libffi/f08493d249d2067c8b3207ba46693dd858f95db3/LICENSE",
+        "status": "fetched"
+      },
+      {
+        "bytes": 16725,
+        "file": "HIWIRE-LICENSE.txt",
+        "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+        "source": "https://raw.githubusercontent.com/pyodide/hiwire/6a1e67280a15d929ebeceee54a6358c9c8d5f697/LICENSE",
+        "status": "fetched"
+      },
+      {
+        "bytes": 2774,
+        "file": "XZ-5.2.2-COPYING.txt",
+        "sha256": "c4f8e14fafe458d84808a4cd8b69f94673ebe2bf8fc992291629a69ac12218f8",
+        "source": "https://raw.githubusercontent.com/xz-mirror/xz/v5.2.2/COPYING",
+        "status": "fetched"
+      },
+      {
+        "bytes": 1549,
+        "file": "ZSTD-1.5.7-LICENSE.txt",
+        "sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8",
+        "source": "https://raw.githubusercontent.com/python/cpython-source-deps/zstd-1.5.7/LICENSE",
+        "status": "fetched"
+      },
+      {
+        "bytes": 1144,
+        "file": "CPYTHON-EXPAT-COPYING.txt",
+        "sha256": "122f2c27000472a201d337b9b31f7eb2b52d091b02857061a8880371612d9534",
+        "source": "https://raw.githubusercontent.com/python/cpython/v3.14.2/Modules/expat/COPYING",
+        "status": "fetched"
+      },
+      {
+        "bytes": 6204,
+        "file": "EMSCRIPTEN-MUSL-COPYRIGHT.txt",
+        "sha256": "f9bc4423732350eb0b3f7ed7e91d530298476f8fec0c6c427a1c04ade22655af",
+        "source": "https://raw.githubusercontent.com/emscripten-core/emscripten/5.0.3/system/lib/libc/musl/COPYRIGHT",
+        "status": "fetched"
+      },
+      {
+        "bytes": 16703,
+        "file": "EMSCRIPTEN-LIBCXX-LICENSE.txt",
+        "sha256": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b",
+        "source": "https://raw.githubusercontent.com/emscripten-core/emscripten/5.0.3/system/lib/libcxx/LICENSE.TXT",
+        "status": "fetched"
+      },
+      {
+        "bytes": 16706,
+        "file": "EMSCRIPTEN-LIBCXXABI-LICENSE.txt",
+        "sha256": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c",
+        "source": "https://raw.githubusercontent.com/emscripten-core/emscripten/5.0.3/system/lib/libcxxabi/LICENSE.TXT",
+        "status": "fetched"
+      },
+      {
+        "bytes": 16708,
+        "file": "EMSCRIPTEN-COMPILER-RT-LICENSE.txt",
+        "sha256": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d",
+        "source": "https://raw.githubusercontent.com/emscripten-core/emscripten/5.0.3/system/lib/compiler-rt/LICENSE.TXT",
+        "status": "fetched"
+      },
+      {
+        "bytes": 8351,
+        "file": "SQLITE-COPYRIGHT.html",
+        "sha256": "44ca9f793055c8e32fc65f65a4f5bcf813a33f5bdaaa084067dd617a4ed3cc70",
+        "source": "https://www.sqlite.org/copyright.html",
+        "status": "fetched"
+      },
+      {
+        "bytes": 10269,
+        "file": "EMSCRIPTEN-MINI-LZ4-JS-SOURCE.txt",
+        "sha256": "ac1eaa04b68d792d962d5946504ee5141ef58a9df86a0dfcf0ffa63d08634e46",
+        "source": "https://raw.githubusercontent.com/emscripten-core/emscripten/5.0.3/third_party/mini-lz4.js",
+        "status": "fetched"
+      },
+      {
+        "bytes": 1002,
+        "file": "ZLIB-1.3.1-LICENSE.txt",
+        "sha256": "845efc77857d485d91fb3e0b884aaa929368c717ae8186b66fe1ed2495753243",
+        "source": "https://raw.githubusercontent.com/madler/zlib/v1.3.1/LICENSE",
+        "status": "fetched"
+      },
+      {
+        "bytes": 1901,
+        "file": "BZIP2-1.0.6-LICENSE.txt",
+        "sha256": "4919cfb14a73cd64fcef67b107613970cf1659a09aa675dba31314f373bc7204",
+        "source": "https://raw.githubusercontent.com/emscripten-ports/bzip2/1.0.6/LICENSE",
+        "status": "fetched"
+      }
+    ],
+    "sources_checked_utc": "2026-10-13",
+    "version": "314.0.7"
+  },
+  "schema": "ridgeq-runtime-notice-sources/2",
+  "scope": "All 500 captured notices remain in the recovery checkpoint. Public copy plan preserves 33 non-npm runtime/system source notices plus three named license copies. Optional-component compendia are not a claim every discussed component is linked. Existing legacy runtime notices remain unchanged.",
+  "version": "314.0.7"
+}

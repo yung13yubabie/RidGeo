@@ -1,0 +1,30 @@
+{
+  "schema_version": "whole-provider-surface-reference/3",
+  "file": "surface_reference.py",
+  "sha256": "a406eb8be086b96f8c9acde0616abc40e2227275a99a0568cd8f20ec0e369866",
+  "requires_existing_core": {
+    "__init__.py": "06096ad97f2c6ce19894e9686fe836cd438309522d0781bf9a9bf263c41b15f3",
+    "gpx.py": "734e1aae59de0b4775d74257c767de9e5f4648b69247988b1087ec27fa18fe6f",
+    "geometry.py": "8a527265f1f890f913c4cc33e513afb7cb61cd14150e6155e9d9fcfe2d37bd25",
+    "planning.py": "219bdcc59fea3d2ec581bd45adad0d8162e789d367437f1bec79d2066d276080"
+  },
+  "pack_path": "terrain-reference/terrain-bundle.json",
+  "pack_sha256": "5fecaedb28c61d17dbde37f4c4200ccec209092375347b88e57053e7035aa5e9",
+  "pack_maximum_bytes": 65536,
+  "licence_files": [
+    {
+      "path": "terrain-reference/copernicus-license.pdf",
+      "bytes": 117522,
+      "sha256": "32049914c37f14e7d53b48d13d74a49e77c030236e2acc7a0df426f9344feba2"
+    },
+    {
+      "path": "terrain-reference/NOTICE.txt",
+      "bytes": 2812,
+      "sha256": "79013028061335b4424d71c849e6072e7b59dad9bd492f64192216884fc03b77"
+    }
+  ],
+  "asset_prefix": "terrain-reference/",
+  "asset_maximum_bytes": 300000,
+  "bundle_maximum_bytes": 6000000,
+  "asset_maximum_count": 64
+}

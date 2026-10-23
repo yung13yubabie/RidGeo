@@ -1,0 +1,20 @@
+{
+  "schema_version": "timed-history-runtime/1.0",
+  "producer_revision": "r2",
+  "compact_schema_version": "timed-gpx-compact-observation/0.1",
+  "files": {
+    "compact_observation.py": "7aa927f7824c572278a33226a0904948eab9f4b5fc2f72efa1e901ff0310eb47",
+    "dependencies/geometry.py": "8a527265f1f890f913c4cc33e513afb7cb61cd14150e6155e9d9fcfe2d37bd25",
+    "dependencies/gpx.py": "734e1aae59de0b4775d74257c767de9e5f4648b69247988b1087ec27fa18fe6f",
+    "dependencies/steep_history_observations.py": "816edec0170b2aadc67c5f3ec1b1dc0be0a4b1be3df4ac35d7541db39b089f2f",
+    "timed_gpx_producer.py": "ee0e451e3e2d88fe7cf1bfc713cd059eb44a8b2138d19651ca84593d2f8bc292"
+  },
+  "requires_existing_core": {
+    "gpx.py": "734e1aae59de0b4775d74257c767de9e5f4648b69247988b1087ec27fa18fe6f",
+    "geometry.py": "8a527265f1f890f913c4cc33e513afb7cb61cd14150e6155e9d9fcfe2d37bd25"
+  },
+  "local_only": true,
+  "time_basis": "elapsed_only",
+  "model_ready": false,
+  "max_compact_json_bytes": 262144
+}

@@ -1,0 +1,148 @@
+{
+  "schema_version": "ridgeq.calibration-design/v1",
+  "artifact_id": null,
+  "created_at": null,
+  "data_cutoff_at": null,
+  "artifact_kind": null,
+  "status": "draft",
+  "model": {
+    "kernel_version": "intensity-response-research/0.2-numerical-conditioning",
+    "kernel_sha256": "f6b9f0a4d768e838e40de8320d225615339291ce8ce82915334e4189bc7c22ed",
+    "variable_profile_version": "prescribed-variable-intensity-research/0.1",
+    "geometry_cost_version": null,
+    "geometry_config_sha256": null,
+    "observation_model_id": null,
+    "free_control_policy_id": null,
+    "prescribed_control_families": []
+  },
+  "state_reference": {
+    "protocol_id": null,
+    "gauge_resolution": null,
+    "initial_state": {
+      "fast": null,
+      "persistent": null,
+      "effort_j_kg": null,
+      "moving_s": null,
+      "stopped_s": null,
+      "deficit_roundoff_bound": null,
+      "moving_roundoff_bound_s": null
+    },
+    "conventions": [],
+    "measured_evidence_ids": []
+  },
+  "parameters": {
+    "scale_s_per_j_kg": {
+      "value": null,
+      "units": "s/(J/kg)",
+      "role": null,
+      "provenance_id": null,
+      "identifiability": "not_assessed"
+    },
+    "accrual_per_j_kg": {
+      "value": null,
+      "units": "1/(J/kg)",
+      "role": null,
+      "provenance_id": null,
+      "identifiability": "not_assessed"
+    },
+    "elasticity": {
+      "value": null,
+      "units": "dimensionless",
+      "role": null,
+      "provenance_id": null,
+      "identifiability": "not_assessed"
+    },
+    "fast_fraction": {
+      "value": null,
+      "units": "dimensionless",
+      "role": null,
+      "provenance_id": null,
+      "identifiability": "not_assessed"
+    },
+    "recovery_rate_per_s": {
+      "value": null,
+      "units": "1/s",
+      "role": null,
+      "provenance_id": null,
+      "identifiability": "not_assessed"
+    },
+    "service_exposure_fraction": {
+      "value": null,
+      "units": "dimensionless",
+      "role": null,
+      "provenance_id": null,
+      "identifiability": "not_assessed"
+    }
+  },
+  "joint_parameter_distribution": {
+    "kind": null,
+    "joint_draws_ref": null,
+    "weights_interpretation": null,
+    "initial_state_joint_draws_ref": null,
+    "probability_claim_supported": false
+  },
+  "support": {
+    "exercise_modes": [],
+    "gaits": [],
+    "surfaces": [],
+    "technicality": [],
+    "grade_range": null,
+    "altitude_range_m": null,
+    "environment": null,
+    "proxy_ratio_range": null,
+    "cumulative_effort_range_j_kg": null,
+    "cumulative_moving_range_s": null,
+    "cumulative_elapsed_range_s": null,
+    "pre_stop_state_support": null,
+    "service_bundles": [],
+    "extra_rest_range_s": null,
+    "total_dwell_range_s": null,
+    "joint_support_method": null,
+    "recency_policy": null
+  },
+  "data_manifest": {
+    "ref": null,
+    "rights_ref": null,
+    "activities": [],
+    "fit_ids": [],
+    "calibration_ids": [],
+    "test_ids": [],
+    "independent_counts": null,
+    "exclusions_ref": null
+  },
+  "fit": {
+    "objective": null,
+    "measurement_model": null,
+    "behavior_assumptions": [],
+    "gauge_constraints": [],
+    "free_parameters": [],
+    "fixed_parameters": [],
+    "convergence": null,
+    "sensitivity_rank_report": null,
+    "profile_report": null,
+    "prior_sensitivity_report": null
+  },
+  "validation": {
+    "frozen_candidate_id": null,
+    "baseline_ids": [],
+    "heldout_ref": null,
+    "metrics": null,
+    "uncertainty_meaning": null,
+    "coverage": null,
+    "support_rejection_rate": null,
+    "intervention_result_ref": null,
+    "policy_result_ref": null,
+    "limitations": []
+  },
+  "capabilities": {
+    "computed_by_admission_layer": true,
+    "anchor_status": "not_assessed",
+    "intensity_effect_status": "not_assessed",
+    "recovery_effect_status": "not_assessed",
+    "service_status": "not_assessed",
+    "support_status": "not_assessed",
+    "policy_validation_status": "not_assessed",
+    "allowed_output_modes": [],
+    "recommended_rest_s": null
+  }
+}

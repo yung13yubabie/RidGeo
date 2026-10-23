@@ -1,0 +1,59 @@
+{
+  "schema_version": "intervals-provider-runtime/0.1",
+  "runtime_version": "314.0.7",
+  "integrity_profile": "intervals-provider-source-boundary/0.1",
+  "files": {
+    "core_snapshot/cross_trail_predictor.py": {
+      "source": "python/intervals_provider/core_snapshot/cross_trail_predictor.py",
+      "bytes": 20843,
+      "sha256": "2f91c50c176c626acd2665f1d229f4baeb394e01d7ed1e1f37ad52bca74c0be3"
+    },
+    "core_snapshot/trail_planner/__init__.py": {
+      "source": "python/intervals_provider/core_snapshot/trail_planner/__init__.py",
+      "bytes": 363,
+      "sha256": "06096ad97f2c6ce19894e9686fe836cd438309522d0781bf9a9bf263c41b15f3"
+    },
+    "core_snapshot/trail_planner/geometry.py": {
+      "source": "python/intervals_provider/core_snapshot/trail_planner/geometry.py",
+      "bytes": 7831,
+      "sha256": "8a527265f1f890f913c4cc33e513afb7cb61cd14150e6155e9d9fcfe2d37bd25"
+    },
+    "core_snapshot/trail_planner/gpx.py": {
+      "source": "python/intervals_provider/core_snapshot/trail_planner/gpx.py",
+      "bytes": 5651,
+      "sha256": "734e1aae59de0b4775d74257c767de9e5f4648b69247988b1087ec27fa18fe6f"
+    },
+    "core_snapshot/trail_planner/planning.py": {
+      "source": "python/intervals_provider/core_snapshot/trail_planner/planning.py",
+      "bytes": 20211,
+      "sha256": "219bdcc59fea3d2ec581bd45adad0d8162e789d367437f1bec79d2066d276080"
+    },
+    "hybrid_trail_scenario.py": {
+      "source": "python/intervals_provider/hybrid_trail_scenario.py",
+      "bytes": 15452,
+      "sha256": "02010a8b177d2c83ea68ab0a206f60c0ee5d3242bb8248f4c08a608580ceac66"
+    },
+    "multi_history_reference.py": {
+      "source": "python/intervals_provider/multi_history_reference.py",
+      "bytes": 37567,
+      "sha256": "1454417fb0d214fc6c7773ee9d32b699720c652acd4b5f8fb23f511d4357a0e6"
+    },
+    "production/gpx_admission.py": {
+      "source": "python/intervals_provider/production/gpx_admission.py",
+      "bytes": 13294,
+      "sha256": "3b66d3b9334cb80a85e6f3c2bbd1154cbdaed4e455076a50cc169ef83aa94912"
+    },
+    "runtime_integrity.py": {
+      "source": "python/intervals_provider/runtime_integrity.py",
+      "bytes": 8046,
+      "sha256": "1222f9dfb60aafc83c5e6c1767d6fec6584c7a370d454547568f59a215c65bd4"
+    },
+    "worker_adapter.py": {
+      "source": "python/intervals_provider/worker_adapter.py",
+      "bytes": 31154,
+      "sha256": "2702837b780c48cb28fcb1fb4b741df6bdda59f53ee2f14a268ee9d94844b244"
+    }
+  },
+  "total_bytes": 160412,
+  "scope": "No network/account calls; independently isolated pinned source replay and unchanged numerical core."
+}

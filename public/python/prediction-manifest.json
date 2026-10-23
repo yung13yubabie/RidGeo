@@ -1,0 +1,13 @@
+{
+  "schema_version": "cross-trail-prediction/1.0",
+  "model_version": "anchor-minetti-effort-forward-v1",
+  "files": {
+    "cross_trail_predictor.py": "2f91c50c176c626acd2665f1d229f4baeb394e01d7ed1e1f37ad52bca74c0be3"
+  },
+  "requires_existing_core": {
+    "__init__.py": "06096ad97f2c6ce19894e9686fe836cd438309522d0781bf9a9bf263c41b15f3",
+    "gpx.py": "734e1aae59de0b4775d74257c767de9e5f4648b69247988b1087ec27fa18fe6f",
+    "geometry.py": "8a527265f1f890f913c4cc33e513afb7cb61cd14150e6155e9d9fcfe2d37bd25",
+    "planning.py": "219bdcc59fea3d2ec581bd45adad0d8162e789d367437f1bec79d2066d276080"
+  }
+}

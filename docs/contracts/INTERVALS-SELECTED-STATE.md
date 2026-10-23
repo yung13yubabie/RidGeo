@@ -1,0 +1,17 @@
+# Private simulated selected-capability state v1
+
+The optional server-only `state` port repairs cross-handler context and selected-capability continuity in controlled synthetic tests. `createSimulatedSharedState` is process memory, not D1, hosted durable storage, visitor consent or provider permission. Default routes remain unconfigured503. No credentials, request capability, raw provider response, normalized paths or workout payloads are stored.
+
+The original handler is revised in place with an explicit maintained source-pin update. Normalizer, structural contracts, provider boundary and Worker/core remain unchanged. There is no second provider implementation.
+
+The wrapper alone admits list/import leases and passes `{binding,lease_id}` as a private second function argument. `/context` uses its own bounded resolver slot and does not consume the one-second list/import rate interval or acquisition lease. Direct state-handler use without trusted scope fails closed. Every request still revalidates authoritative session/athlete/access/policy; private comparison keys cannot authorize access.
+
+Nine narrow operations: contextFor, beginOperation, checkpoint, prepareChoices, readChoices, commitChoices, readCommit, recordBackoff, finishOperation. API version is intervals-selected-capability-state/1. The adapter has a trusted nondecreasing integer millisecond clock, contextTTL600000, choiceTTL300000, lease<=15000/no renewal. Shared simulated quotas:32 contexts/32 owner-rate rows/4000 choices/4MiB and250000 captured-choice logical units; native acquisition remains per-isolate1. Supplemental bounded key/index/journal representation is reported separately; none is a heap/host capacity qualification.
+
+Commit defensively captures one bounded tree before hash; digest/charges/install derive from it. Final admission rechecks lease/clock/capacity atomically. Original JSON equality treats -0/+0 idempotently alike while the first captured tree preserves signs; order stays significant. Full batches install or none. Empty commit identity remains only in its live lease. One uncertain-result readback, no blind retry/refetch. Prior unexpired handles survive staging/capacity failures.
+
+Linearization is admitted commit before first response byte. Subsequent delivery loss may retain charged owner-bound unused handles until fixed expiry; no incomplete client receipt is accepted. Final lease checkpoint precedes the last authoritative resolver/policy comparison and deadline/signal check, then suffix/close are synchronous. Captured conditional release follows completion/cancel/error. Cleanup failure cannot undo delivered data; expiry bounds the outstanding lease and subsequent admission remains fenced. Old cleanup never releases a different token.
+
+Cleanup is lazy at state operations, not a promise of physical deletion during inactivity. The current adapter is test-only simulated storage and is not activated by build or import. A future D1/authority/runtime contract and explicit approvals remain necessary. Real accounts, hosted permission/memory, device compatibility and ultra limits72h/50k samples/500km remain unverified; no downsampling or fabricated timestamps.
+
+Maintained light check: node checks/intervals-provider/shared-state.mjs. Native Worker/app tests use three separate injected handlers sharing this simulated store, with a fixed fictional provider and real protected model. Native runs require the serial test lane. Evidence is written outside product source.

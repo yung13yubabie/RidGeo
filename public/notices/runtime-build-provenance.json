@@ -1,0 +1,54 @@
+{
+  "artifact_kind": "locally-compiled-derivative",
+  "build_acceptance": {
+    "accept_receipt_sha256": "ac1b1ddb9329db5e0590dc32b529a2ba7d12d1407a0a1c1d35b4693db1a6f895",
+    "chain": "Independent official-lock-schema acceptance followed by record; deprecated lock.info.version is intentionally absent. Original unsuccessful postflight records remain preserved separately.",
+    "derived_500_notice_manifest_sha256": "04194b4f578617708407ff50d48769e8620e8e28d6056ad77bd037b9d1467320",
+    "historical_manifest_status_preserved": "BUILT_NOT_RUNTIME_ACCEPTED",
+    "notice_supplement_receipt_sha256": "89911df455a2a0b9fb3843b9c70d882ba41e6e2b94e736fe68ff81297169a6f3",
+    "record_receipt_sha256": "91a47612871e813b8615fe70c624253afcf0b6e3dd6828132b13ec9275d64fb8"
+  },
+  "build_id": "ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2",
+  "limits": [
+    "No blanket security, complete provenance, legal-completeness or reproducible-build guarantee.",
+    "Runtime and adapter observations are separate from final application integration, generated HTTP, retained/export/Worker regressions, native browser and release approval.",
+    "The original runtime is retained for coherent rollback, not declared remediated.",
+    "Recovery toolchain/host/npm installation completeness is a separate checkpoint scope."
+  ],
+  "runtime_identity": {
+    "abi": "2026_0",
+    "api": "314.0.7",
+    "arch": "wasm32",
+    "emscripten": "5.0.3",
+    "expat": "2.9.0",
+    "pointer_bytes": 4,
+    "python": "3.14.8"
+  },
+  "runtime_observations": {
+    "phase6": {
+      "actual_wasm_executed": true,
+      "candidate_unchanged": true,
+      "payload_checks": 39,
+      "receipt_sha256": "4ba961b6830c4ae5d059e6cd5a5602e1d00f09a400f10b5ceff182adca923fb4",
+      "runtime_checks": 19,
+      "scope": "Actual versions, imports, bounded XML fixtures, accelerated ElementTree 16-byte setter table-hook observation and startup CSPRNG; direct compiled pyexpat setter invocation is source-corroborated, not directly intercepted. The observed salt uses a process secret, not fresh per-parser RNG.",
+      "source_checks": 32,
+      "status": "pass-with-explicit-scope",
+      "synthetic_fixtures": 37
+    },
+    "phase7": {
+      "actual_wasm_executed": true,
+      "all_child_exits": 0,
+      "fresh_children": 4,
+      "numerical_tolerance": 0,
+      "paired_cases": 14,
+      "receipt_sha256": "8051e3fa93c72840156fa5fbe5dcede4548e3b5629d288bf76ff91c9bdbea421",
+      "scope": "Captured actual adapters with the reviewed strict-version derived engine; not final integrated production-engine/Worker or browser acceptance.",
+      "status": "pass-with-explicit-scope",
+      "timing_comparison": "Only explicitly enumerated accounting JSON pointers differ; model/route times and semantics stay exact. Resource-budget assertions remain enforced."
+    }
+  },
+  "schema": "ridgeq-runtime-build-provenance/2",
+  "source_index": "/notices/source-index.json",
+  "upstream_sources": "/notices/runtime-source/ridgeq-314.0.7-cpython3.14.8-expat2.9.0-rebuild-r2/upstream-sources.json"
+}
