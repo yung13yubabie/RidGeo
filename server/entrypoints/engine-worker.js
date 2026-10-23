@@ -17,7 +17,7 @@ const selectedHistory=createHistorySelectionEngine({baseEngine:engine,readAsset,
 const providerHistory=createIntervalsProviderEngine({baseEngine:engine,readAsset,sha256:browserSha256,onStatus:status=>{if(active)self.postMessage({type:'status',...active,status});}});
 self.onmessage=async(event)=>{
   const message=event.data;
-  if(!message||message.type!=='request'||!Number.isSafeInteger(message.generation)||!Number.isSafeInteger(message.requestId)||!['inspect','plan','details','reference','predict','hybrid','repair_propose','repair_apply','surface_propose','surface_apply','timed_history_inspect','manual_pace_prepare','manual_pace_recalculate','quality_inspect','conditional_recovery_preview','selected_history_predict','intervals_history_predict'].includes(message.operation))return;
+  if(!message||message.type!=='request'||!Number.isSafeInteger(message.generation)||!Number.isSafeInteger(message.requestId)||!['inspect','plan','details','reference','predict','hybrid','repair_propose','repair_apply','surface_propose','surface_apply','timed_history_inspect','manual_pace_prepare','manual_pace_recalculate','quality_inspect','live_eta','conditional_recovery_preview','selected_history_predict','intervals_history_predict'].includes(message.operation))return;
   if(active){self.postMessage({type:'result',generation:message.generation,requestId:message.requestId,ok:false,error:{code:'worker_busy',message:'上一個計算仍在進行。'},fatal:false});return;}
   active={generation:message.generation,requestId:message.requestId};
   try{
