@@ -57,3 +57,16 @@ next-env.d.ts
 
 __pycache__/
 *.pyc
+
+# Local Cloudflare secrets and browser captures; never publish real credentials.
+.dev.vars
+.dev.vars.*
+*.har
+*.har.gz
+
+# Personal activity exports stay outside the public source tree.
+# Reviewed synthetic fixtures can be explicitly force-added after privacy review.
+*.gpx
+*.fit
+*.tcx
+/private-activity-exports/
